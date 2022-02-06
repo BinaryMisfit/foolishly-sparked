@@ -45,6 +45,7 @@ $RECYCLE.BIN/
 .idea/**/dbnavigator.xml
 .idea/**/gradle.xml
 .idea/**/libraries
+.idea/**/sonarlint
 cmake-build-*/
 .idea/**/mongoSettings.xml
 *.iws
