@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="JetBrains.Annotations" Version="2022.1.0-eap3" />
+      <PackageReference Include="SharpZipLib" Version="1.3.3" />
+      <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="System.CommandLine" Version="2.0.0-beta2.21617.1" />
+      <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.2-mauipre.1.22054.8" />
+      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Tools\Interfaces" />
+      <Folder Include="Tools\Settings" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="System.Custom, Version=2104.21.1514.18445, Culture=neutral, PublicKeyToken=null">
+        <HintPath>D:\BinaryMisfit\Source\libraries\s4pi\System.Custom.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
