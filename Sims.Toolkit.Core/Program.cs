@@ -1,10 +1,8 @@
 ﻿using System;
 using System.CommandLine;
 using System.IO;
-using System.Linq;
 using Sims.Toolkit.Api.Core;
 using Sims.Toolkit.Api.Helpers;
-using Sims.Toolkit.Core.Tools.Xmods.DataLib;
 
 namespace Sims.Toolkit.Core
 {
@@ -30,25 +28,6 @@ namespace Sims.Toolkit.Core
                     progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
                     var pack = new Package(packageFile);
                     await pack.LoadPackageAsync(progress);
-                    var package = (Tools.Packages.Package) Tools.Packages.Package.OpenPackage(0,
-                        packageFile.FullName,
-                        true);
-                    var packageCasParts =
-                        package.FindAll(part =>
-                            part.ResourceType == (ulong) XmodsEnums.ResourceTypes.CASP);
-                    if (!packageCasParts.Any())
-                    {
-                        throw new NotSupportedException("No CAS parts found.");
-                    }
-
-                    packageCasParts.ForEach(part =>
-                    {
-                        var casStream = package.GetResource(part);
-                        casStream.Position = 0;
-                        var casReader = new BinaryReader(casStream);
-                        var casPart = new CASP(casReader);
-                    });
-
                     Console.WriteLine($"{packageFile.Name} loaded successfully.");
                 }
                 catch (NotSupportedException)

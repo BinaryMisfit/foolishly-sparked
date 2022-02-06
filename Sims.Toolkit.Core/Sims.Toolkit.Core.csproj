@@ -23,14 +23,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Tools\Interfaces" />
-      <Folder Include="Tools\Settings" />
+      <Compile Remove="Tools\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="System.Custom, Version=2104.21.1514.18445, Culture=neutral, PublicKeyToken=null">
-        <HintPath>D:\BinaryMisfit\Source\libraries\s4pi\System.Custom.dll</HintPath>
-      </Reference>
+      <EmbeddedResource Remove="Tools\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Tools\**" />
     </ItemGroup>
 
 </Project>
