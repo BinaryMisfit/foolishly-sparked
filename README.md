@@ -1,5 +1,7 @@
 # Sims Toolkit
 
+[![wakatime](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit.svg)](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit)
+
 ## Overview
 
 Sims Toolkit is a updated set of tools to manage and maintain Sims 4 custom content files. It's built on .Net 6.0 and
