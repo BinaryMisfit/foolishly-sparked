@@ -13,7 +13,7 @@ public class Game
                RuntimeInformation.OSArchitecture.HasFlag(Architecture.Arm64);
         IsMac = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
         IsWin = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        Platform = RuntimeInformation.OSDescription;
+        Platform = RuntimeInformation.RuntimeIdentifier;
     }
 
     public bool Is64 { get; }
