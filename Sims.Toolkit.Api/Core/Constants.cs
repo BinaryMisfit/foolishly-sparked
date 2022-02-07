@@ -5,9 +5,9 @@ internal static class Constants
     internal const string headerBit = "DBPF";
 
     internal const int fields = 9;
-    internal const int indexCount = 36;
-    internal const int indexPosition = 64;
-    internal const int indexPositionAlternate = 40;
+    internal const int contentCount = 36;
+    internal const int contentPosition = 64;
+    internal const int contentPositionAlternate = 40;
     internal const int indexSize = 44;
     internal const int majorStart = 4;
     internal const int minorStart = 8;

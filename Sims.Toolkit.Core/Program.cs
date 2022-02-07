@@ -21,18 +21,19 @@ namespace Sims.Toolkit.Core
             commandLine.Description = "Configures and updates Sims 4 .package files for compatibility.";
             commandLine.SetHandler(async (FileInfo packageFile) =>
             {
-                Console.WriteLine($"Reading package file: {packageFile.Name}");
+                Console.WriteLine("Locating and configuring game files.");
+                var game = new Game();
+                Console.WriteLine($"Running on {game.Platform} {(game.Is64 ? "64-Bit" : "")}");
+                Console.WriteLine($"Reading package file: {packageFile.Name}.");
                 try
                 {
                     var progress = new Progress<ProgressReport>();
                     progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
                     var pack = new Package(packageFile);
-                    await pack.LoadPackageAsync(progress);
-                    Console.WriteLine($"{packageFile.Name} loaded successfully.");
-                }
-                catch (NotSupportedException)
-                {
-                    Console.WriteLine($"{packageFile.Name} does not contain any CAS parts.");
+                    await pack.LoadPackageAsync();
+                    await pack.LoadPackageContentAsync();
+                    Console.WriteLine(
+                        $"{pack.PackageFileName} loaded successfully with {pack.Contents?.Count} item(s).");
                 }
                 catch (Exception e)
                 {
