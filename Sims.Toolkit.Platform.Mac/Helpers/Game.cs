@@ -28,7 +28,7 @@ public class Game : IPlatform
 
     public string? InstalledPath { get; private set; }
 
-    public Task<DirectoryInfo> LocateGame()
+    public Task<DirectoryInfo> LocateGameAsync()
     {
         var gameFile = new FileInfo(GlobalPath);
         if (!gameFile.Exists) gameFile = new FileInfo(UserPath);

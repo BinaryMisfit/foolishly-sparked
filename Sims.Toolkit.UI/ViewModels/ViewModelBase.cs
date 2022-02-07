@@ -1,8 +1,7 @@
 ﻿using ReactiveUI;
 
-namespace Sims.Toolkit.UI.ViewModels
+namespace Sims.Toolkit.UI.ViewModels;
+
+public class ViewModelBase : ReactiveObject
 {
-    public class ViewModelBase : ReactiveObject
-    {
-    }
 }

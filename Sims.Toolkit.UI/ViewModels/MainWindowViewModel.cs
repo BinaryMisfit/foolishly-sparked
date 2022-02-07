@@ -1,6 +1,5 @@
-﻿namespace Sims.Toolkit.UI.ViewModels
+﻿namespace Sims.Toolkit.UI.ViewModels;
+
+public class MainWindowViewModel : ViewModelBase
 {
-    public class MainWindowViewModel : ViewModelBase
-    {
-    }
 }

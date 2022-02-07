@@ -11,7 +11,6 @@ internal static class Constants
     internal const int ContentCount = 36;
     internal const int ContentPosition = 64;
     internal const int ContentPositionAlternate = 40;
-    internal const int IndexSize = 44;
     internal const int MajorStart = 4;
     internal const int MinorStart = 8;
     internal const int PackageMajor = 2;

@@ -8,5 +8,5 @@ public interface IPlatform
 
     string? InstalledPath { get; }
 
-    Task<DirectoryInfo> LocateGame();
+    Task<DirectoryInfo> LocateGameAsync();
 }

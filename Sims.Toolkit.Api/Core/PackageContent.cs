@@ -7,7 +7,7 @@ public class PackageContent
     /// </summary>
     /// <param name="header">A <see cref="int" /> array containing the header.</param>
     /// <param name="entry">A <see cref="int" /> array containing the entry.</param>
-    public PackageContent(int[] header, int[] entry)
+    public PackageContent(IReadOnlyList<int> header, IReadOnlyList<int> entry)
     {
         Item = Write(header, entry);
     }
@@ -17,9 +17,9 @@ public class PackageContent
     /// </summary>
     public byte[] Item { get; }
 
-    private static byte[] Write(int[] header, int[] entry)
+    private static byte[] Write(IReadOnlyList<int> header, IReadOnlyList<int> entry)
     {
-        var content = new byte[(header.Length + entry.Length) * 4];
+        var content = new byte[(header.Count + entry.Count) * 4];
         var stream = new MemoryStream(content);
         var writer = new BinaryWriter(stream);
         writer.Write(header[0]);
@@ -29,9 +29,9 @@ public class PackageContent
         writer.Write((headerGroup & 0x01) != 0 ? header[headerCount++] : entry[entryCount++]);
         writer.Write((headerGroup & 0x02) != 0 ? header[headerCount++] : entry[entryCount++]);
         writer.Write((headerGroup & 0x04) != 0 ? header[headerCount++] : entry[entryCount++]);
-        for (; headerCount < header.Length - 1; headerCount++) writer.Write(header[headerCount]);
+        for (; headerCount < header.Count - 1; headerCount++) writer.Write(header[headerCount]);
 
-        for (; entryCount < entry.Length; entryCount++) writer.Write(entry[entryCount]);
+        for (; entryCount < entry.Count; entryCount++) writer.Write(entry[entryCount]);
 
         return content;
     }

@@ -28,19 +28,19 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj" />
+        <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Remove="Tools\**" />
+        <Compile Remove="Tools\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Remove="Tools\**" />
+        <EmbeddedResource Remove="Tools\**"/>
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Tools\**" />
+        <None Remove="Tools\**"/>
     </ItemGroup>
 
 </Project>

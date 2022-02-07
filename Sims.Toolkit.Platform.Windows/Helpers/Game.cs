@@ -26,7 +26,7 @@ public class Game : IPlatform
 
     public string? InstalledPath { get; private set; }
 
-    public Task<DirectoryInfo> LocateGame()
+    public Task<DirectoryInfo> LocateGameAsync()
     {
         var value =
             Registry.GetValue(registryKey, registryValue, string.Empty) as string;
