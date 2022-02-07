@@ -22,7 +22,7 @@ public static class Game
             assemblyFile = new FileInfo($"{Constants.PlatformWindows}.dll");
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            assemblyFile = new FileInfo($"{Constants.PlatformWindows}.dll");
+            assemblyFile = new FileInfo($"{Constants.PlatformMac}.dll");
 
         if (assemblyFile == null)
             throw new FileNotFoundException($"Missing assembly for {RuntimeInformation.RuntimeIdentifier}");
