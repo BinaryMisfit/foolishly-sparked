@@ -1,0 +1,77 @@
+name: SonarCloud
+
+on:
+  push:
+    branches: [ feature ]
+
+jobs:
+  sonarcloud:
+    name: Sonar
+    runs-on: windows-latest
+
+    steps:
+      - name: Setup .NET 6.0
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: 6.0.x
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          distribution: zulu
+          java-version: 11
+          java-package: jdk
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+      - name: Cache SonarCloud packages
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v2.1.7
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+      - name: Cache NuGet packages
+        id: cache-nuget-packages
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+      - name: Restore
+        run: |
+          dotnet restore
+      - name: Analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        run: |
+          .\.sonar\scanner\dotnet-sonarscanner begin `
+            /k:"senselessly-foolish-sims-toolkit" `
+            /o:"senselessly-foolish" `
+            /d:sonar.login="${{ secrets.SONAR_TOKEN }}" `
+            /d:sonar.host.url="https://sonarcloud.io" `
+            /d:sonar.cs.vstest.reportsPaths="test-results\*.trx" `
+            /d:sonar.cs.opencover.reportsPaths="**.Tests\**\*.xml"
+          dotnet build --no-restore
+          dotnet test `
+            --no-build `
+            --verbosity normal `
+            --logger trx `
+            --results-directory "test-results" `
+            /p:CollectCoverage=true `
+            /p:CoverletOutputFormat="opencover"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
