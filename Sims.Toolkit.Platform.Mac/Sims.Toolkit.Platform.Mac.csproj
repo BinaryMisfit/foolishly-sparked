@@ -20,6 +20,9 @@
 
     <ItemGroup>
         <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Convention" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Hosting" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Runtime" Version="6.0.2-mauipre.1.22054.8"/>
     </ItemGroup>
 
 </Project>

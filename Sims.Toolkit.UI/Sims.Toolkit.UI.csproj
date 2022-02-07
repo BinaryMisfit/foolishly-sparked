@@ -51,6 +51,8 @@
         <PackageReference Include="HarfBuzzSharp.NativeAssets.WebAssembly" Version="2.8.2-preview.187"/>
         <PackageReference Include="HarfBuzzSharp.NativeAssets.Win32" Version="2.8.2-preview.187"/>
         <PackageReference Include="JetBrains.Annotations" Version="2022.1.0-eap3"/>
+        <PackageReference Include="libsodium" Version="1.0.18.1"/>
+        <PackageReference Include="Material.Avalonia" Version="2.5.0.72-nightly"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -62,7 +64,12 @@
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
         <PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="Microsoft.NETCore.Targets" Version="6.0.0-preview.4.21253.7"/>
+        <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.5.21301.5"/>
         <PackageReference Include="Microsoft.Win32.SystemEvents" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="NetSparkleUpdater.SparkleUpdater" Version="2.0.9"/>
+        <PackageReference Include="NetSparkleUpdater.UI.Avalonia" Version="2.0.15"/>
+        <PackageReference Include="NSec.Cryptography" Version="21.11.0-preview2"/>
+        <PackageReference Include="Portable.BouncyCastle" Version="1.9.0"/>
         <PackageReference Include="ReactiveUI" Version="17.1.17"/>
         <PackageReference Include="SkiaSharp" Version="2.88.0-preview.187"/>
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.0-preview.187"/>
@@ -102,9 +109,12 @@
         <PackageReference Include="System.Runtime.Extensions" Version="4.3.1"/>
         <PackageReference Include="System.Runtime.Handles" Version="4.3.0"/>
         <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0"/>
+        <PackageReference Include="System.Security.AccessControl" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Security.Principal.Windows" Version="6.0.0-preview.5.21301.5"/>
         <PackageReference Include="System.Text.Encoding" Version="4.3.0"/>
         <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Text.Encodings.Web" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Text.Json" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Threading" Version="4.3.0"/>
         <PackageReference Include="System.Threading.Tasks" Version="4.3.0"/>
         <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4"/>

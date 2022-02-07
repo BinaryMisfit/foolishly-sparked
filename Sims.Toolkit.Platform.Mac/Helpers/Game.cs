@@ -10,9 +10,9 @@ namespace Sims.Toolkit.Platform.Mac.Helpers;
 [Export(typeof(IPlatform))]
 public class Game : IPlatform
 {
-    private const string GlobalPath = "/Applications/The Sims 4.app";
+    private const string globalPath = "/Applications/The Sims 4.app";
 
-    private readonly string UserPath =
+    private readonly string _userPath =
         Path.Join(Environment.GetEnvironmentVariable("HOME"), "/Applications/The Sims 4.app");
 
     public Game()
@@ -30,8 +30,8 @@ public class Game : IPlatform
 
     public Task<DirectoryInfo> LocateGameAsync()
     {
-        var gameFile = new FileInfo(GlobalPath);
-        if (!gameFile.Exists) gameFile = new FileInfo(UserPath);
+        var gameFile = new FileInfo(globalPath);
+        if (!gameFile.Exists) gameFile = new FileInfo(_userPath);
 
         if (gameFile.Directory == null) throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
 

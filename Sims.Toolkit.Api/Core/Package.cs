@@ -246,7 +246,7 @@ public class Package
         return header;
     }
 
-    private void LoadEntries(BinaryReader reader, int[] header, int headerSize)
+    private void LoadEntries(BinaryReader reader, IReadOnlyList<int> header, int headerSize)
     {
         Contents = new List<PackageContent>();
         var entry = new int[Constants.Fields - headerSize];
