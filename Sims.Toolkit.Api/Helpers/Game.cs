@@ -1,31 +1,42 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Composition.Hosting;
+using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using Sims.Toolkit.Api.Core;
+using Sims.Toolkit.Api.Interfaces;
 
 namespace Sims.Toolkit.Api.Helpers;
 
 /// <summary>
 ///     Contains and stores game specific information.
 /// </summary>
-public class Game
+[SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
+public static class Game
 {
-    public Game()
+    public static IPlatform LoadPlugin()
     {
-        Is64 = RuntimeInformation.OSArchitecture.HasFlag(Architecture.X64) ||
-               RuntimeInformation.OSArchitecture.HasFlag(Architecture.Arm64);
-        IsMac = RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
-        IsWin = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        Platform = RuntimeInformation.RuntimeIdentifier;
-    }
+        var configuration = new ContainerConfiguration();
+        Assembly? assembly = null;
+        FileInfo? assemblyFile = null;
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            assemblyFile = new FileInfo($"{Constants.PlatformWindows}.dll");
 
-    public bool Is64 { get; }
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            assemblyFile = new FileInfo($"{Constants.PlatformWindows}.dll");
 
-    public bool IsMac { get; }
+        if (assemblyFile == null)
+            throw new FileNotFoundException($"Missing assembly for {RuntimeInformation.RuntimeIdentifier}");
 
-    public bool IsWin { get; }
+        if (assemblyFile.Exists) assembly = Assembly.LoadFrom(assemblyFile.FullName);
 
-    public string Platform { get; }
+        if (assembly == null)
+            throw new DllNotFoundException($"Missing target platform {RuntimeInformation.RuntimeIdentifier}");
 
-    public Task<DirectoryInfo> LocateGame()
-    {
-        throw new NotImplementedException();
+        configuration.WithAssembly(assembly);
+        var host = configuration.CreateContainer();
+        var game = host.GetExports<IPlatform>().FirstOrDefault();
+        if (game == null) throw new EntryPointNotFoundException("No matching IPlatform interfaces found.");
+
+        return game;
     }
 }

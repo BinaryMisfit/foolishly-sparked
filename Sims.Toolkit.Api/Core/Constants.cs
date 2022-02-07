@@ -2,17 +2,20 @@
 
 internal static class Constants
 {
-    internal const string headerBit = "DBPF";
+    internal const string PlatformMac = "Sims.Toolkit.Platform.Mac";
+    internal const string PlatformWindows = "Sims.Toolkit.Platform.Windows";
 
-    internal const int fields = 9;
-    internal const int contentCount = 36;
-    internal const int contentPosition = 64;
-    internal const int contentPositionAlternate = 40;
-    internal const int indexSize = 44;
-    internal const int majorStart = 4;
-    internal const int minorStart = 8;
-    internal const int packageMajor = 2;
-    internal const int packageMinor = 1;
+    internal const string HeaderBit = "DBPF";
 
-    internal static readonly byte[] headerId = new byte[96];
+    internal const int Fields = 9;
+    internal const int ContentCount = 36;
+    internal const int ContentPosition = 64;
+    internal const int ContentPositionAlternate = 40;
+    internal const int IndexSize = 44;
+    internal const int MajorStart = 4;
+    internal const int MinorStart = 8;
+    internal const int PackageMajor = 2;
+    internal const int PackageMinor = 1;
+
+    internal static readonly byte[] HeaderId = new byte[96];
 }

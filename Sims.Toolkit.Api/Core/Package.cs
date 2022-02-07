@@ -35,12 +35,12 @@ public class Package
     /// <summary>
     /// Gets the major version number of the package file.
     /// </summary>
-    private int MajorVersion { get; set; }
+    private int majorVersion { get; set; }
 
     /// <summary>
     ///     Gets the minor version number of the package file.
     /// </summary>
-    private int MinorVersion { get; set; }
+    private int minorVersion { get; set; }
 
     /// <summary>
     /// Gets the package content entries as an <see cref="IList{T}"/>.
@@ -50,22 +50,27 @@ public class Package
     /// <summary>
     /// Gets the position where content starts.
     /// </summary>
-    private int ContentPosition { get; set; }
+    private int contentPosition { get; set; }
 
     /// <summary>
     /// Gets the number of content items.
     /// </summary>
-    private int ContentCount { get; set; }
+    private int contentCount { get; set; }
 
     /// <summary>
     /// Gets the <see cref="DirectoryInfo"/> instance of the package file.
     /// </summary>
-    private DirectoryInfo? PackagePath { get; set; }
+    private DirectoryInfo? packagePath { get; set; }
 
     /// <summary>
     ///     Gets the file name of the package file.
     /// </summary>
     public string? PackageFileName { get; private set; }
+
+    public override string ToString()
+    {
+        return $"{PackageFileName} ({majorVersion}/{minorVersion}/{Contents?.Count})";
+    }
 
     /// <summary>
     /// Read and load the package asynchronously.
@@ -88,16 +93,16 @@ public class Package
 
             if (sourceFile == null) throw new FileLoadException("File not specified.");
 
-            PackagePath = sourceFile.Directory ??
+            packagePath = sourceFile.Directory ??
                           throw new FileNotFoundException($"{sourceFile.FullName} not found.");
             PackageFileName = sourceFile.Name;
-            progress?.Report(new ProgressReport($"Found {PackageFileName} in {PackagePath}."));
+            progress?.Report(new ProgressReport($"Found {PackageFileName} in {packagePath}."));
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
 
             stream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
             stream.Position = 0;
-            var reader = new BinaryReader(stream).ReadBytes(Constants.headerId.Length);
+            var reader = new BinaryReader(stream).ReadBytes(Constants.HeaderId.Length);
             stream.Close();
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
@@ -109,29 +114,29 @@ public class Package
             var magicBit = new byte[4];
             Array.Copy(reader, 0, magicBit, 0, magicBit.Length);
             var magicCheck = Encoding.Default.GetString(magicBit);
-            if (magicCheck != Constants.headerBit)
+            if (magicCheck != Constants.HeaderBit)
                 throw new InvalidCastException($"{PackageFileName} is NOT a valid custom content file.");
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
 
-            MajorVersion = BitConverter.ToInt32(reader, Constants.majorStart);
-            MinorVersion = BitConverter.ToInt32(reader, Constants.minorStart);
-            if (MajorVersion != 2 && MinorVersion != 1)
-                throw new VersionNotFoundException($"{MajorVersion} ({MinorVersion}) does not match expected 2 (1).");
+            majorVersion = BitConverter.ToInt32(reader, Constants.MajorStart);
+            minorVersion = BitConverter.ToInt32(reader, Constants.MinorStart);
+            if (majorVersion != 2 && minorVersion != 1)
+                throw new VersionNotFoundException($"{majorVersion} ({minorVersion}) does not match expected 2 (1).");
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
 
-            ContentPosition = BitConverter.ToInt32(reader, Constants.contentPosition);
-            if (ContentPosition == 0)
-                ContentPosition = BitConverter.ToInt32(reader, Constants.contentPositionAlternate);
+            contentPosition = BitConverter.ToInt32(reader, Constants.ContentPosition);
+            if (contentPosition == 0)
+                contentPosition = BitConverter.ToInt32(reader, Constants.ContentPositionAlternate);
 
-            if (ContentPosition == 0)
+            if (contentPosition == 0)
                 throw new KeyNotFoundException($"{PackageFileName} does not contain any custom content.");
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
 
-            ContentCount = BitConverter.ToInt32(reader, Constants.contentCount);
-            if (ContentCount == 0) throw new KeyNotFoundException($"{PackageFileName} custom content cannot be read.");
+            contentCount = BitConverter.ToInt32(reader, Constants.ContentCount);
+            if (contentCount == 0) throw new KeyNotFoundException($"{PackageFileName} custom content cannot be read.");
 
             progress?.Report(new ProgressReport($"{PackageFileName} is a valid custom content file."));
             return Task.FromResult(this);
@@ -163,7 +168,7 @@ public class Package
             stream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
             stream.Position = 0;
             var reader = new BinaryReader(stream);
-            stream.Position = ContentPosition;
+            stream.Position = contentPosition;
             var type = reader.ReadUInt32();
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
@@ -175,8 +180,8 @@ public class Package
 
             if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
 
-            var entry = new int[Constants.fields - headerSize];
-            for (var i = 0; i < ContentCount; i++)
+            var entry = new int[Constants.Fields - headerSize];
+            for (var i = 0; i < contentCount; i++)
             {
                 progress?.Report(new ProgressReport($"Adding item #{i + 1}."));
                 for (var j = 0; j < entry.Length; j++)

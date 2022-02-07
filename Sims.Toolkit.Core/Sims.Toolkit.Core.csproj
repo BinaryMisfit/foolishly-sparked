@@ -6,6 +6,14 @@
         <LangVersion>10</LangVersion>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <OutDir>..\Output\Debug\</OutDir>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <OutDir>..\Output\Release\</OutDir>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="JetBrains.Annotations" Version="2022.1.0-eap3"/>
         <PackageReference Include="SharpZipLib" Version="1.3.3"/>

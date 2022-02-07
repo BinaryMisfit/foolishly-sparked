@@ -15,11 +15,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
+        <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
     </ItemGroup>
 
 </Project>
