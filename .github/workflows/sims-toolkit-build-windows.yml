@@ -19,7 +19,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: 6.0.x
       - name: Cache NuGet packages
         id: cache-nuget-packages
         uses: actions/cache@v2.1.7
