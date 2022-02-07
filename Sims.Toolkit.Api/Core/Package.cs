@@ -117,15 +117,24 @@ public class Package
     /// <exception cref="VersionNotFoundException">Thrown if the version in the header is invalid.</exception>
     private Task<Package> LoadPackageAsync(IProgress<ProgressReport>? progress, CancellationToken token)
     {
-        if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
+        if (token.IsCancellationRequested)
+        {
+            token.ThrowIfCancellationRequested();
+        }
 
-        if (SourceFile == null) throw new FileLoadException("File not specified.");
+        if (SourceFile == null)
+        {
+            throw new FileLoadException("File not specified.");
+        }
 
         var header = ReadHeader(SourceFile);
         VerifyHeader(header);
         PopulateVersionInfo(header);
         PopulateContentInfo(header);
-        if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
+        if (token.IsCancellationRequested)
+        {
+            token.ThrowIfCancellationRequested();
+        }
 
         progress?.Report(new ProgressReport($"{PackageFileName} is a valid custom content file."));
         return Task.FromResult(this);
@@ -161,9 +170,15 @@ public class Package
         FileStream? stream = null;
         try
         {
-            if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
 
-            if (SourceFile == null) throw new FileLoadException("File not specified.");
+            if (SourceFile == null)
+            {
+                throw new FileLoadException("File not specified.");
+            }
 
             progress?.Report(new ProgressReport($"Loading content from {PackageFileName}."));
             stream = new FileStream(SourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -172,11 +187,17 @@ public class Package
             stream.Position = ContentPosition;
             var type = reader.ReadUInt32();
 
-            if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
 
             var headerSize = CalculateHeaderSize(type);
             var header = LoadHeader(reader, type, headerSize);
-            if (token.IsCancellationRequested) token.ThrowIfCancellationRequested();
+            if (token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
 
             LoadEntries(reader, header, headerSize);
             stream.Close();
@@ -203,7 +224,9 @@ public class Package
     private void VerifyHeader(byte[] header)
     {
         if (header.Length != Constants.HeaderId.Length)
+        {
             throw new EndOfStreamException($"{PackageFileName} EOF reached prematurely.");
+        }
 
         VerifyMagicBit(header);
     }
@@ -214,7 +237,9 @@ public class Package
         Array.Copy(header, 0, magicBit, 0, magicBit.Length);
         var magicCheck = Encoding.Default.GetString(magicBit);
         if (magicCheck != Constants.HeaderBit)
+        {
             throw new InvalidCastException($"{PackageFileName} is NOT a valid custom content file.");
+        }
     }
 
     private void PopulateVersionInfo(byte[] header)
@@ -222,26 +247,39 @@ public class Package
         MajorVersion = BitConverter.ToInt32(header, Constants.MajorStart);
         MinorVersion = BitConverter.ToInt32(header, Constants.MinorStart);
         if (MajorVersion != Constants.PackageMajor && MinorVersion != Constants.PackageMinor)
+        {
             throw new VersionNotFoundException($"{MajorVersion} ({MinorVersion}) does not match expected 2 (1).");
+        }
     }
 
     private void PopulateContentInfo(byte[] header)
     {
         ContentPosition = BitConverter.ToInt32(header, Constants.ContentPosition);
-        if (ContentPosition == 0) ContentPosition = BitConverter.ToInt32(header, Constants.ContentPositionAlternate);
+        if (ContentPosition == 0)
+        {
+            ContentPosition = BitConverter.ToInt32(header, Constants.ContentPositionAlternate);
+        }
 
         if (ContentPosition == 0)
+        {
             throw new KeyNotFoundException($"{PackageFileName} does not contain any custom content.");
+        }
 
         ContentCount = BitConverter.ToInt32(header, Constants.ContentCount);
-        if (ContentCount == 0) throw new KeyNotFoundException($"{PackageFileName} custom content cannot be read.");
+        if (ContentCount == 0)
+        {
+            throw new KeyNotFoundException($"{PackageFileName} custom content cannot be read.");
+        }
     }
 
     private static int[] LoadHeader(BinaryReader reader, uint type, int headerSize)
     {
         var header = new int[headerSize];
         header[0] = (int) type;
-        for (var i = 1; i < header.Length; i++) header[i] = reader.ReadInt32();
+        for (var i = 1; i < header.Length; i++)
+        {
+            header[i] = reader.ReadInt32();
+        }
 
         return header;
     }
@@ -251,10 +289,12 @@ public class Package
         Contents = new List<PackageContent>();
         var entry = new int[Constants.Fields - headerSize];
         for (var i = 0; i < ContentCount; i++)
-        for (var j = 0; j < entry.Length; j++)
         {
-            entry[j] = reader.ReadInt32();
-            Contents.Add(new PackageContent(header, entry));
+            for (var j = 0; j < entry.Length; j++)
+            {
+                entry[j] = reader.ReadInt32();
+                Contents.Add(new PackageContent(header, entry));
+            }
         }
     }
 
@@ -262,8 +302,12 @@ public class Package
     {
         var headerCount = 1;
         for (var i = 1; i < sizeof(uint); i++)
+        {
             if ((type & (1 << i)) != 0)
+            {
                 headerCount++;
+            }
+        }
 
         return headerCount;
     }

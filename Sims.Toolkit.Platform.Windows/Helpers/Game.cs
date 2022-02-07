@@ -11,8 +11,8 @@ namespace Sims.Toolkit.Platform.Windows.Helpers;
 [Export(typeof(IPlatform))]
 public class Game : IPlatform
 {
-    private const string registryKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Maxis\\The Sims 4";
-    private const string registryValue = "Install Dir";
+    private const string RegistryKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Maxis\\The Sims 4";
+    private const string RegistryValue = "Install Dir";
 
     public Game()
     {
@@ -29,12 +29,17 @@ public class Game : IPlatform
     public Task<DirectoryInfo> LocateGameAsync()
     {
         var value =
-            Registry.GetValue(registryKey, registryValue, string.Empty) as string;
+            Registry.GetValue(RegistryKey, RegistryValue, string.Empty) as string;
         if (string.IsNullOrEmpty(value))
+        {
             throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
+        }
 
         var directory = new DirectoryInfo(value);
-        if (!directory.Exists) throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
+        if (!directory.Exists)
+        {
+            throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
+        }
 
         InstalledPath = directory.FullName;
         return Task.FromResult(directory);

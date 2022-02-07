@@ -29,9 +29,15 @@ public class PackageContent
         writer.Write((headerGroup & 0x01) != 0 ? header[headerCount++] : entry[entryCount++]);
         writer.Write((headerGroup & 0x02) != 0 ? header[headerCount++] : entry[entryCount++]);
         writer.Write((headerGroup & 0x04) != 0 ? header[headerCount++] : entry[entryCount++]);
-        for (; headerCount < header.Count - 1; headerCount++) writer.Write(header[headerCount]);
+        for (; headerCount < header.Count - 1; headerCount++)
+        {
+            writer.Write(header[headerCount]);
+        }
 
-        for (; entryCount < entry.Count; entryCount++) writer.Write(entry[entryCount]);
+        for (; entryCount < entry.Count; entryCount++)
+        {
+            writer.Write(entry[entryCount]);
+        }
 
         return content;
     }
