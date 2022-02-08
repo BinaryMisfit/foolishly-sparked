@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Platform.Mac",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Platform.Windows", "Sims.Toolkit.Platform.Windows\Sims.Toolkit.Platform.Windows.csproj", "{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Tests", "Sims.Toolkit.Api.Tests\Sims.Toolkit.Api.Tests.csproj", "{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

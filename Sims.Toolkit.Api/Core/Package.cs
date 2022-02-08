@@ -25,6 +25,7 @@ public class Package
     public Package(FileInfo fileInfo)
     {
         SourceFile = fileInfo;
+        PackageFileName = SourceFile.Name;
     }
 
     /// <summary>
@@ -65,7 +66,7 @@ public class Package
     /// <summary>
     ///     Gets the file name of the package file.
     /// </summary>
-    private string? PackageFileName { get; set; }
+    public string PackageFileName { get; }
 
     public override string ToString()
     {
@@ -213,7 +214,6 @@ public class Package
     {
         PackagePath = sourceFile.Directory ??
                       throw new FileNotFoundException($"{sourceFile.FullName} not found.");
-        PackageFileName = sourceFile.Name;
         var stream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
         stream.Position = 0;
         var header = new BinaryReader(stream).ReadBytes(Constants.HeaderId.Length);
