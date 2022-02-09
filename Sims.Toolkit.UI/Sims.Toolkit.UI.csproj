@@ -44,6 +44,7 @@
         <PackageReference Include="Avalonia.Skia" Version="0.10.12"/>
         <PackageReference Include="Avalonia.Win32" Version="0.10.12"/>
         <PackageReference Include="Avalonia.X11" Version="0.10.12"/>
+        <PackageReference Include="DialogHost.Avalonia" Version="0.3.1"/>
         <PackageReference Include="DynamicData" Version="7.4.11"/>
         <PackageReference Include="HarfBuzzSharp" Version="2.8.2-preview.187"/>
         <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="2.8.2-preview.187"/>
@@ -114,7 +115,7 @@
         <PackageReference Include="System.Text.Encoding" Version="4.3.0"/>
         <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Text.Encodings.Web" Version="6.0.2-mauipre.1.22054.8"/>
-        <PackageReference Include="System.Text.Json" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Text.Json" Version="6.0.2"/>
         <PackageReference Include="System.Threading" Version="4.3.0"/>
         <PackageReference Include="System.Threading.Tasks" Version="4.3.0"/>
         <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4"/>
