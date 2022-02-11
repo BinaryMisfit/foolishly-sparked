@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using Sims.Toolkit.Api.Interfaces;
 
 namespace Sims.Toolkit.Api.Core;
 
-public class PackageContent
+public class PackageContent : IPackageContent
 {
     /// <summary>
     ///     Initializes an instance of the package content.

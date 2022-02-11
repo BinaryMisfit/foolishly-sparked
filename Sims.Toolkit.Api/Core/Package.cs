@@ -25,7 +25,7 @@ public class Package : IPackage
     public Package(IFileSystem fileSystem)
     {
         _fileSystem = fileSystem;
-        Contents = new List<PackageContent>();
+        Contents = new PackageContentCollection();
     }
 
     private IFileInfo? SourceFile { get; set; }
@@ -39,7 +39,7 @@ public class Package : IPackage
     private int ContentCount { get; set; }
 
     /// <inheritdoc />
-    public IList<PackageContent> Contents { get; private set; }
+    public PackageContentCollection Contents { get; }
 
     /// <inheritdoc />
     public IPackage LoadFromFile(string filePathAndName)
@@ -234,14 +234,14 @@ public class Package : IPackage
 
     private void LoadEntries(BinaryReader reader, IReadOnlyList<int> header, int headerSize)
     {
-        Contents = new List<PackageContent>();
         var entry = new int[Constants.Fields - headerSize];
         for (var i = 0; i < ContentCount; i++)
         {
             for (var j = 0; j < entry.Length; j++)
             {
                 entry[j] = reader.ReadInt32();
-                Contents.Add(new PackageContent(header, entry));
+                var content = new PackageContent(header, entry);
+                Contents.Add(content);
             }
         }
     }

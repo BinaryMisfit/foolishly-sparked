@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading;
@@ -10,14 +9,14 @@ using Sims.Toolkit.Api.Helpers;
 namespace Sims.Toolkit.Api.Interfaces;
 
 /// <summary>
-///     Primary interface holding the full custom content package file.
+///     Primary interface representing the full custom content package file.
 /// </summary>
 public interface IPackage
 {
     /// <summary>
-    ///     Gets the <see cref="PackageContent" /> instances as an <see cref="IList{T}" />.
+    ///     Gets the <see cref="PackageContentCollection" /> instances.
     /// </summary>
-    IList<PackageContent> Contents { get; }
+    PackageContentCollection Contents { get; }
 
     /// <summary>
     ///     Load and read the package file from the provided file path.
