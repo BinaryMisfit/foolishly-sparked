@@ -1,4 +1,7 @@
-﻿namespace Sims.Toolkit.Api.Interfaces;
+﻿using System.IO;
+using System.Threading.Tasks;
+
+namespace Sims.Toolkit.Api.Interfaces;
 
 public interface IPlatform
 {

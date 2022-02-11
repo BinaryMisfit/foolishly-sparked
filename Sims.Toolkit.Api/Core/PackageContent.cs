@@ -1,4 +1,7 @@
-﻿namespace Sims.Toolkit.Api.Core;
+﻿using System.Collections.Generic;
+using System.IO;
+
+namespace Sims.Toolkit.Api.Core;
 
 public class PackageContent
 {

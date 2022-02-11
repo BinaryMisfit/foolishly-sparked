@@ -1,5 +1,9 @@
-﻿using System.Composition.Hosting;
+﻿using System;
+using System.Composition.Hosting;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.IO.Abstractions;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Sims.Toolkit.Api.Core;
@@ -11,21 +15,28 @@ namespace Sims.Toolkit.Api.Helpers;
 ///     Contains and stores game specific information.
 /// </summary>
 [SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
-public static class Game
+public sealed class Game : IGame
 {
-    public static IPlatform LoadPlugin()
+    private readonly IFileSystem _fileSystem;
+
+    public Game(IFileSystem fileSystem)
+    {
+        _fileSystem = fileSystem;
+    }
+
+    public IPlatform LoadPlugin()
     {
         var configuration = new ContainerConfiguration();
         Assembly? assembly = null;
-        FileInfo? assemblyFile = null;
+        IFileInfo? assemblyFile = null;
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            assemblyFile = new FileInfo($"{Constants.PlatformWindows}.dll");
+            assemblyFile = _fileSystem.FileInfo.FromFileName($"{Constants.PlatformWindows}.dll");
         }
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            assemblyFile = new FileInfo($"{Constants.PlatformMac}.dll");
+            assemblyFile = _fileSystem.FileInfo.FromFileName($"{Constants.PlatformMac}.dll");
         }
 
         if (assemblyFile == null)

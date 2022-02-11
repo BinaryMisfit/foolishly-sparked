@@ -1,122 +1,73 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.IO.Abstractions;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Sims.Toolkit.Api.Helpers;
+using Sims.Toolkit.Api.Interfaces;
 
 namespace Sims.Toolkit.Api.Core;
 
 /// <summary>
-///     Allows interaction with a .package file used for Sims custom content.
+///     Implementation of the <see cref="IPackage" /> interface.
 /// </summary>
-public class Package
+public class Package : IPackage
 {
-    /// <summary>
-    ///     Initializes an instance of the package.
-    /// </summary>
-    /// <param name="filePathAndName">The path and name of the file to load.</param>
-    public Package(string filePathAndName) : this(new FileInfo(filePathAndName))
-    {
-        // Nothing to do but initialize the class
-    }
+    private readonly IFileSystem _fileSystem;
 
     /// <summary>
     ///     Initializes an instance of the package.
     /// </summary>
-    /// <param name="fileInfo">Instance of <see cref="FileInfo" />.</param>
-    public Package(FileInfo fileInfo)
+    /// <param name="fileSystem">Instance of <see cref="IFileSystem" /> provided by DI.</param>
+    public Package(IFileSystem fileSystem)
     {
-        SourceFile = fileInfo;
-        PackageFileName = SourceFile.Name;
+        _fileSystem = fileSystem;
+        Contents = new List<PackageContent>();
     }
 
-    /// <summary>
-    ///     Gets the <see cref="FileInfo" /> instance of the package file.
-    /// </summary>
-    private FileInfo? SourceFile { get; }
+    private IFileInfo? SourceFile { get; set; }
 
-    /// <summary>
-    ///     Gets the major version number of the package file.
-    /// </summary>
     private int MajorVersion { get; set; }
 
-    /// <summary>
-    ///     Gets the minor version number of the package file.
-    /// </summary>
     private int MinorVersion { get; set; }
 
-    /// <summary>
-    ///     Gets the package content entries as an <see cref="IList{T}" />.
-    /// </summary>
-    public IList<PackageContent>? Contents { get; private set; }
-
-    /// <summary>
-    ///     Gets the position where content starts.
-    /// </summary>
     private int ContentPosition { get; set; }
 
-    /// <summary>
-    ///     Gets the number of content items.
-    /// </summary>
     private int ContentCount { get; set; }
 
-    /// <summary>
-    ///     Gets the <see cref="DirectoryInfo" /> instance of the package file.
-    /// </summary>
-    private DirectoryInfo? PackagePath { get; set; }
+    /// <inheritdoc />
+    public IList<PackageContent> Contents { get; private set; }
 
-    /// <summary>
-    ///     Gets the file name of the package file.
-    /// </summary>
-    public string PackageFileName { get; }
-
-    public override string ToString()
+    /// <inheritdoc />
+    public IPackage LoadFromFile(string filePathAndName)
     {
-        return $"{PackageFileName} ({MajorVersion}/{MinorVersion}/{Contents?.Count}) in {PackagePath?.FullName}";
+        SourceFile = _fileSystem.FileInfo.FromFileName(filePathAndName);
+        return this;
     }
 
-    /// <summary>
-    ///     Read and load the package asynchronously.
-    /// </summary>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    /// <exception cref="EndOfStreamException">Thrown if the file header cannot be read.</exception>
-    /// <exception cref="FileLoadException">Thrown when the file information is missing.</exception>
-    /// <exception cref="FileNotFoundException">Thrown when the file cannot be found.</exception>
-    /// <exception cref="InvalidCastException">Thrown if the magic bit check of the header fails.</exception>
-    /// <exception cref="TaskCanceledException">Thrown to indicate the task was cancelled.</exception>
-    /// <exception cref="VersionNotFoundException">Thrown if the version in the header is invalid.</exception>
-    public Task<Package> LoadPackageAsync()
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageAsync()
     {
         return LoadPackageAsync(null, default);
     }
 
-    /// <summary>
-    ///     Read and load the package asynchronously.
-    /// </summary>
-    /// <param name="progress"><see cref="IProgress{T}" /> with <see cref="ProgressReport" /> for progress reporting.</param>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    /// <exception cref="EndOfStreamException">Thrown if the file header cannot be read.</exception>
-    /// <exception cref="FileLoadException">Thrown when the file information is missing.</exception>
-    /// <exception cref="FileNotFoundException">Thrown when the file cannot be found.</exception>
-    /// <exception cref="InvalidCastException">Thrown if the magic bit check of the header fails.</exception>
-    /// <exception cref="TaskCanceledException">Thrown to indicate the task was cancelled.</exception>
-    /// <exception cref="VersionNotFoundException">Thrown if the version in the header is invalid.</exception>
-    public Task<Package> LoadPackageAsync(IProgress<ProgressReport>? progress)
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageAsync(CancellationToken token)
+    {
+        return LoadPackageAsync(null, token);
+    }
+
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageAsync(IProgress<ProgressReport>? progress)
     {
         return LoadPackageAsync(progress, default);
     }
 
-    /// <summary>
-    ///     Read and load the package asynchronously.
-    /// </summary>
-    /// <param name="progress"><see cref="IProgress{T}" /> with <see cref="ProgressReport" /> for progress reporting.</param>
-    /// <param name="token"><see cref="CancellationToken" /> for cancelling process.</param>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    /// <exception cref="EndOfStreamException">Thrown if the file header cannot be read.</exception>
-    /// <exception cref="FileLoadException">Thrown when the file information is missing.</exception>
-    /// <exception cref="FileNotFoundException">Thrown when the file cannot be found.</exception>
-    /// <exception cref="InvalidCastException">Thrown if the magic bit check of the header fails.</exception>
-    /// <exception cref="TaskCanceledException">Thrown to indicate the task was cancelled.</exception>
-    /// <exception cref="VersionNotFoundException">Thrown if the version in the header is invalid.</exception>
-    private Task<Package> LoadPackageAsync(IProgress<ProgressReport>? progress, CancellationToken token)
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageAsync(IProgress<ProgressReport>? progress, CancellationToken token)
     {
         if (token.IsCancellationRequested)
         {
@@ -128,7 +79,8 @@ public class Package
             throw new FileLoadException("File not specified.");
         }
 
-        var header = ReadHeader(SourceFile);
+        var stream = new MemoryStream(_fileSystem.File.ReadAllBytes(SourceFile.FullName));
+        var header = ReadHeader(stream);
         VerifyHeader(header);
         PopulateVersionInfo(header);
         PopulateContentInfo(header);
@@ -137,52 +89,45 @@ public class Package
             token.ThrowIfCancellationRequested();
         }
 
-        progress?.Report(new ProgressReport($"{PackageFileName} is a valid custom content file."));
-        return Task.FromResult(this);
+        progress?.Report(new ProgressReport($"{SourceFile?.Name} is a valid custom content file."));
+        return Task.FromResult((IPackage) this);
     }
 
-    /// <summary>
-    ///     Read and load the package content asynchronously.
-    /// </summary>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    public Task<Package> LoadPackageContentAsync()
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageContentAsync()
     {
         return LoadPackageContentAsync(null, default);
     }
 
-    /// <summary>
-    ///     Read and load the package content asynchronously.
-    /// </summary>
-    /// <param name="progress"><see cref="IProgress{T}" /> with <see cref="ProgressReport" /> for progress reporting.</param>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    public Task<Package> LoadPackageContentAsync(IProgress<ProgressReport>? progress)
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageContentAsync(CancellationToken token)
     {
-        return LoadPackageAsync(progress, default);
+        return LoadPackageContentAsync(null, token);
     }
 
-    /// <summary>
-    ///     Read and load the package content asynchronously.
-    /// </summary>
-    /// <param name="progress"><see cref="IProgress{T}" /> with <see cref="ProgressReport" /> for progress reporting.</param>
-    /// <param name="token"><see cref="CancellationToken" /> for cancelling process.</param>
-    /// <returns>Returns a instance of <see cref="Package" /> with package information.</returns>
-    private Task<Package> LoadPackageContentAsync(IProgress<ProgressReport>? progress, CancellationToken token)
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageContentAsync(IProgress<ProgressReport> progress)
     {
-        FileStream? stream = null;
+        return LoadPackageContentAsync(progress, default);
+    }
+
+    /// <inheritdoc />
+    public Task<IPackage> LoadPackageContentAsync(IProgress<ProgressReport>? progress, CancellationToken token)
+    {
+        if (token.IsCancellationRequested)
+        {
+            token.ThrowIfCancellationRequested();
+        }
+
+        if (SourceFile == null)
+        {
+            throw new FileLoadException("File not specified.");
+        }
+
+        var stream = new MemoryStream(_fileSystem.File.ReadAllBytes(SourceFile.FullName));
         try
         {
-            if (token.IsCancellationRequested)
-            {
-                token.ThrowIfCancellationRequested();
-            }
-
-            if (SourceFile == null)
-            {
-                throw new FileLoadException("File not specified.");
-            }
-
-            progress?.Report(new ProgressReport($"Loading content from {PackageFileName}."));
-            stream = new FileStream(SourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
+            progress?.Report(new ProgressReport($"Loading content from {SourceFile?.Name}."));
             stream.Position = 0;
             var reader = new BinaryReader(stream);
             stream.Position = ContentPosition;
@@ -202,19 +147,22 @@ public class Package
 
             LoadEntries(reader, header, headerSize);
             stream.Close();
-            return Task.FromResult(this);
+            return Task.FromResult((IPackage) this);
         }
         finally
         {
-            stream?.Close();
+            stream.Close();
         }
     }
 
-    private byte[] ReadHeader(FileInfo sourceFile)
+    /// <inheritdoc />
+    public override string ToString()
     {
-        PackagePath = sourceFile.Directory ??
-                      throw new FileNotFoundException($"{sourceFile.FullName} not found.");
-        var stream = new FileStream(sourceFile.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
+        return $"{SourceFile?.Name} ({MajorVersion}/{MinorVersion}/{Contents.Count}) in {SourceFile?.DirectoryName}";
+    }
+
+    private static byte[] ReadHeader(Stream stream)
+    {
         stream.Position = 0;
         var header = new BinaryReader(stream).ReadBytes(Constants.HeaderId.Length);
         stream.Close();
@@ -225,7 +173,7 @@ public class Package
     {
         if (header.Length != Constants.HeaderId.Length)
         {
-            throw new EndOfStreamException($"{PackageFileName} EOF reached prematurely.");
+            throw new EndOfStreamException($"{SourceFile?.Name} EOF reached prematurely.");
         }
 
         VerifyMagicBit(header);
@@ -238,7 +186,7 @@ public class Package
         var magicCheck = Encoding.Default.GetString(magicBit);
         if (magicCheck != Constants.HeaderBit)
         {
-            throw new InvalidCastException($"{PackageFileName} is NOT a valid custom content file.");
+            throw new InvalidCastException($"{SourceFile?.Name} is NOT a valid custom content file.");
         }
     }
 
@@ -262,13 +210,13 @@ public class Package
 
         if (ContentPosition == 0)
         {
-            throw new KeyNotFoundException($"{PackageFileName} does not contain any custom content.");
+            throw new KeyNotFoundException($"{SourceFile?.Name} does not contain any custom content.");
         }
 
         ContentCount = BitConverter.ToInt32(header, Constants.ContentCount);
         if (ContentCount == 0)
         {
-            throw new KeyNotFoundException($"{PackageFileName} custom content cannot be read.");
+            throw new KeyNotFoundException($"{SourceFile?.Name} custom content cannot be read.");
         }
     }
 

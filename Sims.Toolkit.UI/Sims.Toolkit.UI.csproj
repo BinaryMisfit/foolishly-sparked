@@ -63,6 +63,8 @@
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.1.0-3.final"/>
         <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="4.1.0-3.final"/>
         <PackageReference Include="Microsoft.CSharp" Version="4.7.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="Microsoft.NETCore.Targets" Version="6.0.0-preview.4.21253.7"/>
         <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.5.21301.5"/>
@@ -82,6 +84,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Splat" Version="14.1.17"/>
+        <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="14.1.17"/>
         <PackageReference Include="System.Collections" Version="4.3.0"/>
         <PackageReference Include="System.Collections.Immutable" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7"/>

@@ -1,15 +1,21 @@
 ﻿using System;
 using System.CommandLine;
+using System.Data;
 using System.IO;
-using Sims.Toolkit.Api.Core;
+using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Sims.Toolkit.Api;
 using Sims.Toolkit.Api.Helpers;
+using Sims.Toolkit.Api.Interfaces;
 
 namespace Sims.Toolkit.Core;
 
 internal static class Program
 {
-    private static int Main(string[] args)
+    internal static int Main(string[] args)
     {
+        var services = new ServiceCollection();
+        ConfigureServices(services);
         var packageArgument = new Argument<FileInfo>(
             "PackageFile",
             "Full path to the .package file."
@@ -21,26 +27,54 @@ internal static class Program
         commandLine.Description = "Configures and updates Sims 4 .package files for compatibility.";
         commandLine.SetHandler(async (FileInfo packageFile) =>
         {
+            var provider = services.BuildServiceProvider();
             try
             {
-                var game = Game.LoadPlugin();
-                Console.WriteLine($"Running on {game.Platform} {(game.Is64 ? "64-Bit" : "")}.");
-                await game.LocateGameAsync();
-                Console.WriteLine($"Located game at {game.InstalledPath}.");
-                Console.WriteLine($"Reading package {packageFile.Name} in {packageFile.DirectoryName}.");
+                var game = (IGame) provider.GetService(typeof(IGame));
+                var platform = game.LoadPlugin();
+                Console.WriteLine($"Running on {platform.Platform} {(platform.Is64 ? "64-Bit" : "")}.");
+                await platform.LocateGameAsync();
+                Console.WriteLine($"Located game at {platform.InstalledPath}.");
+                Console.WriteLine($"Reading {packageFile.Name} in {packageFile.DirectoryName}.");
                 var progress = new Progress<ProgressReport>();
                 progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
-                var pack = new Package(packageFile);
+                var pack = (IPackage) provider.GetService(typeof(IPackage));
+                pack = pack.LoadFromFile(packageFile.FullName);
                 await pack.LoadPackageAsync();
                 await pack.LoadPackageContentAsync();
                 Console.WriteLine(
-                    $"Loaded package {pack} successfully.");
+                    $"Loaded {pack} successfully.");
             }
-            catch (Exception e)
+            catch (EndOfStreamException e)
             {
-                Console.WriteLine($"{e.GetType().Name}: {e.Message}");
+                Console.WriteLine(e.Message);
+            }
+            catch (FileLoadException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (InvalidCastException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (TaskCanceledException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (VersionNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
             }
         }, packageArgument);
         return commandLine.InvokeAsync(args).Result;
+    }
+
+    private static void ConfigureServices(IServiceCollection services)
+    {
+        Configure.ConfigureServices(services);
     }
 }
