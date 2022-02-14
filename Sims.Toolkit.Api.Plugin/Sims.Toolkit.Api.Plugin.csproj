@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Company>Senselessly Foolish</Company>
+        <Product>API to expose shared plugin features for Sims Toolkit.</Product>
+        <OutputType>library</OutputType>
+        <LangVersion>latestmajor</LangVersion>
+        <Nullable>annotations</Nullable>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <OutDir>..\Output\Debug\</OutDir>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DocumentationFile>..\Documentation\Sims.Toolkit.Api.Plugin.xml</DocumentationFile>
+        <OutDir>..\Output\Release\</OutDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.AttributedModel" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Convention" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Hosting" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.Runtime" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
+        <PackageReference Include="System.IO.Abstractions" Version="16.1.10"/>
+    </ItemGroup>
+
+</Project>
