@@ -25,6 +25,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
             <PrivateAssets>all</PrivateAssets>
@@ -37,6 +38,14 @@
         <PackageReference Include="System.Composition.Runtime" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.IO.Abstractions" Version="16.1.10"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Plugins"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj"/>
     </ItemGroup>
 
 </Project>

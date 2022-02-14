@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using Sims.Toolkit.Api.Interfaces;
+using Sims.Toolkit.Api.Core.Interfaces;
+using Sims.Toolkit.Api.Enums;
 
 namespace Sims.Toolkit.Api.Core;
 
@@ -21,7 +23,9 @@ public class PackageContent : IPackageContent
     /// </summary>
     public byte[] Item { get; }
 
-    private static byte[] Write(IReadOnlyList<int> header, IReadOnlyList<int> entry)
+    public ResourceType ResourceType { get; private set; }
+
+    private byte[] Write(IReadOnlyList<int> header, IReadOnlyList<int> entry)
     {
         var content = new byte[(header.Count + entry.Count) * 4];
         var stream = new MemoryStream(content);
@@ -43,6 +47,7 @@ public class PackageContent : IPackageContent
             writer.Write(entry[entryCount]);
         }
 
+        ResourceType = (ResourceType) BitConverter.ToUInt32(content, Constants.ResourceTypeStart);
         return content;
     }
 }

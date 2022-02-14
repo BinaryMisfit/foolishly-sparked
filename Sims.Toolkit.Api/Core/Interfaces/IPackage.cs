@@ -3,10 +3,9 @@ using System.Data;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Sims.Toolkit.Api.Core;
 using Sims.Toolkit.Api.Helpers;
 
-namespace Sims.Toolkit.Api.Interfaces;
+namespace Sims.Toolkit.Api.Core.Interfaces;
 
 /// <summary>
 ///     Primary interface representing the full custom content package file.

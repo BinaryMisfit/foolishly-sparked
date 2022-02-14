@@ -1,7 +1,7 @@
 ﻿using System.Composition;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
-using Sims.Toolkit.Api.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces;
 
 namespace Sims.Toolkit.Platform.Windows.Helpers;
 

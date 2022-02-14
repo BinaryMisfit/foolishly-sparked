@@ -1,6 +1,6 @@
 ﻿using System.Composition;
 using System.Runtime.InteropServices;
-using Sims.Toolkit.Api.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces;
 
 namespace Sims.Toolkit.Platform.Mac.Helpers;
 

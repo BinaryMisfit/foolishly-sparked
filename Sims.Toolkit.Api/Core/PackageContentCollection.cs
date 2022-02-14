@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Sims.Toolkit.Api.Interfaces;
+using System.Linq;
+using Sims.Toolkit.Api.Core.Interfaces;
+using Sims.Toolkit.Api.Enums;
 
 namespace Sims.Toolkit.Api.Core;
 
@@ -71,5 +73,12 @@ public class PackageContentCollection : IPackageContentCollection
     {
         get => Contents[index];
         set => Contents[index] = value;
+    }
+
+    public IEnumerable<KeyValuePair<ResourceType, int>> Summary()
+    {
+        var summary = Contents.GroupBy(item => item.ResourceType).AsEnumerable()
+            .Select(item => new KeyValuePair<ResourceType, int>(item.Key, item.Count()));
+        return summary;
     }
 }

@@ -7,7 +7,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Sims.Toolkit.Api.Core;
-using Sims.Toolkit.Api.Interfaces;
+using Sims.Toolkit.Api.Helpers.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces;
 
 namespace Sims.Toolkit.Api.Helpers;
 
@@ -15,11 +16,11 @@ namespace Sims.Toolkit.Api.Helpers;
 ///     Contains and stores game specific information.
 /// </summary>
 [SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
-public sealed class Game : IGame
+public sealed class GameLoaderLoader : IGameLoader
 {
     private readonly IFileSystem _fileSystem;
 
-    public Game(IFileSystem fileSystem)
+    public GameLoaderLoader(IFileSystem fileSystem)
     {
         _fileSystem = fileSystem;
     }
@@ -63,5 +64,23 @@ public sealed class Game : IGame
         }
 
         return game;
+    }
+
+    public void LoadPacks(IPlatform game)
+    {
+        var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(game.InstalledPath);
+        if (!rootPath.Exists)
+        {
+            return;
+        }
+
+        var gameData = rootPath.GetFiles(Constants.ClientFiles, SearchOption.AllDirectories);
+        if (!gameData.Any())
+        {
+            return;
+        }
+
+        var packs = gameData.Select(file => file.Directory.Name).Distinct().ToList();
+        packs.Sort();
     }
 }

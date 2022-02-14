@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace Sims.Toolkit.Api.Interfaces;
+namespace Sims.Toolkit.Api.Plugin.Interfaces;
 
 public interface IPlatform
 {

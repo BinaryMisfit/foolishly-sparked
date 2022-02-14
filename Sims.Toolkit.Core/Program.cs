@@ -2,11 +2,13 @@
 using System.CommandLine;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
+using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Helpers;
-using Sims.Toolkit.Api.Interfaces;
+using Sims.Toolkit.Api.Helpers.Interfaces;
 
 namespace Sims.Toolkit.Core;
 
@@ -30,10 +32,11 @@ internal static class Program
             var provider = services.BuildServiceProvider();
             try
             {
-                var game = (IGame) provider.GetService(typeof(IGame));
+                var game = (IGameLoader) provider.GetService(typeof(IGameLoader));
                 var platform = game.LoadPlugin();
                 Console.WriteLine($"Running on {platform.Platform} {(platform.Is64 ? "64-Bit" : "")}.");
                 await platform.LocateGameAsync();
+                game.LoadPacks(platform);
                 Console.WriteLine($"Located game at {platform.InstalledPath}.");
                 Console.WriteLine($"Reading {packageFile.Name} in {packageFile.DirectoryName}.");
                 var progress = new Progress<ProgressReport>();
@@ -44,6 +47,7 @@ internal static class Program
                 await pack.LoadPackageContentAsync();
                 Console.WriteLine(
                     $"Loaded {pack} successfully.");
+                pack.Contents.Summary().ToList().ForEach(item => Console.WriteLine($"{item.Key}: {item.Value}"));
             }
             catch (EndOfStreamException e)
             {

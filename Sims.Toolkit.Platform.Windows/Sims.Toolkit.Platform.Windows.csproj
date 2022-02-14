@@ -15,10 +15,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="Microsoft.Win32.Registry" Version="6.0.0-preview.5.21301.5"/>
         <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.AttributedModel" Version="6.0.2-mauipre.1.22054.8"/>
@@ -28,6 +24,10 @@
         <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Security.AccessControl" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Security.Principal.Windows" Version="6.0.0-preview.5.21301.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj"/>
     </ItemGroup>
 
 </Project>
