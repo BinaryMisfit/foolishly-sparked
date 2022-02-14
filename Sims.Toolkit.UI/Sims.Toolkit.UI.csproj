@@ -84,7 +84,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Splat" Version="14.1.17"/>
-        <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="14.1.17"/>
+        <PackageReference Include="Splat.Microsoft.Extensions.DependencyInjection" Version="14.1.45"/>
         <PackageReference Include="System.Collections" Version="4.3.0"/>
         <PackageReference Include="System.Collections.Immutable" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7"/>
