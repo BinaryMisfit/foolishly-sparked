@@ -45,7 +45,7 @@
         <PackageReference Include="Avalonia.Win32" Version="0.10.12"/>
         <PackageReference Include="Avalonia.X11" Version="0.10.12"/>
         <PackageReference Include="DialogHost.Avalonia" Version="0.3.1"/>
-        <PackageReference Include="DynamicData" Version="7.4.11"/>
+        <PackageReference Include="DynamicData" Version="7.5.4"/>
         <PackageReference Include="HarfBuzzSharp" Version="2.8.2-preview.187"/>
         <PackageReference Include="HarfBuzzSharp.NativeAssets.Linux" Version="2.8.2-preview.187"/>
         <PackageReference Include="HarfBuzzSharp.NativeAssets.macOS" Version="2.8.2-preview.187"/>
