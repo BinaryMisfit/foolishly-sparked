@@ -7,7 +7,7 @@
         <OutputType>library</OutputType>
         <LangVersion>latestmajor</LangVersion>
         <Nullable>annotations</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
+        <NeutralLanguage>en</NeutralLanguage>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 
@@ -46,6 +46,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj"/>
+        <ProjectReference Include="..\Sims.Toolkit.Api.Assets\Sims.Toolkit.Api.Assets.csproj"/>
     </ItemGroup>
 
 </Project>

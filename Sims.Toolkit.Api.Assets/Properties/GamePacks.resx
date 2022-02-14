@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+                id="root"
+                xmlns="">
+        <xsd:element name="root" msdata:IsDataSet="true">
+
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Client" xml:space="preserve">
+        <value>Base Game</value>
+    </data>
+    <data name="EP00" xml:space="preserve">
+        <value>New/Unknown</value>
+    </data>
+    <data name="EP01" xml:space="preserve">
+        <value>Get to Work</value>
+    </data>
+    <data name="EP02" xml:space="preserve">
+        <value>Get Together</value>
+    </data>
+    <data name="EP03" xml:space="preserve">
+        <value>City Living</value>
+    </data>
+    <data name="EP04" xml:space="preserve">
+        <value>Cats &amp; Dogs</value>
+    </data>
+    <data name="EP05" xml:space="preserve">
+        <value>Seasons</value>
+    </data>
+    <data name="EP06" xml:space="preserve">
+        <value>Get Famous</value>
+    </data>
+    <data name="EP07" xml:space="preserve">
+        <value>Island Living</value>
+    </data>
+    <data name="EP08" xml:space="preserve">
+        <value>Discover University</value>
+    </data>
+    <data name="EP09" xml:space="preserve">
+        <value>Eco Lifestyle</value>
+    </data>
+    <data name="EP10" xml:space="preserve">
+        <value>Snowy Escape</value>
+    </data>
+    <data name="EP11" xml:space="preserve">
+        <value>Cottage Living</value>
+    </data>
+    <data name="GP01" xml:space="preserve">
+        <value>Outdoor Retreat</value>
+    </data>
+    <data name="GP02" xml:space="preserve">
+        <value>Spa Day</value>
+    </data>
+    <data name="GP03" xml:space="preserve">
+        <value>Dine Out</value>
+    </data>
+    <data name="GP04" xml:space="preserve">
+        <value>Vampires</value>
+    </data>
+    <data name="GP05" xml:space="preserve">
+        <value>Parenthood</value>
+    </data>
+    <data name="GP06" xml:space="preserve">
+        <value>Jungle Adventure</value>
+    </data>
+    <data name="GP07" xml:space="preserve">
+        <value>Strangerville</value>
+    </data>
+    <data name="GP08" xml:space="preserve">
+        <value>Realm of Magic</value>
+    </data>
+    <data name="GP09" xml:space="preserve">
+        <value>Star Wars Journey to Batuu</value>
+    </data>
+    <data name="GP10" xml:space="preserve">
+        <value>Dream Home Decorator</value>
+    </data>
+    <data name="SP01" xml:space="preserve">
+        <value>Luxury Party Stuff</value>
+    </data>
+    <data name="SP02" xml:space="preserve">
+        <value>Perfect Patio Stuff</value>
+    </data>
+    <data name="SP03" xml:space="preserve">
+        <value>Cool Kitchen Stuff</value>
+    </data>
+    <data name="SP04" xml:space="preserve">
+        <value>Spooky Stuff</value>
+    </data>
+    <data name="SP05" xml:space="preserve">
+        <value>Movie Hangout Stuff</value>
+    </data>
+    <data name="SP06" xml:space="preserve">
+        <value>Romantic Garden Stuff</value>
+    </data>
+    <data name="SP08" xml:space="preserve">
+        <value>Backyard Stuff</value>
+    </data>
+    <data name="SP09" xml:space="preserve">
+        <value>Vintage Glamour Stuff</value>
+    </data>
+    <data name="SP10" xml:space="preserve">
+        <value>Bowling Night Stuff</value>
+    </data>
+    <data name="SP11" xml:space="preserve">
+        <value>Fitness Stuff</value>
+    </data>
+    <data name="SP12" xml:space="preserve">
+        <value>Toddler Stuff</value>
+    </data>
+    <data name="SP13" xml:space="preserve">
+        <value>Landry Day Stuff</value>
+    </data>
+    <data name="SP14" xml:space="preserve">
+        <value>My First Pet Stuff</value>
+    </data>
+    <data name="SP15" xml:space="preserve">
+        <value>Moshino Stuff</value>
+    </data>
+    <data name="SP16" xml:space="preserve">
+        <value>Tiny Living Stuff</value>
+    </data>
+    <data name="SP17" xml:space="preserve">
+        <value>Nifty Knitting Stuff</value>
+    </data>
+    <data name="SP18" xml:space="preserve">
+        <value>Paranormal Stuff</value>
+    </data>
+    <data name="SP07" xml:space="preserve">
+        <value>Kids Room Stuff</value>
+    </data>
+    <data name="SP20" xml:space="preserve">
+        <value>Throwback Fit Kit</value>
+    </data>
+    <data name="SP21" xml:space="preserve">
+        <value>Country Kitchen Kit</value>
+    </data>
+    <data name="SP22" xml:space="preserve">
+        <value>Bust The Dust Kit</value>
+    </data>
+    <data name="SP23" xml:space="preserve">
+        <value>Courtyard Oasis Kit</value>
+    </data>
+    <data name="SP25" xml:space="preserve">
+        <value>Industrial Loft Kit</value>
+    </data>
+    <data name="FP01" xml:space="preserve">
+        <value>Holiday Celebration</value>
+    </data>
+</root>

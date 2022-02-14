@@ -6,14 +6,17 @@ using System.IO.Abstractions;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core;
+using Sims.Toolkit.Api.Core.Interfaces;
+using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Helpers.Interfaces;
 using Sims.Toolkit.Api.Plugin.Interfaces;
 
 namespace Sims.Toolkit.Api.Helpers;
 
 /// <summary>
-///     Contains and stores game specific information.
+///     Contains and stores platform specific information.
 /// </summary>
 [SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
 public sealed class GameLoaderLoader : IGameLoader
@@ -25,7 +28,7 @@ public sealed class GameLoaderLoader : IGameLoader
         _fileSystem = fileSystem;
     }
 
-    public IPlatform LoadPlugin()
+    public IPlatform LoadPlatformPlugin()
     {
         var configuration = new ContainerConfiguration();
         Assembly? assembly = null;
@@ -66,21 +69,40 @@ public sealed class GameLoaderLoader : IGameLoader
         return game;
     }
 
-    public void LoadPacks(IPlatform game)
+    public IGame LoadGame(string installedPath, string platform)
     {
-        var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(game.InstalledPath);
+        var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(installedPath);
         if (!rootPath.Exists)
         {
-            return;
+            throw new DirectoryNotFoundException(Exceptions.GameDirectoryNotFound);
         }
+
+        var gamePacks = new PackCollection();
+        var gameFolders = _fileSystem.Directory.GetDirectories(rootPath.FullName, string.Empty, SearchOption.AllDirectories);
+        gameFolders.ToList().ForEach(path =>
+        {
+            var packFiles = _fileSystem.Directory.GetFiles(path, Constants.ClientFiles, SearchOption.TopDirectoryOnly);
+            if (!packFiles.Any())
+            {
+                return;
+            }
+
+            var packFile = _fileSystem.FileInfo.FromFileName(packFiles.First());
+            if (!Constants.IgnoreGameFolders.Contains(packFile.Directory.Name) &&
+                !gamePacks.Any(pack => pack.PackId.Equals(packFile.Directory.Name, StringComparison.InvariantCulture)) &&
+                !Constants.IgnoreGameFolders.Contains(packFile.Directory.Parent.Name))
+            {
+                gamePacks.Add(new Pack(packFile.Directory.Name));
+            }
+        });
 
         var gameData = rootPath.GetFiles(Constants.ClientFiles, SearchOption.AllDirectories);
         if (!gameData.Any())
         {
-            return;
+            throw new FileNotFoundException(Exceptions.GameFilesNotFound, installedPath);
         }
 
-        var packs = gameData.Select(file => file.Directory.Name).Distinct().ToList();
-        packs.Sort();
+        var game = new Game(installedPath, platform, gamePacks);
+        return game;
     }
 }

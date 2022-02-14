@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
+using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Helpers;
 using Sims.Toolkit.Api.Helpers.Interfaces;
@@ -32,22 +33,24 @@ internal static class Program
             var provider = services.BuildServiceProvider();
             try
             {
-                var game = (IGameLoader) provider.GetService(typeof(IGameLoader));
-                var platform = game.LoadPlugin();
-                Console.WriteLine($"Running on {platform.Platform} {(platform.Is64 ? "64-Bit" : "")}.");
+                var loader = (IGameLoader) provider.GetService(typeof(IGameLoader));
+                var platform = loader.LoadPlatformPlugin();
+                Console.WriteLine(ConsoleOutput.PrintPlatform, platform.Platform, platform.Is64 ? "64-Bit" : "");
                 await platform.LocateGameAsync();
-                game.LoadPacks(platform);
-                Console.WriteLine($"Located game at {platform.InstalledPath}.");
-                Console.WriteLine($"Reading {packageFile.Name} in {packageFile.DirectoryName}.");
+                Console.WriteLine(ConsoleOutput.PrintGameFound, platform.InstalledPath);
+                var game = loader.LoadGame(platform.InstalledPath, platform.Platform);
+                game.Packs.Summary().ToList()
+                    .ForEach(item => Console.WriteLine(ConsoleOutput.PrintKeyValue, item.Key, item.Value));
+                Console.WriteLine(ConsoleOutput.PrintReadingFrom, packageFile.Name, packageFile.DirectoryName);
                 var progress = new Progress<ProgressReport>();
                 progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
                 var pack = (IPackage) provider.GetService(typeof(IPackage));
                 pack = pack.LoadFromFile(packageFile.FullName);
                 await pack.LoadPackageAsync();
                 await pack.LoadPackageContentAsync();
-                Console.WriteLine(
-                    $"Loaded {pack} successfully.");
-                pack.Contents.Summary().ToList().ForEach(item => Console.WriteLine($"{item.Key}: {item.Value}"));
+                Console.WriteLine(ConsoleOutput.PrintLoadedPackage, pack);
+                pack.Contents.Summary().ToList()
+                    .ForEach(item => Console.WriteLine(ConsoleOutput.PrintKeyValue, item.Key, item.Value));
             }
             catch (EndOfStreamException e)
             {

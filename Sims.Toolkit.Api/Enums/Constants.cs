@@ -1,4 +1,4 @@
-﻿namespace Sims.Toolkit.Api.Core;
+﻿namespace Sims.Toolkit.Api.Enums;
 
 internal static class Constants
 {
@@ -6,6 +6,12 @@ internal static class Constants
     internal const string PlatformWindows = "Sims.Toolkit.Platform.Windows";
 
     internal const string ClientFiles = "Client*Build0.package";
+
+    internal const string PackBase = "CL";
+    internal const string PackExpansion = "EP";
+    internal const string PackFree = "FP";
+    internal const string PackGame = "GP";
+    internal const string PackStuff = "SP";
 
     internal const string HeaderBit = "DBPF";
 
@@ -20,4 +26,5 @@ internal static class Constants
     internal const int ResourceTypeStart = 4;
 
     internal static readonly byte[] HeaderId = new byte[96];
+    internal static readonly string[] IgnoreGameFolders = {"_Installer", "Delta", "Game", "Shared", "Soundtrack", "Support"};
 }

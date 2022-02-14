@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Sims.Toolkit.Api.Core.Interfaces;
+using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Helpers;
 
 namespace Sims.Toolkit.Api.Core;

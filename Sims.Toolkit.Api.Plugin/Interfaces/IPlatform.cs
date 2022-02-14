@@ -9,7 +9,7 @@ public interface IPlatform
 
     string Platform { get; }
 
-    string? InstalledPath { get; }
+    string InstalledPath { get; }
 
     Task<DirectoryInfo> LocateGameAsync();
 }
