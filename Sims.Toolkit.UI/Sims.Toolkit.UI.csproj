@@ -73,7 +73,7 @@
         <PackageReference Include="NetSparkleUpdater.UI.Avalonia" Version="2.0.15"/>
         <PackageReference Include="NSec.Cryptography" Version="21.11.0-preview2"/>
         <PackageReference Include="Portable.BouncyCastle" Version="1.9.0"/>
-        <PackageReference Include="ReactiveUI" Version="17.1.17"/>
+        <PackageReference Include="ReactiveUI" Version="17.1.50"/>
         <PackageReference Include="SkiaSharp" Version="2.88.0-preview.187"/>
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.0-preview.187"/>
         <PackageReference Include="SkiaSharp.NativeAssets.macOS" Version="2.88.0-preview.187"/>
