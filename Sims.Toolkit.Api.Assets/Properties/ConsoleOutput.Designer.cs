@@ -88,6 +88,15 @@ namespace Sims.Toolkit.Api.Assets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found: {0}.
+        /// </summary>
+        public static string PrintPackName {
+            get {
+                return ResourceManager.GetString("PrintPackName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Running on {0} {1}..
         /// </summary>
         public static string PrintPlatform {

@@ -1,9 +1,12 @@
-﻿using Sims.Toolkit.Api.Assets.Properties;
+﻿using System.IO.Abstractions;
+using JetBrains.Annotations;
+using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
 
 namespace Sims.Toolkit.Api.Core;
 
+[PublicAPI]
 public class Pack : IPack
 {
     public Pack(string packId)
@@ -12,6 +15,7 @@ public class Pack : IPack
         PackName = GamePacks.ResourceManager.GetString(packId) ?? GamePacks.EP00;
         PackTypeId = DetermineTypeId();
         PackType = DetermineType();
+        Contents = new PackContent();
     }
 
     public string PackId { get; }
@@ -21,6 +25,10 @@ public class Pack : IPack
     public PackType PackType { get; }
 
     public int PackTypeId { get; }
+
+    public IDirectoryInfo? Path { get; set; }
+
+    public IPackContent Contents { get; set; }
 
     private int DetermineTypeId()
     {

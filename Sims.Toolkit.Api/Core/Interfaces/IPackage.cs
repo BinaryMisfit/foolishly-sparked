@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Sims.Toolkit.Api.Helpers;
 
 namespace Sims.Toolkit.Api.Core.Interfaces;
@@ -10,8 +11,11 @@ namespace Sims.Toolkit.Api.Core.Interfaces;
 /// <summary>
 ///     Primary interface representing the full custom content package file.
 /// </summary>
+[PublicAPI]
 public interface IPackage
 {
+    bool IsReadOnly { get; set; }
+
     /// <summary>
     ///     Gets the <see cref="PackageContentCollection" /> instances.
     /// </summary>

@@ -19,10 +19,13 @@ internal static class Constants
     internal const int ContentPosition = 64;
     internal const int ContentPositionAlternate = 40;
     internal const int Fields = 9;
+    internal const int InstanceStart = 12;
+    internal const int InstanceStartAlternate = 16;
     internal const int MajorStart = 4;
     internal const int MinorStart = 8;
     internal const int PackageMajor = 2;
     internal const int PackageMinor = 1;
+    internal const int ResourceGroupStart = 8;
     internal const int ResourceTypeStart = 4;
 
     internal static readonly byte[] HeaderId = new byte[96];

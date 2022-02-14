@@ -1,5 +1,8 @@
-﻿namespace Sims.Toolkit.Api.Core.Interfaces;
+﻿using JetBrains.Annotations;
 
+namespace Sims.Toolkit.Api.Core.Interfaces;
+
+[PublicAPI]
 public interface IGame
 {
     string Path { get; }

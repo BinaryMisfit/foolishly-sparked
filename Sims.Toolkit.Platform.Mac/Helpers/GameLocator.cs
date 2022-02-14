@@ -31,7 +31,7 @@ public class GameLocator : IPlatform
 
     public string InstalledPath { get; private set; }
 
-    public Task<DirectoryInfo> LocateGameAsync()
+    public Task<IPlatform> LocateGameAsync()
     {
         var gameFile = new FileInfo(GlobalPath);
         if (!gameFile.Exists)
@@ -50,6 +50,6 @@ public class GameLocator : IPlatform
         }
 
         InstalledPath = gameFile.Directory.FullName;
-        return Task.FromResult(gameFile.Directory);
+        return Task.FromResult((IPlatform) this);
     }
 }

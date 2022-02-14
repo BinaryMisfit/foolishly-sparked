@@ -33,17 +33,19 @@ internal static class Program
             var provider = services.BuildServiceProvider();
             try
             {
+                var progress = new Progress<ProgressReport>();
+                progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
                 var loader = (IGameLoader) provider.GetService(typeof(IGameLoader));
-                var platform = loader.LoadPlatformPlugin();
-                Console.WriteLine(ConsoleOutput.PrintPlatform, platform.Platform, platform.Is64 ? "64-Bit" : "");
-                await platform.LocateGameAsync();
+                var plugin = loader.LoadPlatformPlugin();
+                Console.WriteLine(ConsoleOutput.PrintPlatform, plugin.Platform, plugin.Is64 ? "64-Bit" : "");
+                var platform = await plugin.LocateGameAsync();
                 Console.WriteLine(ConsoleOutput.PrintGameFound, platform.InstalledPath);
-                var game = loader.LoadGame(platform.InstalledPath, platform.Platform);
+                var game = await loader.LoadGameAsync(platform.InstalledPath, platform.Platform, progress);
                 game.Packs.Summary().ToList()
                     .ForEach(item => Console.WriteLine(ConsoleOutput.PrintKeyValue, item.Key, item.Value));
                 Console.WriteLine(ConsoleOutput.PrintReadingFrom, packageFile.Name, packageFile.DirectoryName);
-                var progress = new Progress<ProgressReport>();
-                progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
+                game.Packs.OrderBy(pack => pack.PackType).ThenBy(pack => pack.PackTypeId).ToList()
+                    .ForEach(pack => { Console.WriteLine(ConsoleOutput.PrintPackName, pack.PackName); });
                 var pack = (IPackage) provider.GetService(typeof(IPackage));
                 pack = pack.LoadFromFile(packageFile.FullName);
                 await pack.LoadPackageAsync();

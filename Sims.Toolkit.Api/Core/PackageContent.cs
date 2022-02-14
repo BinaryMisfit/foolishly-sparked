@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using JetBrains.Annotations;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
 
 namespace Sims.Toolkit.Api.Core;
 
+[PublicAPI]
 public class PackageContent : IPackageContent
 {
     /// <summary>
@@ -23,7 +25,11 @@ public class PackageContent : IPackageContent
     /// </summary>
     public byte[] Item { get; }
 
+    public ulong Instance { get; private set; }
+
     public ResourceType ResourceType { get; private set; }
+
+    public uint ResourceGroup { get; private set; }
 
     private byte[] Write(IReadOnlyList<int> header, IReadOnlyList<int> entry)
     {
@@ -47,7 +53,10 @@ public class PackageContent : IPackageContent
             writer.Write(entry[entryCount]);
         }
 
+        Instance = ((ulong) BitConverter.ToUInt32(content, Constants.InstanceStart) << 32) |
+                   BitConverter.ToUInt32(content, Constants.InstanceStartAlternate);
         ResourceType = (ResourceType) BitConverter.ToUInt32(content, Constants.ResourceTypeStart);
+        ResourceGroup = BitConverter.ToUInt32(content, Constants.ResourceGroupStart);
         return content;
     }
 }

@@ -77,5 +77,23 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GameFilesNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not a valid Sims Toolkit plugin..
+        /// </summary>
+        public static string PluginInvalid {
+            get {
+                return ResourceManager.GetString("PluginInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid platform plugin not found..
+        /// </summary>
+        public static string PluginMissingPlatform {
+            get {
+                return ResourceManager.GetString("PluginMissingPlatform", resourceCulture);
+            }
+        }
     }
 }

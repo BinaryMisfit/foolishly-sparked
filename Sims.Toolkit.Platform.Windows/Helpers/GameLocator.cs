@@ -29,7 +29,7 @@ public class GameLocator : IPlatform
 
     public string InstalledPath { get; private set; }
 
-    public Task<DirectoryInfo> LocateGameAsync()
+    public Task<IPlatform> LocateGameAsync()
     {
         var value =
             Registry.GetValue(RegistryKey, RegistryValue, string.Empty) as string;
@@ -45,6 +45,6 @@ public class GameLocator : IPlatform
         }
 
         InstalledPath = directory.FullName;
-        return Task.FromResult(directory);
+        return Task.FromResult((IPlatform) this);
     }
 }

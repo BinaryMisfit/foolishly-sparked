@@ -39,6 +39,8 @@ public class Package : IPackage
 
     private int ContentCount { get; set; }
 
+    public bool IsReadOnly { get; set; }
+
     /// <inheritdoc />
     public PackageContentCollection Contents { get; }
 
@@ -107,7 +109,7 @@ public class Package : IPackage
     }
 
     /// <inheritdoc />
-    public Task<IPackage> LoadPackageContentAsync(IProgress<ProgressReport> progress)
+    public Task<IPackage> LoadPackageContentAsync(IProgress<ProgressReport>? progress)
     {
         return LoadPackageContentAsync(progress, default);
     }
@@ -148,6 +150,7 @@ public class Package : IPackage
 
             LoadEntries(reader, header, headerSize);
             stream.Close();
+            progress?.Report(new ProgressReport($"Loaded {this}"));
             return Task.FromResult((IPackage) this);
         }
         finally

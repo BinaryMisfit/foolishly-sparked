@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Composition.Hosting;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core;
 using Sims.Toolkit.Api.Core.Interfaces;
@@ -19,11 +22,11 @@ namespace Sims.Toolkit.Api.Helpers;
 ///     Contains and stores platform specific information.
 /// </summary>
 [SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
-public sealed class GameLoaderLoader : IGameLoader
+public sealed class GameLoader : IGameLoader
 {
     private readonly IFileSystem _fileSystem;
 
-    public GameLoaderLoader(IFileSystem fileSystem)
+    public GameLoader(IFileSystem fileSystem)
     {
         _fileSystem = fileSystem;
     }
@@ -45,7 +48,7 @@ public sealed class GameLoaderLoader : IGameLoader
 
         if (assemblyFile == null)
         {
-            throw new FileNotFoundException($"Missing assembly for {RuntimeInformation.RuntimeIdentifier}");
+            throw new FileNotFoundException(Exceptions.PluginMissingPlatform);
         }
 
         if (assemblyFile.Exists)
@@ -55,7 +58,7 @@ public sealed class GameLoaderLoader : IGameLoader
 
         if (assembly == null)
         {
-            throw new DllNotFoundException($"Missing target platform {RuntimeInformation.RuntimeIdentifier}");
+            throw new DllNotFoundException(Exceptions.PluginMissingPlatform);
         }
 
         configuration.WithAssembly(assembly);
@@ -63,13 +66,18 @@ public sealed class GameLoaderLoader : IGameLoader
         var game = host.GetExports<IPlatform>().FirstOrDefault();
         if (game == null)
         {
-            throw new EntryPointNotFoundException("No matching IPlatform interfaces found.");
+            throw new EntryPointNotFoundException(Exceptions.PluginInvalid);
         }
 
         return game;
     }
 
-    public IGame LoadGame(string installedPath, string platform)
+    public async Task<IGame> LoadGameAsync(string installedPath, string platform)
+    {
+        return await LoadGameAsync(installedPath, platform, null);
+    }
+
+    public async Task<IGame> LoadGameAsync(string installedPath, string platform, IProgress<ProgressReport>? progress)
     {
         var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(installedPath);
         if (!rootPath.Exists)
@@ -92,17 +100,44 @@ public sealed class GameLoaderLoader : IGameLoader
                 !gamePacks.Any(pack => pack.PackId.Equals(packFile.Directory.Name, StringComparison.InvariantCulture)) &&
                 !Constants.IgnoreGameFolders.Contains(packFile.Directory.Parent.Name))
             {
-                gamePacks.Add(new Pack(packFile.Directory.Name));
+                gamePacks.Add(new Pack(packFile.Directory.Name)
+                {
+                    Path = packFile.Directory
+                });
             }
         });
 
-        var gameData = rootPath.GetFiles(Constants.ClientFiles, SearchOption.AllDirectories);
-        if (!gameData.Any())
-        {
-            throw new FileNotFoundException(Exceptions.GameFilesNotFound, installedPath);
-        }
-
+        var loadPacks = new List<Task<IPack>>();
+        gamePacks.ToList().ForEach(pack => { loadPacks.Add(LoadPackAsync(pack, progress)); });
+        await Task.WhenAll(loadPacks);
         var game = new Game(installedPath, platform, gamePacks);
         return game;
+    }
+
+    private Task<IPack> LoadPackAsync(IPack pack, IProgress<ProgressReport>? progress)
+    {
+        var packFiles =
+            _fileSystem.Directory.GetFiles(pack.Path?.FullName, Constants.ClientFiles, SearchOption.TopDirectoryOnly);
+        if (!packFiles.Any())
+        {
+            return Task.FromResult(pack);
+        }
+
+        packFiles.ToList().ForEach(path =>
+        {
+            progress?.Report(new ProgressReport($"Loading File: {path}"));
+            var package = new Package(_fileSystem);
+            package.LoadFromFile(path);
+            package.LoadPackageAsync(progress);
+            package.LoadPackageContentAsync(progress);
+            package.IsReadOnly = true;
+            pack.Contents.Add(package);
+            package.Contents.Summary().ToList()
+                .ForEach(item =>
+                    progress?.Report(new ProgressReport(string.Format(CultureInfo.CurrentCulture,
+                        ConsoleOutput.PrintKeyValue, item.Key, item.Value))));
+        });
+
+        return Task.FromResult(pack);
     }
 }

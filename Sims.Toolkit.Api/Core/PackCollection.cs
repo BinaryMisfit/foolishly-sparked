@@ -72,7 +72,8 @@ public class PackCollection : IPackCollection
 
     public IEnumerable<KeyValuePair<PackType, int>> Summary()
     {
-        var summary = packs.GroupBy(item => item.PackType).AsEnumerable()
+        var sorted = packs.OrderBy(pack => pack.PackType).ThenBy(pack => pack.PackTypeId);
+        var summary = sorted.GroupBy(item => item.PackType).AsEnumerable()
             .Select(item => new KeyValuePair<PackType, int>(item.Key, item.Count()));
         return summary;
     }

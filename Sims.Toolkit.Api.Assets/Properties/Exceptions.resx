@@ -30,4 +30,10 @@
     <data name="GameDirectoryNotFound" xml:space="preserve">
         <value>No game found.</value>
     </data>
+    <data name="PluginInvalid" xml:space="preserve">
+        <value>Not a valid Sims Toolkit plugin.</value>
+    </data>
+    <data name="PluginMissingPlatform" xml:space="preserve">
+        <value>Valid platform plugin not found.</value>
+    </data>
 </root>

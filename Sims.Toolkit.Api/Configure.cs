@@ -12,7 +12,7 @@ public static class Configure
     public static void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<IFileSystem, FileSystem>();
-        services.AddScoped<IGameLoader, GameLoaderLoader>();
+        services.AddScoped<IGameLoader, GameLoader>();
         services.AddScoped<IPackage, Package>();
     }
 }

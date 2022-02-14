@@ -77,7 +77,8 @@ public class PackageContentCollection : IPackageContentCollection
 
     public IEnumerable<KeyValuePair<ResourceType, int>> Summary()
     {
-        var summary = Contents.GroupBy(item => item.ResourceType).AsEnumerable()
+        var sorted = Contents.OrderBy(item => item.ResourceType.ToString());
+        var summary = sorted.GroupBy(item => item.ResourceType).AsEnumerable()
             .Select(item => new KeyValuePair<ResourceType, int>(item.Key, item.Count()));
         return summary;
     }
