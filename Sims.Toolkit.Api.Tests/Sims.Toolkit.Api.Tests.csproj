@@ -57,9 +57,4 @@
         <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Core"/>
-        <Folder Include="Helpers"/>
-    </ItemGroup>
-
 </Project>

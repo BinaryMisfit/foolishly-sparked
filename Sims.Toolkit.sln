@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Core", "Sims.Toolkit.Core\Sims.Toolkit.Core.csproj", "{EBC02304-ED2E-4567-9DA6-7F3E032828C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Console", "Sims.Toolkit.Console\Sims.Toolkit.Console.csproj", "{EBC02304-ED2E-4567-9DA6-7F3E032828C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.UI", "Sims.Toolkit.UI\Sims.Toolkit.UI.csproj", "{9E06AA41-743E-440B-AC68-21F31D7ECDCC}"
 EndProject

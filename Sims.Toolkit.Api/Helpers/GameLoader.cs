@@ -72,12 +72,13 @@ public sealed class GameLoader : IGameLoader
         return game;
     }
 
-    public async Task<IGame> LoadGameAsync(string installedPath, string platform)
+    public async Task<IGameInstance> LoadGameAsync(string installedPath, string platform)
     {
         return await LoadGameAsync(installedPath, platform, null);
     }
 
-    public async Task<IGame> LoadGameAsync(string installedPath, string platform, IProgress<ProgressReport>? progress)
+    public async Task<IGameInstance> LoadGameAsync(string installedPath, string platform,
+        IProgress<ProgressReport>? progress)
     {
         var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(installedPath);
         if (!rootPath.Exists)
@@ -110,7 +111,7 @@ public sealed class GameLoader : IGameLoader
         var loadPacks = new List<Task<IPack>>();
         gamePacks.ToList().ForEach(pack => { loadPacks.Add(LoadPackAsync(pack, progress)); });
         await Task.WhenAll(loadPacks);
-        var game = new Game(installedPath, platform, gamePacks);
+        var game = new GameInstance(installedPath, platform);
         return game;
     }
 

@@ -9,7 +9,7 @@ public interface IGameLoader
 {
     IPlatform LoadPlatformPlugin();
 
-    Task<IGame> LoadGameAsync(string installedPath, string platform);
+    Task<IGameInstance> LoadGameAsync(string installedPath, string platform);
 
-    Task<IGame> LoadGameAsync(string installedPath, string platform, IProgress<ProgressReport>? progress);
+    Task<IGameInstance> LoadGameAsync(string installedPath, string platform, IProgress<ProgressReport>? progress);
 }
