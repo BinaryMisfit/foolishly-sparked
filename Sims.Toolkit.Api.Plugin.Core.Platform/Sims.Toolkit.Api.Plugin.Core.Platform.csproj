@@ -8,19 +8,13 @@
         <LangVersion>latestmajor</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Nullable>annotations</Nullable>
-        <OutDir>..\Generated\Output\$(Configuration)\Api</OutDir>
+        <OutDir>..\Generated\Output\$(Configuration)\Api\Core</OutDir>
         <OutputType>library</OutputType>
-        <Product>API to expose custom content features for Sims games.</Product>
+        <Product>API to expose platform specific functionality for the Sims Toolkit.</Product>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.2-mauipre.1.22054.8"/>
-        <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0"/>
         <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.AttributedModel" Version="6.0.2-mauipre.1.22054.8"/>
@@ -28,11 +22,6 @@
         <PackageReference Include="System.Composition.Hosting" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.Runtime" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
-        <PackageReference Include="System.IO.Abstractions" Version="16.1.10"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Plugins"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -40,6 +29,7 @@
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Api\Core"/>
         <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
     </Target>
 

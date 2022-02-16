@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sims.Toolkit.Api.Assets.Properties {
+namespace Sims.Toolkit.Api.Plugin.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Sims.Toolkit.Api.Assets.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class GamePacks {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal GamePacks() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Base Game.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("Client", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to New/Unknown.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP00", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Get to Work.
         /// </summary>
@@ -86,7 +86,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP01", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Get Together.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP02", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to City Living.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP03", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cats &amp; Dogs.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP04", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Seasons.
         /// </summary>
@@ -122,7 +122,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP05", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Get Famous.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP06", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Island Living.
         /// </summary>
@@ -140,7 +140,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP07", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Discover University.
         /// </summary>
@@ -149,7 +149,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP08", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Eco Lifestyle.
         /// </summary>
@@ -158,7 +158,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP09", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Snowy Escape.
         /// </summary>
@@ -167,7 +167,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP10", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cottage Living.
         /// </summary>
@@ -176,7 +176,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("EP11", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Holiday Celebration.
         /// </summary>
@@ -185,7 +185,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("FP01", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Outdoor Retreat.
         /// </summary>
@@ -194,7 +194,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP01", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Spa Day.
         /// </summary>
@@ -203,7 +203,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP02", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dine Out.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP03", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Vampires.
         /// </summary>
@@ -221,7 +221,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP04", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Parenthood.
         /// </summary>
@@ -230,7 +230,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP05", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Jungle Adventure.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP06", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Strangerville.
         /// </summary>
@@ -248,7 +248,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP07", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Realm of Magic.
         /// </summary>
@@ -257,7 +257,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP08", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Star Wars Journey to Batuu.
         /// </summary>
@@ -266,7 +266,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP09", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Dream Home Decorator.
         /// </summary>
@@ -275,7 +275,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GP10", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Luxury Party Stuff.
         /// </summary>
@@ -284,7 +284,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP01", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Perfect Patio Stuff.
         /// </summary>
@@ -293,7 +293,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP02", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Cool Kitchen Stuff.
         /// </summary>
@@ -302,7 +302,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP03", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Spooky Stuff.
         /// </summary>
@@ -311,7 +311,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP04", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Movie Hangout Stuff.
         /// </summary>
@@ -320,7 +320,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP05", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Romantic Garden Stuff.
         /// </summary>
@@ -329,7 +329,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP06", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Kids Room Stuff.
         /// </summary>
@@ -338,7 +338,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP07", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Backyard Stuff.
         /// </summary>
@@ -347,7 +347,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP08", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Vintage Glamour Stuff.
         /// </summary>
@@ -356,7 +356,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP09", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bowling Night Stuff.
         /// </summary>
@@ -365,7 +365,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP10", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Fitness Stuff.
         /// </summary>
@@ -374,7 +374,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP11", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Toddler Stuff.
         /// </summary>
@@ -383,7 +383,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP12", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Landry Day Stuff.
         /// </summary>
@@ -392,7 +392,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP13", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to My First Pet Stuff.
         /// </summary>
@@ -401,7 +401,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP14", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Moshino Stuff.
         /// </summary>
@@ -410,7 +410,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP15", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Tiny Living Stuff.
         /// </summary>
@@ -419,7 +419,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP16", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Nifty Knitting Stuff.
         /// </summary>
@@ -428,7 +428,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP17", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Paranormal Stuff.
         /// </summary>
@@ -437,7 +437,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP18", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Throwback Fit Kit.
         /// </summary>
@@ -446,7 +446,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP20", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Country Kitchen Kit.
         /// </summary>
@@ -455,7 +455,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP21", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Bust The Dust Kit.
         /// </summary>
@@ -464,7 +464,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP22", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Courtyard Oasis Kit.
         /// </summary>
@@ -473,7 +473,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("SP23", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Industrial Loft Kit.
         /// </summary>

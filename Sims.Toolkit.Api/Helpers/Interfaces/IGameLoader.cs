@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 using Sims.Toolkit.Api.Core.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces;
 
 namespace Sims.Toolkit.Api.Helpers.Interfaces;
 
+[PublicAPI]
 public interface IGameLoader
 {
-    IPlatform LoadPlatformPlugin();
+    Task<IGameInstance> LoadGameAsync();
 
-    Task<IGameInstance> LoadGameAsync(string installedPath, string platform);
-
-    Task<IGameInstance> LoadGameAsync(string installedPath, string platform, IProgress<ProgressReport>? progress);
+    Task<IGameInstance> LoadGameAsync(IProgress<ProgressReport>? progress);
 }

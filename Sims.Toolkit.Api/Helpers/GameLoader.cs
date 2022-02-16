@@ -1,85 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Composition.Hosting;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Helpers.Interfaces;
+using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
 using Sims.Toolkit.Api.Plugin.Interfaces;
+using Sims.Toolkit.Api.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Helpers;
 
 /// <summary>
 ///     Contains and stores platform specific information.
 /// </summary>
-[SuppressMessage("Major Code Smell", "S3885:\"Assembly.Load\" should be used")]
 public sealed class GameLoader : IGameLoader
 {
     private readonly IFileSystem _fileSystem;
 
+    [ImportMany(typeof(ICoreApiPlugin))] private IEnumerable<Lazy<ICoreApiPlugin, IExportPlatformAttribute>>? services;
+
     public GameLoader(IFileSystem fileSystem)
     {
         _fileSystem = fileSystem;
+        LoadPlatformPlugin();
     }
 
-    public IPlatform LoadPlatformPlugin()
+    public async Task<IGameInstance> LoadGameAsync()
     {
-        var configuration = new ContainerConfiguration();
-        Assembly? assembly = null;
-        IFileInfo? assemblyFile = null;
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            assemblyFile = _fileSystem.FileInfo.FromFileName($"{Constants.PlatformWindows}.dll");
-        }
-
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-        {
-            assemblyFile = _fileSystem.FileInfo.FromFileName($"{Constants.PlatformMac}.dll");
-        }
-
-        if (assemblyFile == null)
-        {
-            throw new FileNotFoundException(Exceptions.PluginMissingPlatform);
-        }
-
-        if (assemblyFile.Exists)
-        {
-            assembly = Assembly.LoadFrom(assemblyFile.FullName);
-        }
-
-        if (assembly == null)
-        {
-            throw new DllNotFoundException(Exceptions.PluginMissingPlatform);
-        }
-
-        configuration.WithAssembly(assembly);
-        var host = configuration.CreateContainer();
-        var game = host.GetExports<IPlatform>().FirstOrDefault();
-        if (game == null)
-        {
-            throw new EntryPointNotFoundException(Exceptions.PluginInvalid);
-        }
-
-        return game;
+        return await LoadGameAsync(null);
     }
 
-    public async Task<IGameInstance> LoadGameAsync(string installedPath, string platform)
+    public async Task<IGameInstance> LoadGameAsync(IProgress<ProgressReport>? progress)
     {
-        return await LoadGameAsync(installedPath, platform, null);
-    }
+        var service =
+            services?.FirstOrDefault(plugin =>
+                plugin.Metadata.Platform == Environment.OSVersion.Platform);
+        var plugin = (IPlatform) service?.Value;
+        if (plugin == null)
+        {
+            throw new DllNotFoundException("Platform plugin not found.");
+        }
 
-    public async Task<IGameInstance> LoadGameAsync(string installedPath, string platform,
-        IProgress<ProgressReport>? progress)
-    {
+        await plugin.LocateGameAsync();
+        var installedPath = plugin.InstalledPath;
+        var platform = plugin.Platform;
         var rootPath = _fileSystem.DirectoryInfo.FromDirectoryName(installedPath);
         if (!rootPath.Exists)
         {
@@ -133,12 +103,15 @@ public sealed class GameLoader : IGameLoader
             package.LoadPackageContentAsync(progress);
             package.IsReadOnly = true;
             pack.Contents.Add(package);
-            package.Contents.Summary().ToList()
-                .ForEach(item =>
-                    progress?.Report(new ProgressReport(string.Format(CultureInfo.CurrentCulture,
-                        ConsoleOutput.PrintKeyValue, item.Key, item.Value))));
         });
 
         return Task.FromResult(pack);
+    }
+
+    private void LoadPlatformPlugin()
+    {
+        var catalog = new DirectoryCatalog("Core", "Sims.Toolkit.Api.Plugin.Core.Platform.dll");
+        var container = new CompositionContainer(catalog);
+        container.ComposeParts(this);
     }
 }

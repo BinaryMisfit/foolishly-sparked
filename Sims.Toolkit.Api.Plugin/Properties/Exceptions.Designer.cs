@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sims.Toolkit.Api.Assets.Properties {
+namespace Sims.Toolkit.Api.Plugin.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Sims.Toolkit.Api.Assets.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Exceptions {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Exceptions() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No game found..
         /// </summary>
@@ -68,7 +68,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GameDirectoryNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to No game files found..
         /// </summary>
@@ -77,7 +77,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("GameFilesNotFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Not a valid Sims Toolkit plugin..
         /// </summary>
@@ -86,7 +86,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PluginInvalid", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Valid platform plugin not found..
         /// </summary>

@@ -1,8 +1,8 @@
 ﻿using System.IO.Abstractions;
 using JetBrains.Annotations;
-using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
+using Sims.Toolkit.Api.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Core;
 

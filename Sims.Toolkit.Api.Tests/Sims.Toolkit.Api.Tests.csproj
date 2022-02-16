@@ -1,22 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <Company>Senselessly Foolish</Company>
-        <Product>Test Library for the Sims.Toolkit.Api.</Product>
-        <OutputType>library</OutputType>
-        <LangVersion>latestmajor</LangVersion>
-        <Nullable>annotations</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <IsPackable>false</IsPackable>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <OutDir>..\Output\Debug\</OutDir>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <OutDir>..\Output\Release\</OutDir>
+        <LangVersion>latestmajor</LangVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Nullable>annotations</Nullable>
+        <OutDir>..\Generated\Tests\$(Configuration)</OutDir>
+        <OutputType>library</OutputType>
+        <Product>Test Library for the Sims.Toolkit.Api.</Product>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -56,5 +50,9 @@
     <ItemGroup>
         <ProjectReference Include="..\Sims.Toolkit.Api\Sims.Toolkit.Api.csproj"/>
     </ItemGroup>
+
+    <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Tests\$(Configuration)"/>
+    </Target>
 
 </Project>

@@ -30,11 +30,8 @@ internal static class Program
                 var progress = new Progress<ProgressReport>();
                 progress.ProgressChanged += (_, e) => { System.Console.WriteLine(e.Message); };
                 var loader = (IGameLoader) provider.GetService(typeof(IGameLoader));
-                var plugin = loader.LoadPlatformPlugin();
-                System.Console.WriteLine(ConsoleOutput.PrintPlatform, plugin.Platform, plugin.Is64 ? "64-Bit" : "");
-                var platform = await plugin.LocateGameAsync();
-                System.Console.WriteLine(ConsoleOutput.PrintGameFound, platform.InstalledPath);
-                var game = await loader.LoadGameAsync(platform.InstalledPath, platform.Platform, progress);
+                var game = await loader.LoadGameAsync();
+                System.Console.WriteLine(ConsoleOutput.PrintGameFound, game.GamePath);
                 game.InstalledPacks.Summary().ToList()
                     .ForEach(item => System.Console.WriteLine(ConsoleOutput.PrintKeyValue, item.Key, item.Value));
                 game.InstalledPacks.OrderBy(pack => pack.PackType).ThenBy(pack => pack.PackTypeId).ToList()

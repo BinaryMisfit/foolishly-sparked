@@ -6,9 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.UI", "Sims.Too
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api", "Sims.Toolkit.Api\Sims.Toolkit.Api.csproj", "{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Platform.Mac", "Sims.Toolkit.Platform.Mac\Sims.Toolkit.Platform.Mac.csproj", "{DC32C1E1-CA94-4A19-84D1-F94D325D642A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Platform.Windows", "Sims.Toolkit.Platform.Windows\Sims.Toolkit.Platform.Windows.csproj", "{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin.Core.Platform", "Sims.Toolkit.Api.Plugin.Core.Platform\Sims.Toolkit.Api.Plugin.Core.Platform.csproj", "{DC32C1E1-CA94-4A19-84D1-F94D325D642A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Tests", "Sims.Toolkit.Api.Tests\Sims.Toolkit.Api.Tests.csproj", "{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}"
 EndProject
@@ -40,8 +38,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin", "Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj", "{0343FCFE-1882-4678-893F-A6991E20DD7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Assets", "Sims.Toolkit.Api.Assets\Sims.Toolkit.Api.Assets.csproj", "{3D58E854-341F-4378-A43E-CE5D9D7433D4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,10 +60,6 @@ Global
 		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7F130EDA-0F65-4D8C-95A7-F3C377BBC84B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,10 +68,6 @@ Global
 		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3D58E854-341F-4378-A43E-CE5D9D7433D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D58E854-341F-4378-A43E-CE5D9D7433D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D58E854-341F-4378-A43E-CE5D9D7433D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D58E854-341F-4378-A43E-CE5D9D7433D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41F49A01-2256-4B61-9458-F1F4FC3FCD7D} = {46167F95-CA9A-447D-98C6-301740931BB8}

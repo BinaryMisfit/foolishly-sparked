@@ -2,7 +2,7 @@
 
 internal static class Constants
 {
-    internal const string PlatformMac = "Sims.Toolkit.Platform.Mac";
+    internal const string PlatformMac = "Sims.Toolkit.Api.Plugin.Core.Platform";
     internal const string PlatformWindows = "Sims.Toolkit.Platform.Windows";
 
     internal const string ClientFiles = "Client*Build0.package";

@@ -1,17 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <Company>Senselessly Foolish</Company>
+        <DocumentationFile>..\Generated\Docs\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <IsPackable>true</IsPackable>
+        <LangVersion>latestmajor</LangVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Nullable>annotations</Nullable>
+        <OutDir>..\Generated\Output\$(Configuration)\Console</OutDir>
         <OutputType>Exe</OutputType>
+        <Product>Sims Toolkit console interface.</Product>
         <TargetFramework>net6.0</TargetFramework>
-        <LangVersion>10</LangVersion>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <OutDir>..\Output\Debug\</OutDir>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <OutDir>..\Output\Release\</OutDir>
     </PropertyGroup>
 
     <ItemGroup>
@@ -35,14 +35,28 @@
 
     <ItemGroup>
         <Compile Remove="Tools\**"/>
+        <Compile Update="Properties\ConsoleOutput.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Console.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
         <EmbeddedResource Remove="Tools\**"/>
+        <EmbeddedResource Update="Properties\ConsoleOutput.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>ConsoleOutput.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
         <None Remove="Tools\**"/>
     </ItemGroup>
+
+    <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Console"/>
+        <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
+    </Target>
 
 </Project>

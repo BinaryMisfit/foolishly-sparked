@@ -1,23 +1,23 @@
-﻿using System.Composition;
+﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
+using Sims.Toolkit.Api.Plugin.Attributes;
 using Sims.Toolkit.Api.Plugin.Interfaces;
 
-namespace Sims.Toolkit.Platform.Mac.Helpers;
+namespace Sims.Toolkit.Api.Plugin.Core.Platform;
 
-/// <summary>
-///     Contains and stores game specific information.
-/// </summary>
-[Export(typeof(IPlatform))]
+[ExportPlatform(PlatformID.MacOSX)]
 [PublicAPI]
-public class GameLocator : IPlatform
+public class AppleGameLoader : ICoreApiPlugin, IPlatform
 {
     private const string GlobalPath = "/Applications/The Sims 4.app";
 
     private readonly string _userPath =
         Path.Join(Environment.GetEnvironmentVariable("HOME"), "/Applications/The Sims 4.app");
 
-    public GameLocator()
+    public AppleGameLoader()
     {
         Is64 = RuntimeInformation.OSArchitecture.HasFlag(Architecture.X64) ||
                RuntimeInformation.OSArchitecture.HasFlag(Architecture.Arm64);
@@ -41,12 +41,12 @@ public class GameLocator : IPlatform
 
         if (gameFile.Directory == null)
         {
-            throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
+            throw new FileNotFoundException("Cannot locate an installed version of Sims.");
         }
 
         if (!gameFile.Directory.Exists)
         {
-            throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
+            throw new FileNotFoundException("Cannot locate an installed version of Sims.");
         }
 
         InstalledPath = gameFile.Directory.FullName;

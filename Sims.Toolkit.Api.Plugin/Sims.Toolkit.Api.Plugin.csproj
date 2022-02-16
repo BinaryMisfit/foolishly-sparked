@@ -1,27 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
         <Company>Senselessly Foolish</Company>
-        <Product>API to expose shared plugin features for Sims Toolkit.</Product>
-        <OutputType>library</OutputType>
-        <LangVersion>latestmajor</LangVersion>
-        <Nullable>annotations</Nullable>
-        <NeutralLanguage>en-US</NeutralLanguage>
-        <IsPackable>true</IsPackable>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <OutDir>..\Output\Debug\</OutDir>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-        <DocumentationFile>..\Documentation\Sims.Toolkit.Api.Plugin.xml</DocumentationFile>
-        <OutDir>..\Output\Release\</OutDir>
-    </PropertyGroup>
-
-    <PropertyGroup>
+        <DocumentationFile>..\Generated\Docs\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <IsPackable>true</IsPackable>
+        <LangVersion>latestmajor</LangVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <Nullable>annotations</Nullable>
+        <OutDir>..\Generated\Output\$(Configuration)\Api</OutDir>
+        <OutputType>library</OutputType>
+        <Product>API to expose shared plugin features for Sims Toolkit.</Product>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -31,6 +21,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0"/>
         <PackageReference Include="System.Composition" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.AttributedModel" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.Composition.Convention" Version="6.0.2-mauipre.1.22054.8"/>
@@ -39,5 +30,34 @@
         <PackageReference Include="System.Composition.TypedParts" Version="6.0.2-mauipre.1.22054.8"/>
         <PackageReference Include="System.IO.Abstractions" Version="16.1.10"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Exceptions.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\GamePacks.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Properties\Exceptions.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Exceptions.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Properties\GamePacks.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>GamePacks.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Api"/>
+        <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
+    </Target>
 
 </Project>

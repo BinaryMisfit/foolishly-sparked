@@ -26,36 +26,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <EmbeddedResource Update="Properties\Exceptions.resx">
-            <Generator>PublicResXFileCodeGenerator</Generator>
-            <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Properties\GamePacks.resx">
-            <Generator>PublicResXFileCodeGenerator</Generator>
-            <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-        <EmbeddedResource Update="Properties\ConsoleOutput.resx">
-            <Generator>PublicResXFileCodeGenerator</Generator>
-            <LastGenOutput>ConsoleOutput.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Properties\Exceptions.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Exceptions.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Properties\GamePacks.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>GamePacks.resx</DependentUpon>
-        </Compile>
-        <Compile Update="Properties\ConsoleOutput.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Console.resx</DependentUpon>
-        </Compile>
+      <Folder Include="Properties" />
     </ItemGroup>
 
 </Project>

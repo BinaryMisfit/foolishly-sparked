@@ -321,3 +321,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+**/Generated/
+**/Documentation/
+**/Output/
+**/Docs/
