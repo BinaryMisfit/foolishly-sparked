@@ -4,14 +4,14 @@
 
 ## Overview
 
-Sims Toolkit is a updated set of tools to manage and maintain Sims 4 custom content files. It's built on .Net Core 6.0
-and a refresh of the work done by various other projects and developers.
+Sims Toolkit provides an updated set of tools to manage and maintain Sims custom content files. It's built on .Net Core
+6.0 and a refresh of the work done by various other [projects](`#reference-projects`).
 
 ## Goal
 
-Managing content for the Sims is hard. If using content from the gallery everything is done for you. When using content
-from other creators it can become more challenging and difficult to figure out. Some of the challenges with managing
-custom content include but is not limited to:
+Managing content for the Sims can be hard. If using content from the gallery everything is done for you. When using
+content from other creators it can become more challenging and difficult to figure out. Some of the challenges with
+managing custom content include but not limited to:
 
 - Duplicate content.
 - Multiple overrides.
@@ -19,13 +19,16 @@ custom content include but is not limited to:
 - Game compatibility.
 - Content updates.
 
-To address these issues there are numerous tools providing functionality often to complex or to simple for what is
-required. After spending time trying to work through 5000+ custom content items the need for something to automate or
+To address these issues numerous tools provide functionality often to complex or to simple for what needs to be
+achieved. After spending time trying to work through 5000+ custom content items the need for something to automate or
 batch some of these functions became a must and Sims Toolkit was born.
 
-Sims Toolkit is an attempt at trying to bring all this functionality into one place across both Windows and Mac.
+Sims Toolkit attempts to bring all the tools and functionality into one place across both Windows and Mac.
 
 ## Golden Rules
+
+While developing Sims Toolkit there are a set of rules applied in deciding how something gets implemented and if it
+meets the goal of the project.
 
 ## Current Status
 

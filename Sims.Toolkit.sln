@@ -1,21 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Terminal", "Sims.Toolkit.Terminal\Sims.Toolkit.Terminal.csproj", "{EBC02304-ED2E-4567-9DA6-7F3E032828C0}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A} = {DC32C1E1-CA94-4A19-84D1-F94D325D642A}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.UI", "Sims.Toolkit.UI\Sims.Toolkit.UI.csproj", "{9E06AA41-743E-440B-AC68-21F31D7ECDCC}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A} = {DC32C1E1-CA94-4A19-84D1-F94D325D642A}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api", "Sims.Toolkit.Api\Sims.Toolkit.Api.csproj", "{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin.Core.Platform", "Sims.Toolkit.Api.Plugin.Core.Platform\Sims.Toolkit.Api.Plugin.Core.Platform.csproj", "{DC32C1E1-CA94-4A19-84D1-F94D325D642A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Tests", "Sims.Toolkit.Api.Tests\Sims.Toolkit.Api.Tests.csproj", "{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{46167F95-CA9A-447D-98C6-301740931BB8}"
 	ProjectSection(SolutionItems) = preProject
 		.github\dependabot.yml = .github\dependabot.yml
@@ -42,9 +26,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		.wakatime-project = .wakatime-project
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin", "Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj", "{0343FCFE-1882-4678-893F-A6991E20DD7F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6B400E68-8B40-463A-8958-C831DF340547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin.Core.Platform.Tests", "Sims.Toolkit.Api.Plugin.Core.Platform.Tests\Sims.Toolkit.Api.Plugin.Core.Platform.Tests.csproj", "{63032BE1-C044-48B5-8562-AF5858C9DF95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Tests", "Sims.Toolkit.Api.Tests\Sims.Toolkit.Api.Tests.csproj", "{2384A01F-576E-479F-B714-5A5F8EA5A856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin.Core.Platform.Tests", "Sims.Toolkit.Api.Plugin.Core.Platform.Tests\Sims.Toolkit.Api.Plugin.Core.Platform.Tests.csproj", "{441F9703-3A41-4781-B12D-356719977373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{D987EF4C-591F-445F-BFF6-A764A0F84485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api", "Sims.Toolkit.Api\Sims.Toolkit.Api.csproj", "{5E9B5A0B-3980-4A24-AB60-45479D3424D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin", "Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj", "{B7092781-5D0B-4F13-9225-808D0FF0279A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Api.Plugin.Core.Platform", "Sims.Toolkit.Api.Plugin.Core.Platform\Sims.Toolkit.Api.Plugin.Core.Platform.csproj", "{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Terminal", "Terminal", "{3E656E6D-9CF9-4B6E-9A71-8CADFD684CB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Toolkit.Terminal", "Sims.Toolkit.Terminal\Sims.Toolkit.Terminal.csproj", "{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,36 +50,38 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EBC02304-ED2E-4567-9DA6-7F3E032828C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EBC02304-ED2E-4567-9DA6-7F3E032828C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EBC02304-ED2E-4567-9DA6-7F3E032828C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EBC02304-ED2E-4567-9DA6-7F3E032828C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E06AA41-743E-440B-AC68-21F31D7ECDCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E06AA41-743E-440B-AC68-21F31D7ECDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E06AA41-743E-440B-AC68-21F31D7ECDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E06AA41-743E-440B-AC68-21F31D7ECDCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B758EAF6-36FA-43BE-A02A-1260B75BD0FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC32C1E1-CA94-4A19-84D1-F94D325D642A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CBD1E78-B9E6-4185-A6E6-230527FC3E11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0343FCFE-1882-4678-893F-A6991E20DD7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63032BE1-C044-48B5-8562-AF5858C9DF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63032BE1-C044-48B5-8562-AF5858C9DF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63032BE1-C044-48B5-8562-AF5858C9DF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63032BE1-C044-48B5-8562-AF5858C9DF95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2384A01F-576E-479F-B714-5A5F8EA5A856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2384A01F-576E-479F-B714-5A5F8EA5A856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2384A01F-576E-479F-B714-5A5F8EA5A856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2384A01F-576E-479F-B714-5A5F8EA5A856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{441F9703-3A41-4781-B12D-356719977373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441F9703-3A41-4781-B12D-356719977373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441F9703-3A41-4781-B12D-356719977373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441F9703-3A41-4781-B12D-356719977373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9B5A0B-3980-4A24-AB60-45479D3424D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9B5A0B-3980-4A24-AB60-45479D3424D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9B5A0B-3980-4A24-AB60-45479D3424D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9B5A0B-3980-4A24-AB60-45479D3424D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7092781-5D0B-4F13-9225-808D0FF0279A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7092781-5D0B-4F13-9225-808D0FF0279A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7092781-5D0B-4F13-9225-808D0FF0279A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7092781-5D0B-4F13-9225-808D0FF0279A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41F49A01-2256-4B61-9458-F1F4FC3FCD7D} = {46167F95-CA9A-447D-98C6-301740931BB8}
+		{2384A01F-576E-479F-B714-5A5F8EA5A856} = {6B400E68-8B40-463A-8958-C831DF340547}
+		{441F9703-3A41-4781-B12D-356719977373} = {6B400E68-8B40-463A-8958-C831DF340547}
+		{5E9B5A0B-3980-4A24-AB60-45479D3424D6} = {D987EF4C-591F-445F-BFF6-A764A0F84485}
+		{B7092781-5D0B-4F13-9225-808D0FF0279A} = {D987EF4C-591F-445F-BFF6-A764A0F84485}
+		{870FF9A0-9D1B-4A5F-9854-A048A8FF9F84} = {D987EF4C-591F-445F-BFF6-A764A0F84485}
+		{EBEFF264-2CE7-4DD5-B42B-9EBF11815CB2} = {3E656E6D-9CF9-4B6E-9A71-8CADFD684CB8}
 	EndGlobalSection
 EndGlobal
