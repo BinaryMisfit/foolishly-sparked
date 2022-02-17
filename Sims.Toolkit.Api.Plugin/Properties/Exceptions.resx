@@ -36,4 +36,7 @@
     <data name="PluginMissingPlatform" xml:space="preserve">
         <value>Valid platform plugin not found.</value>
     </data>
+    <data name="GameBaseNotFound" xml:space="preserve">
+        <value>Base game not found.</value>
+    </data>
 </root>

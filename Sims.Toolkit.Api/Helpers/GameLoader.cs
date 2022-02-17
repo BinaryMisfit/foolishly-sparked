@@ -14,7 +14,7 @@ using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Extensions;
 using Sims.Toolkit.Api.Helpers.Interfaces;
 using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces.Exported.Interfaces;
 using Sims.Toolkit.Api.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Helpers;
@@ -72,7 +72,7 @@ public sealed class GameLoader : IGameLoader
             .GetDirectories("*", SearchOption.AllDirectories);
         if (!gamePackSources.Any())
         {
-            throw new DirectoryNotFoundException("Base game not found.");
+            throw new DirectoryNotFoundException(Exceptions.GameBaseNotFound);
         }
 
         var game = new GameInstance(installedPath, platform);
@@ -84,36 +84,9 @@ public sealed class GameLoader : IGameLoader
         return game;
     }
 
-    private Task<IPack> LoadPackAsync(IPack pack, IProgress<ProgressReport>? progress)
-    {
-        var packFiles = _fileSystem.Directory.GetFiles(
-            pack.Path?.FullName,
-            Constants.ClientFiles,
-            SearchOption.TopDirectoryOnly);
-        if (!packFiles.Any())
-        {
-            return Task.FromResult(pack);
-        }
-
-        packFiles.ToList()
-            .ForEach(
-                path =>
-                {
-                    progress?.Report(new ProgressReport($"Loading File: {path}"));
-                    var package = new Package(_fileSystem);
-                    package.LoadFromFile(path);
-                    package.LoadPackageAsync(progress);
-                    package.LoadPackageContentAsync(progress);
-                    package.IsReadOnly = true;
-                    pack.Contents.Add(package);
-                });
-
-        return Task.FromResult(pack);
-    }
-
     private void LoadPlatformPlugin()
     {
-        var catalog = new DirectoryCatalog("Core", "Sims.Toolkit.Api.Plugin.Core.Platform.dll");
+        var catalog = new DirectoryCatalog(Constants.DirectoryApiCore, Constants.FilePlatformPlugin);
         var container = new CompositionContainer(catalog);
         container.ComposeParts(this);
     }

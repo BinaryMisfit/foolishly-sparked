@@ -37,7 +37,7 @@ internal static class PackCollectionExtensions
             .ForEach(
                 directory =>
                 {
-                    var packFiles = directory.GetFiles(Constants.ClientFiles, SearchOption.TopDirectoryOnly);
+                    var packFiles = directory.GetFiles(Constants.FilesClientPackage, SearchOption.TopDirectoryOnly);
                     if (!packFiles.Any())
                     {
                         return;

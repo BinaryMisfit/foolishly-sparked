@@ -8,9 +8,9 @@
         <LangVersion>latestmajor</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Nullable>annotations</Nullable>
-        <OutDir>..\Generated\Output\$(Configuration)\Console</OutDir>
+        <OutDir>..\Generated\Output\$(Configuration)\Terminal</OutDir>
         <OutputType>Exe</OutputType>
-        <Product>Sims Toolkit console interface.</Product>
+        <Product>Sims Toolkit terminal command interface.</Product>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
@@ -35,19 +35,19 @@
 
     <ItemGroup>
         <Compile Remove="Tools\**"/>
-        <Compile Update="Properties\ConsoleOutput.Designer.cs">
+        <Compile Update="Properties\TerminalOutput.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
-            <DependentUpon>Console.resx</DependentUpon>
+            <DependentUpon>Terminal.resx</DependentUpon>
         </Compile>
     </ItemGroup>
 
     <ItemGroup>
         <EmbeddedResource Remove="Tools\**"/>
-        <EmbeddedResource Update="Properties\ConsoleOutput.resx">
+        <EmbeddedResource Update="Properties\TerminalOutput.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
-            <LastGenOutput>ConsoleOutput.Designer.cs</LastGenOutput>
-            <CustomToolNamespace>Sims.Toolkit.Console.Properties</CustomToolNamespace>
+            <LastGenOutput>TerminalOutput.Designer.cs</LastGenOutput>
+            <CustomToolNamespace>Sims.Toolkit.Terminal.Properties</CustomToolNamespace>
         </EmbeddedResource>
     </ItemGroup>
 
@@ -71,8 +71,8 @@
     </Target>
 
     <Target Name="Cleanup" AfterTargets="Clean">
-        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Console\Core"/>
-        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Console"/>
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Terminal\Core"/>
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Terminal"/>
         <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
     </Target>
 

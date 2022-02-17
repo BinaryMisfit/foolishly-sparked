@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sims.Toolkit.Console.Properties {
+namespace Sims.Toolkit.Terminal.Properties {
     using System;
 
 
@@ -39,7 +39,7 @@ namespace Sims.Toolkit.Console.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sims.Toolkit.Console.Properties.ConsoleOutput", typeof(ConsoleOutput).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sims.Toolkit.Terminal.Properties.ConsoleOutput", typeof(ConsoleOutput).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
