@@ -42,6 +42,11 @@
             <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
             <CustomToolNamespace>Sims.Toolkit.Api.Plugin.Properties</CustomToolNamespace>
         </EmbeddedResource>
+        <EmbeddedResource Update="Properties\OutputMessages.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>OutputMessages.Designer.cs</LastGenOutput>
+            <CustomToolNamespace>Sims.Toolkit.Api.Plugin.Properties</CustomToolNamespace>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -54,6 +59,11 @@
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>GamePacks.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Properties\OutputMessages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>OutputMessages.resx</DependentUpon>
         </Compile>
     </ItemGroup>
 

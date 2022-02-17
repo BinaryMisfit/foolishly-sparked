@@ -2,16 +2,7 @@
 
 internal static class Constants
 {
-    internal const string PlatformMac = "Sims.Toolkit.Api.Plugin.Core.Platform";
-    internal const string PlatformWindows = "Sims.Toolkit.Platform.Windows";
-
     internal const string ClientFiles = "Client*Build0.package";
-
-    internal const string PackBase = "CL";
-    internal const string PackExpansion = "EP";
-    internal const string PackFree = "FP";
-    internal const string PackGame = "GP";
-    internal const string PackStuff = "SP";
 
     internal const string HeaderBit = "DBPF";
 

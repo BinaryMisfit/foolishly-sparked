@@ -1,4 +1,6 @@
-﻿using System.IO.Abstractions;
+﻿using System;
+using System.IO.Abstractions;
+using System.Linq;
 using JetBrains.Annotations;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
@@ -43,20 +45,17 @@ public class Pack : IPack
 
     private PackType DetermineType()
     {
-        var type = PackId[..2] ?? string.Empty;
+        var type = PackId[..2]
+            .ToUpperInvariant();
         if (string.IsNullOrEmpty(type))
         {
             return PackType.Error;
         }
 
-        return type.ToUpperInvariant() switch
-        {
-            Constants.PackBase => PackType.BaseGame,
-            Constants.PackExpansion => PackType.Expansion,
-            Constants.PackFree => PackType.Free,
-            Constants.PackGame => PackType.Game,
-            Constants.PackStuff => PackTypeId < 20 ? PackType.Stuff : PackType.Kit,
-            var _ => PackType.Unknown
-        };
+        var key = Dictionaries.PackTypeFolders.FirstOrDefault(
+                folder => folder.Value.ToUpperInvariant()
+                    .StartsWith(type, StringComparison.CurrentCulture))
+            .Key;
+        return key;
     }
 }
