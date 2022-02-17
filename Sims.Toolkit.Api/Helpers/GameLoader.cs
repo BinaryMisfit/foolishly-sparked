@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.IO.Abstractions;
@@ -14,7 +13,8 @@ using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Extensions;
 using Sims.Toolkit.Api.Helpers.Interfaces;
 using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces.Exported.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces.Meta;
+using Sims.Toolkit.Api.Plugin.Interfaces.Shared;
 using Sims.Toolkit.Api.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Helpers;
@@ -26,8 +26,6 @@ public sealed class GameLoader : IGameLoader
 {
     private readonly IFileSystem _fileSystem;
 
-    [SuppressMessage("Style", "IDE0044:Add readonly modifier")]
-    [ImportMany(typeof(ICoreApiPlugin))]
     private IEnumerable<Lazy<ICoreApiPlugin, IExportPlatformAttribute>>? services;
 
     /// <summary>
@@ -89,5 +87,6 @@ public sealed class GameLoader : IGameLoader
         var catalog = new DirectoryCatalog(Constants.DirectoryApiCore, Constants.FilePlatformPlugin);
         var container = new CompositionContainer(catalog);
         container.ComposeParts(this);
+        services = container.GetExports<ICoreApiPlugin, IExportPlatformAttribute>();
     }
 }

@@ -2,7 +2,7 @@
 using System.ComponentModel.Composition;
 using JetBrains.Annotations;
 using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces.Exported.Interfaces;
+using Sims.Toolkit.Api.Plugin.Interfaces.Shared;
 
 namespace Sims.Toolkit.Api.Plugin.Attributes;
 

@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Sims.Toolkit.Api.Plugin.Interfaces.Exported.Interfaces;
+namespace Sims.Toolkit.Api.Plugin.Interfaces.Shared;
 
 /// <summary>
 ///     Represents a set of functions for the api in plugin form.

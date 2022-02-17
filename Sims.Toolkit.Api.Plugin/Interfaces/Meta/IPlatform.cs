@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Sims.Toolkit.Api.Plugin.Interfaces.Exported.Interfaces;
+namespace Sims.Toolkit.Api.Plugin.Interfaces.Meta;
 
 /// <summary>
 ///     Represents information regarding the operating system platform.
