@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sims.Toolkit.Api.Assets.Properties {
+namespace Sims.Toolkit.Console.Properties {
     using System;
-    
-    
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -23,15 +23,15 @@ namespace Sims.Toolkit.Api.Assets.Properties {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ConsoleOutput {
-        
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal ConsoleOutput() {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -39,13 +39,13 @@ namespace Sims.Toolkit.Api.Assets.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sims.Toolkit.Api.Assets.Properties.ConsoleOutput", typeof(ConsoleOutput).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sims.Toolkit.Console.Properties.ConsoleOutput", typeof(ConsoleOutput).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -59,7 +59,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Located game at {0}..
         /// </summary>
@@ -68,7 +68,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PrintGameFound", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to {0}: {1}.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PrintKeyValue", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Loaded {0} successfully..
         /// </summary>
@@ -86,7 +86,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PrintLoadedPackage", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Found: {0}.
         /// </summary>
@@ -95,7 +95,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PrintPackName", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Running on {0} {1}..
         /// </summary>
@@ -104,7 +104,7 @@ namespace Sims.Toolkit.Api.Assets.Properties {
                 return ResourceManager.GetString("PrintPlatform", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Reading {0} in {1}..
         /// </summary>

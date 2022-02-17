@@ -47,6 +47,7 @@
         <EmbeddedResource Update="Properties\ConsoleOutput.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>ConsoleOutput.Designer.cs</LastGenOutput>
+            <CustomToolNamespace>Sims.Toolkit.Console.Properties</CustomToolNamespace>
         </EmbeddedResource>
     </ItemGroup>
 
@@ -54,7 +55,23 @@
         <None Remove="Tools\**"/>
     </ItemGroup>
 
+    <PropertyGroup>
+        <CorePlugins>$(OutDir)\..\Api\Core</CorePlugins>
+        <CoreTarget>$(OutDir)\Core</CoreTarget>
+    </PropertyGroup>
+
+    <Target Name="CopyFiles" AfterTargets="Build;Rebuild;Run" Condition="Exists($(CorePlugins))">
+        <ItemGroup>
+            <CopyCore Include="$(CorePlugins)\*.*"/>
+        </ItemGroup>
+
+        <MakeDir Directories="$(CoreTarget)"/>
+        <Copy SourceFiles="@(CopyCore)" DestinationFolder="$(CoreTarget)"/>
+        <Message Text="%(CopyCore.FileName)%(CopyCore.Extension) -> $(CoreTarget)" Importance="high"/>
+    </Target>
+
     <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Console\Core"/>
         <RemoveDir Directories="..\Generated\Output\$(Configuration)\Console"/>
         <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
     </Target>

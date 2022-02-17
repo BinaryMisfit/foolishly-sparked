@@ -52,6 +52,7 @@
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="$(ProjectDir)\bin"/>
         <RemoveDir Directories="..\Generated\Tests\$(Configuration)"/>
     </Target>
 

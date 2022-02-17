@@ -6,9 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
-using Sims.Toolkit.Api.Assets.Properties;
 using Sims.Toolkit.Api.Helpers;
 using Sims.Toolkit.Api.Helpers.Interfaces;
+using Sims.Toolkit.Console.Properties;
 
 namespace Sims.Toolkit.Console;
 
