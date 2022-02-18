@@ -5,7 +5,7 @@
 ## Overview
 
 Sims Toolkit provides an updated set of tools to manage and maintain Sims custom content files. It's built on .Net Core
-6.0 and a refresh of the work done by various other [projects](`#reference-projects`).
+6.0 and a refresh of the work done by various other [projects](#reference-projects).
 
 ## Goal
 
@@ -25,10 +25,27 @@ batch some of these functions became a must and Sims Toolkit was born.
 
 Sims Toolkit attempts to bring all the tools and functionality into one place across both Windows and Mac.
 
+## Planned Functionality
+
+| Function       | Purpose                                             | Status |    Roadmap    |
+|:---------------|:----------------------------------------------------|:------:|:-------------:|
+| Game Detection | Locate and find the installed instance of the game. | In Dev | Sunset Valley |
+
 ## Golden Rules
 
 While developing Sims Toolkit there are a set of rules applied in deciding how something gets implemented and if it
 meets the goal of the project.
+
+### Keep it Simple
+
+Seems like an obvious rule but it harder to implement then it sounds. All features need to meet some criteria and
+understanding of implementation.
+
+- Should be available via command line.
+- Should be a plugin.
+- Should have a singular purpose.
+- Should support single and batch mode.
+- Should work on both Windows and Mac.
 
 ## Current Status
 
@@ -39,10 +56,11 @@ meets the goal of the project.
 
 ## Roadmap
 
-|   Codename    | Release | Feature                                              |
-|:-------------:|:-------:|:-----------------------------------------------------|
-| Sunset Valley |  0.0.1  | Command line game detection and reporting.           |
-|               |         | Command line custom content detection and reporting. |
+|   Codename    | Release | Feature                                              |  Expected   |
+|:-------------:|:-------:|:-----------------------------------------------------|:-----------:|
+| Sunset Valley |  0.0.1  | Command line game detection and reporting.           | 4 - 6 Weeks |
+|               |         | Command line custom content detection and reporting. |             |
+|               |         | Initial Plugin Framework                             |             |
 
 ## Reference Projects
 
