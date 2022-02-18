@@ -4,7 +4,7 @@ using System.Linq;
 using JetBrains.Annotations;
 using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
-using Sims.Toolkit.Api.Plugin.Properties;
+using Sims.Toolkit.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Core;
 

@@ -3,7 +3,7 @@
 internal static class Constants
 {
     internal const string DirectoryApiCore = "Core";
-    internal const string FilePlatformPlugin = "Sims.Toolkit.Api.Plugin.Core.Platform.dll";
+    internal const string FilePlatformPlugin = "Sims.Toolkit.Plugin.Core.Platform.dll";
     internal const string FilesClientPackage = "Client*Build0.package";
 
     internal const string HeaderBit = "DBPF";

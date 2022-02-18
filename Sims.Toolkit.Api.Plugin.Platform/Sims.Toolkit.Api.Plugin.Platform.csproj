@@ -29,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sims.Toolkit.Api.Plugin\Sims.Toolkit.Api.Plugin.csproj"/>
+        <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">

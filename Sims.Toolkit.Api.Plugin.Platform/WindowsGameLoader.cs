@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Microsoft.Win32;
-using Sims.Toolkit.Api.Plugin.Attributes;
-using Sims.Toolkit.Api.Plugin.Interfaces.Meta;
-using Sims.Toolkit.Api.Plugin.Interfaces.Shared;
+using Sims.Toolkit.Plugin.Attributes;
+using Sims.Toolkit.Plugin.Interfaces.Meta;
+using Sims.Toolkit.Plugin.Interfaces.Shared;
 
-namespace Sims.Toolkit.Api.Plugin.Core.Platform;
+namespace Sims.Toolkit.Api.Plugin.Platform;
 
 /// <summary>
 ///     Implementation of <see cref="ICoreApiPlugin" /> and <see cref="IPlatform" /> for Windows operating systems.

@@ -1,4 +1,4 @@
-﻿namespace Sims.Toolkit.Api.Plugin.Interfaces.Shared;
+﻿namespace Sims.Toolkit.Plugin.Interfaces.Shared;
 
 /// <summary>
 ///     Represents a set of functions for the UI version of the toolkit in plugin form.

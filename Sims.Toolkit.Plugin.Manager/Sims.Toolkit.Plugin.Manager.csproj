@@ -10,7 +10,7 @@
         <Nullable>annotations</Nullable>
         <OutDir>..\Generated\Output\$(Configuration)\Api</OutDir>
         <OutputType>library</OutputType>
-        <Product>API to expose custom content features for Sims games.</Product>
+        <Product>Set of functions to manage plugins written for the Toolkit.</Product>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
@@ -32,11 +32,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Plugins"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Sims.Toolkit.Plugin.Manager\Sims.Toolkit.Plugin.Manager.csproj"/>
         <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
     </ItemGroup>
 

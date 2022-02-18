@@ -12,10 +12,10 @@ using Sims.Toolkit.Api.Core.Interfaces;
 using Sims.Toolkit.Api.Enums;
 using Sims.Toolkit.Api.Extensions;
 using Sims.Toolkit.Api.Helpers.Interfaces;
-using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces.Meta;
-using Sims.Toolkit.Api.Plugin.Interfaces.Shared;
-using Sims.Toolkit.Api.Plugin.Properties;
+using Sims.Toolkit.Plugin.Attributes.Interfaces;
+using Sims.Toolkit.Plugin.Interfaces.Meta;
+using Sims.Toolkit.Plugin.Interfaces.Shared;
+using Sims.Toolkit.Plugin.Properties;
 
 namespace Sims.Toolkit.Api.Helpers;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
+namespace Sims.Toolkit.Plugin.Attributes.Interfaces;
 
 /// <summary>
 ///     Represent an attribute used to specify the target platform for a plugin.

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.ComponentModel.Composition;
 using JetBrains.Annotations;
-using Sims.Toolkit.Api.Plugin.Attributes.Interfaces;
-using Sims.Toolkit.Api.Plugin.Interfaces.Shared;
+using Sims.Toolkit.Plugin.Attributes.Interfaces;
+using Sims.Toolkit.Plugin.Interfaces.Shared;
 
-namespace Sims.Toolkit.Api.Plugin.Attributes;
+namespace Sims.Toolkit.Plugin.Attributes;
 
 /// <summary>
 ///     Implementation of the <see cref="IExportPlatformAttribute" /> interface.

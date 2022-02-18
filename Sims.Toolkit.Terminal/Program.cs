@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
 using Sims.Toolkit.Api.Helpers;
 using Sims.Toolkit.Api.Helpers.Interfaces;
+using Sims.Toolkit.Plugin.Manager;
 using Sims.Toolkit.Terminal.Properties;
 
 namespace Sims.Toolkit.Terminal;
@@ -18,6 +19,8 @@ internal static class Program
     {
         var services = new ServiceCollection().AddSimsToolkitApi()
             .BuildServiceProvider();
+        var plugins = new PluginCollection().AddToolkitPlugins()
+            .BuildPluginProvider();
         var commandGame = new Command("game", "Prints information about the game.");
         commandGame.SetHandler(
             async () =>
