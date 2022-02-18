@@ -1,4 +1,4 @@
-﻿using Sims.Toolkit.Api.Core;
+﻿using System;
 using Xunit;
 
 namespace Sims.Toolkit.Api.Tests.Core;
@@ -7,7 +7,7 @@ namespace Sims.Toolkit.Api.Tests.Core;
 public class GameInstanceTests
 {
     private const string gamePath = @"C:\Game\Installed";
-    private const string gamePlatform = @"win10";
+    private const PlatformID gamePlatform = PlatformID.Win32NT;
 
     [Fact]
     [Trait("Category", "Basic")]

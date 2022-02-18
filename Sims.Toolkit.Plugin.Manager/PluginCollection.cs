@@ -76,5 +76,9 @@ public class PluginCollection : IPluginCollection
     }
 
     /// <inheritdoc />
-    public PluginDescriptor this[int index] { get => _descriptors[index]; set => _descriptors[index] = value; }
+    public PluginDescriptor this[int index]
+    {
+        get => _descriptors[index];
+        set => _descriptors[index] = value;
+    }
 }

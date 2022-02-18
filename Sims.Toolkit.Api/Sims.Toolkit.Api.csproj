@@ -32,12 +32,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Plugins"/>
+        <ProjectReference Include="..\Sims.Toolkit.Plugin.Manager\Sims.Toolkit.Plugin.Manager.csproj"/>
+        <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Sims.Toolkit.Plugin.Manager\Sims.Toolkit.Plugin.Manager.csproj"/>
-        <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
+        <Folder Include="Extensions"/>
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">

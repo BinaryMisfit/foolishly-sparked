@@ -1,20 +1,14 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
-using Sims.Toolkit.Plugin.Attributes;
-using Sims.Toolkit.Plugin.Interfaces.Meta;
-using Sims.Toolkit.Plugin.Interfaces.Shared;
+using Sims.Toolkit.Plugin;
 
 namespace Sims.Toolkit.Api.Plugin.Platform;
 
 /// <summary>
-///     Implementation of <see cref="ICoreApiPlugin" /> and <see cref="IPlatform" /> for Apple operating systems.
+///     Plugin to locate the game installation on OSX.
 /// </summary>
-[PublicAPI]
-[ExportPlatform(PlatformID.MacOSX)]
-public class AppleGameLoader : ICoreApiPlugin, IPlatform
+[Plugin("GameLoader", PluginType.Core, PlatformID.MacOSX)]
+public class AppleGameLoader : IToolkitPlugin
 {
     private const string GlobalPath = "/Applications/The Sims 4.app";
 
@@ -22,28 +16,8 @@ public class AppleGameLoader : ICoreApiPlugin, IPlatform
         Environment.GetEnvironmentVariable("HOME"),
         "/Applications/The Sims 4.app");
 
-    /// <summary>
-    ///     Initializes an instance of <see cref="AppleGameLoader" />.
-    /// </summary>
-    public AppleGameLoader()
-    {
-        Is64 = RuntimeInformation.OSArchitecture.HasFlag(Architecture.X64)
-               || RuntimeInformation.OSArchitecture.HasFlag(Architecture.Arm64);
-        Platform = RuntimeInformation.RuntimeIdentifier;
-        InstalledPath = GlobalPath;
-    }
-
     /// <inheritdoc />
-    public bool Is64 { get; }
-
-    /// <inheritdoc />
-    public string Platform { get; }
-
-    /// <inheritdoc />
-    public string InstalledPath { get; private set; }
-
-    /// <inheritdoc />
-    public Task<IPlatform> LocateGameAsync()
+    public void Execute()
     {
         var gameFile = new FileInfo(GlobalPath);
         if (!gameFile.Exists)
@@ -60,8 +34,11 @@ public class AppleGameLoader : ICoreApiPlugin, IPlatform
         {
             throw new FileNotFoundException("Cannot locate an installed version of Sims.");
         }
+    }
 
-        InstalledPath = gameFile.Directory.FullName;
-        return Task.FromResult((IPlatform) this);
+    /// <inheritdoc />
+    public void Register()
+    {
+        // This plugin does not require registration.
     }
 }

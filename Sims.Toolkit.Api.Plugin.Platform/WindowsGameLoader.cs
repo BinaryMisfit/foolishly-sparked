@@ -1,48 +1,23 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using JetBrains.Annotations;
 using Microsoft.Win32;
-using Sims.Toolkit.Plugin.Attributes;
-using Sims.Toolkit.Plugin.Interfaces.Meta;
-using Sims.Toolkit.Plugin.Interfaces.Shared;
+using Sims.Toolkit.Plugin;
 
 namespace Sims.Toolkit.Api.Plugin.Platform;
 
 /// <summary>
-///     Implementation of <see cref="ICoreApiPlugin" /> and <see cref="IPlatform" /> for Windows operating systems.
+///     Plugin to locate the game installation on Windows.
 /// </summary>
-[PublicAPI]
-[ExportPlatform(PlatformID.Win32NT)]
+[Plugin("GameLoader", PluginType.Core, PlatformID.Win32NT)]
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
-public class WindowsGameLoader : ICoreApiPlugin, IPlatform
+public class WindowsGameLoader : IToolkitPlugin
 {
     private const string RegistryKey = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Wow6432Node\\Maxis\\The Sims 4";
     private const string RegistryValue = "Install Dir";
 
-    /// <summary>
-    ///     Initializes an instance of <see cref="WindowsGameLoader" />.
-    /// </summary>
-    public WindowsGameLoader()
-    {
-        Is64 = RuntimeInformation.OSArchitecture.HasFlag(Architecture.X64);
-        Platform = RuntimeInformation.RuntimeIdentifier;
-        InstalledPath = string.Empty;
-    }
-
     /// <inheritdoc />
-    public bool Is64 { get; }
-
-    /// <inheritdoc />
-    public string Platform { get; }
-
-    /// <inheritdoc />
-    public string InstalledPath { get; private set; }
-
-    /// <inheritdoc />
-    public Task<IPlatform> LocateGameAsync()
+    public void Execute()
     {
         var value = Registry.GetValue(RegistryKey, RegistryValue, string.Empty) as string;
         if (string.IsNullOrEmpty(value))
@@ -55,8 +30,11 @@ public class WindowsGameLoader : ICoreApiPlugin, IPlatform
         {
             throw new FileNotFoundException("Cannot locate an installed version of Sims 4");
         }
+    }
 
-        InstalledPath = directory.FullName;
-        return Task.FromResult((IPlatform) this);
+    /// <inheritdoc />
+    public void Register()
+    {
+        // This plugin does not require registration.
     }
 }
