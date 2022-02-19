@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using Sims.Toolkit.Api.Core;
 
 namespace Sims.Toolkit.Api;
 

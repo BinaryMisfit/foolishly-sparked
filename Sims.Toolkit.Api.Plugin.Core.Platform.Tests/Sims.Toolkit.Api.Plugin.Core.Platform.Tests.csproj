@@ -7,7 +7,7 @@
         <LangVersion>latestmajor</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Nullable>annotations</Nullable>
-        <OutDir>..\Generated\Tests\$(Configuration)</OutDir>
+        <OutDir>..\Generated\Tests\$(Configuration)\Api.Plugin.Core.Platform</OutDir>
         <OutputType>library</OutputType>
         <Product>Test Library for the Sims.Toolkit.Api.Plugin.Core.Platform.</Product>
         <TargetFramework>net6.0</TargetFramework>
@@ -94,7 +94,7 @@
 
     <Target Name="Cleanup" AfterTargets="Clean">
         <RemoveDir Directories="$(ProjectDir)\bin"/>
-        <RemoveDir Directories="..\Generated\Tests\$(Configuration)"/>
+        <RemoveDir Directories="..\Generated\Tests\$(Configuration)\Api.Plugin.Core.Platform"/>
     </Target>
 
 </Project>

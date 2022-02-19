@@ -10,7 +10,7 @@
         <Nullable>annotations</Nullable>
         <OutDir>..\Generated\Output\$(Configuration)\Api</OutDir>
         <OutputType>library</OutputType>
-        <Product>API to expose custom content features for Sims games.</Product>
+        <Product>Contains the core components of the Sims.Toolkit.Api.</Product>
         <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
@@ -21,17 +21,9 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="System.IO.Abstractions" Version="16.1.11"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Sims.Toolkit.Api.Core\Sims.Toolkit.Api.Core.csproj"/>
-        <ProjectReference Include="..\Sims.Toolkit.Plugin.Manager\Sims.Toolkit.Plugin.Manager.csproj"/>
-        <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">
         <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
     </Target>
-
 </Project>

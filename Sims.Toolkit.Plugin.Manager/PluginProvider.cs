@@ -29,7 +29,10 @@ public sealed class PluginProvider : IPluginProvider, IDisposable, IAsyncDisposa
     /// <inheritdoc />
     public void Dispose()
     {
-        DisposeProvider();
+        if (!_disposed)
+        {
+            DisposeProvider();
+        }
     }
 
     /// <inheritdoc />

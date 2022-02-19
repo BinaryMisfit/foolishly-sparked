@@ -1,4 +1,4 @@
-﻿using Sims.Toolkit.Api.Helpers;
+﻿using Sims.Toolkit.Api.Core;
 using Xunit;
 
 namespace Sims.Toolkit.Api.Tests.Helpers;

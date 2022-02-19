@@ -17,6 +17,7 @@ public static class DependencyExtensions
     public static IServiceCollection AddSimsToolkitApi(this IServiceCollection services)
     {
         return services.AddScoped<IFileSystem, FileSystem>()
+            .AddScoped<IGameInstance, GameInstance>()
             .AddPluginManager();
     }
 }

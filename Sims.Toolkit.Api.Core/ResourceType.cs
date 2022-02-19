@@ -1,4 +1,4 @@
-﻿namespace Sims.Toolkit.Api;
+﻿namespace Sims.Toolkit.Api.Core;
 
 /// <summary>
 ///     Represents a resource type inside a Sims package.

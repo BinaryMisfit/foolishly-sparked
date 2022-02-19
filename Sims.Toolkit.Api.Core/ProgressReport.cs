@@ -1,4 +1,4 @@
-﻿namespace Sims.Toolkit.Api;
+﻿namespace Sims.Toolkit.Api.Core;
 
 /// <summary>
 ///     Represents the progress returned from an asynchronous task.
