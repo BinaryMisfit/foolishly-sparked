@@ -3,8 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
+using Microsoft.Extensions.Options;
 using Microsoft.Win32;
 using Sims.Toolkit.Api.Core;
+using Sims.Toolkit.Config;
 using Sims.Toolkit.Plugin.Properties;
 
 namespace Sims.Toolkit.Api;
@@ -15,14 +17,18 @@ namespace Sims.Toolkit.Api;
 public class GameInstance : IGameLocator
 {
     private readonly IFileSystem _fileSystem;
+    private readonly GameInstanceOptions _options;
 
     /// <summary>
     ///     Initializes an instance of <see cref="GameInstance" />.
     /// </summary>
-    public GameInstance(IFileSystem fileSystem)
+    public GameInstance(IFileSystem fileSystem, IOptions<GameInstanceOptions> options)
     {
         _fileSystem = fileSystem;
-        Platform = Environment.OSVersion.Platform;
+        if (options.Value != null)
+        {
+            _options = options.Value;
+        }
     }
 
     /// <summary>
@@ -46,11 +52,7 @@ public class GameInstance : IGameLocator
     /// <returns>The <see cref="IGameInstance" />.</returns>
     public IGameInstance LocateGame()
     {
-        return Platform switch
-        {
-            PlatformID.MacOSX => LocateApple(),
-            var _ => LocateWindows()
-        };
+        return LocateApple(Platform);
     }
 
     /// <summary>
@@ -100,27 +102,45 @@ public class GameInstance : IGameLocator
         return this;
     }
 
-    private IGameInstance LocateApple()
+    private IGameInstance LocateApple(PlatformID platform)
     {
-        const string GlobalPath = "/Applications/The Sims 4.app";
-        var _userPath = Path.Join(Environment.GetEnvironmentVariable("HOME"), "/Applications/The Sims 4.app");
-        var gameFile = _fileSystem.FileInfo.FromFileName(GlobalPath);
-        if (!gameFile.Exists)
+        var gamePath = _fileSystem.DirectoryInfo.FromDirectoryName(_options.GameInstallPath);
+        if (platform == PlatformID.MacOSX)
         {
-            gameFile = _fileSystem.FileInfo.FromFileName(_userPath);
+            const string GlobalPath = "/Applications/The Sims 4.app";
+            var userPath = Path.Join(Environment.GetEnvironmentVariable("HOME"), "/Applications/The Sims 4.app");
+            gamePath = _fileSystem.DirectoryInfo.FromDirectoryName(GlobalPath);
+            if (!gamePath.Exists)
+            {
+                gamePath = _fileSystem.DirectoryInfo.FromDirectoryName(userPath);
+            }
         }
 
-        if (gameFile.Directory == null)
+        if (platform == PlatformID.Win32NT)
+        {
+            const string searchPattern = "TS4*.exe";
+            var drives = _fileSystem.DriveInfo.GetDrives();
+            foreach (var drive in drives)
+            {
+                var files = drive.RootDirectory.GetFiles(searchPattern, SearchOption.AllDirectories);
+                if (files.Any())
+                {
+                    break;
+                }
+            }
+        }
+
+        if (gamePath == null)
         {
             throw new DirectoryNotFoundException(Exceptions.GameDirectoryNotFound);
         }
 
-        if (!gameFile.Directory.Exists)
+        if (!gamePath.Exists)
         {
             throw new DirectoryNotFoundException(Exceptions.GameDirectoryNotFound);
         }
 
-        GamePath = gameFile.Directory.FullName;
+        GamePath = gamePath.FullName;
         return this;
     }
 }

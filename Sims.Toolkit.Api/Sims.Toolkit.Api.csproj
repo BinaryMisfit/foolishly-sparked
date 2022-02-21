@@ -17,6 +17,7 @@
     <ItemGroup>
         <PackageReference Include="JetBrains.Annotations" Version="2021.3.0"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0"/>
         <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,6 +27,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Sims.Toolkit.Api.Core\Sims.Toolkit.Api.Core.csproj"/>
+        <ProjectReference Include="..\Sims.Toolkit.Config\Sims.Toolkit.Config.csproj"/>
         <ProjectReference Include="..\Sims.Toolkit.Plugin.Manager\Sims.Toolkit.Plugin.Manager.csproj"/>
         <ProjectReference Include="..\Sims.Toolkit.Plugin\Sims.Toolkit.Plugin.csproj"/>
     </ItemGroup>
