@@ -17,7 +17,7 @@ namespace Sims.Toolkit.Api;
 public class GameInstance : IGameLocator
 {
     private readonly IFileSystem _fileSystem;
-    private readonly GameInstanceOptions _options;
+    private readonly GameInstanceOptions? _options;
 
     /// <summary>
     ///     Initializes an instance of <see cref="GameInstance" />.
@@ -25,10 +25,7 @@ public class GameInstance : IGameLocator
     public GameInstance(IFileSystem fileSystem, IOptions<GameInstanceOptions> options)
     {
         _fileSystem = fileSystem;
-        if (options.Value != null)
-        {
-            _options = options.Value;
-        }
+        _options = options.Value;
     }
 
     /// <summary>

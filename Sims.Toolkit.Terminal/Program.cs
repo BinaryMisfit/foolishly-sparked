@@ -3,6 +3,7 @@ using System.CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
 using Sims.Toolkit.Api.Core;
+using Sims.Toolkit.Config;
 
 namespace Sims.Toolkit.Terminal;
 
@@ -10,7 +11,8 @@ internal static class Program
 {
     internal static int Main(string[] args)
     {
-        var services = new ServiceCollection().AddSimsToolkitApi()
+        var services = new ServiceCollection().ConfigureSimsToolkit()
+            .AddSimsToolkitApi()
             .BuildServiceProvider();
         var commandGame = new Command("game", "Prints information about the game.");
         commandGame.SetHandler(

@@ -15,15 +15,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="6.0.0" />
-        <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
         <PackageReference Include="Microsoft.Extensions.Primitives" Version="6.0.0" />
         <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
@@ -32,8 +24,6 @@
         </PackageReference>
         <PackageReference Include="System.IO.Abstractions" Version="16.1.15" />
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-        <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
-        <PackageReference Include="System.Text.Json" Version="6.0.2" />
     </ItemGroup>
 
     <ItemGroup>
