@@ -1,12 +1,12 @@
-﻿using System.IO.Abstractions;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sims.Toolkit.Api;
+namespace Sims.Toolkit.Config;
 
 /// <summary>
 ///     Extends <see cref="IServiceCollection" /> to inject DI interfaces.
 /// </summary>
-public static class DependencyExtensions
+public static class ServiceCollectionExtensions
 {
     /// <summary>
     ///     Configures the DI container.
@@ -15,9 +15,14 @@ public static class DependencyExtensions
     /// <returns>A populated instance of <see cref="IServiceCollection" />.</returns>
     public static IServiceCollection AddSimsToolkitApi(this IServiceCollection services)
     {
-        services.AddScoped<IFileSystem, FileSystem>()
-            .AddScoped<IGameInstance, GameInstance>();
+        var configuration = GetApiConfiguration();
+        services.Configure<GameInstanceOptions>(_ => configuration.GetSection("GameInstanceOptions"));
         return services;
     }
 
+    private static IConfiguration GetApiConfiguration()
+    {
+        var builder = new ConfigurationBuilder().AddJsonFile("toolkit-settings.json", true);
+        return builder.Build();
+    }
 }
