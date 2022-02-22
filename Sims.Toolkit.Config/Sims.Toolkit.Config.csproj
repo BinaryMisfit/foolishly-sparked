@@ -15,16 +15,21 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
         <PackageReference Include="SonarAnalyzer.CSharp" Version="8.35.0.42613">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="toolkit-settings.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
     <Target Name="Cleanup" AfterTargets="Clean">
-        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Api"/>
-        <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
+        <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml" />
     </Target>
 
 </Project>

@@ -104,7 +104,7 @@ public class GameInstance : IGameLocator
 
     private IGameInstance LocateApple(PlatformID platform)
     {
-        var gamePath = _fileSystem.DirectoryInfo.FromDirectoryName(_options.GameInstallPath);
+        var gamePath = _fileSystem.DirectoryInfo.FromDirectoryName(_options.InstallPath);
         if (platform == PlatformID.MacOSX)
         {
             const string GlobalPath = "/Applications/The Sims 4.app";

@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <Target Name="Cleanup" AfterTargets="Clean">
+        <RemoveDir Directories="..\Generated\Output\$(Configuration)\Api"/>
         <Delete Files="..\Generated\Docs\$(Configuration)\$(AssemblyName).xml"/>
     </Target>
 </Project>

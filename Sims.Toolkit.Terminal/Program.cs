@@ -1,10 +1,8 @@
 ﻿using System;
 using System.CommandLine;
-using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
 using Sims.Toolkit.Api.Core;
-using Sims.Toolkit.Config;
 
 namespace Sims.Toolkit.Terminal;
 
@@ -12,19 +10,7 @@ internal static class Program
 {
     internal static int Main(string[] args)
     {
-        var configPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        var configFile = Path.Join(configPath, "SimsToolkit", "appsettings.json");
-        var services = new ServiceCollection().AddSimsToolkitApi(
-                new ApiOptions
-                {
-                    Game = new GameInstanceOptions
-                    {
-                        GameInstallPath = "D:\\Games\\Origin\\Sims 4\\",
-                        GameUserPath = Path.Combine(
-                            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                            "Electronic Arts")
-                    }
-                })
+        var services = new ServiceCollection().AddSimsToolkitApi()
             .BuildServiceProvider();
         var commandGame = new Command("game", "Prints information about the game.");
         commandGame.SetHandler(
