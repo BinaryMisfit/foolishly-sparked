@@ -2,7 +2,6 @@
 using System.CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Sims.Toolkit.Api;
-using Sims.Toolkit.Api.Core;
 using Sims.Toolkit.Config;
 
 namespace Sims.Toolkit.Terminal;
@@ -23,7 +22,6 @@ internal static class Program
                     .BuildGameProvider();
                 var progress = new Progress<ProgressReport>();
                 progress.ProgressChanged += (_, e) => { Console.WriteLine(e.Message); };
-                Console.WriteLine(game?.PrintGameInfo());
             });
         var commandLine = new RootCommand {Description = "Command line interface for the Sims Toolkit."};
         commandLine.AddCommand(commandGame);
