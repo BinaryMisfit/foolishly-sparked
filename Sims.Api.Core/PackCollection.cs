@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Sims.Core;
 
-namespace Sims.Api.Game;
+namespace Sims.Api.Core;
 
 /// <inheritdoc />
 public class PackCollection : IPackCollection
@@ -81,13 +81,13 @@ public class PackCollection : IPackCollection
     }
 
     /// <inheritdoc />
-    public IEnumerable<KeyValuePair<PackType, int>> Summary()
+    public IEnumerable<KeyValuePair<PackTypes, int>> Summary()
     {
-        var sorted = packs.OrderBy(pack => pack.PackType)
+        var sorted = packs.OrderBy(pack => pack.PackTypes)
             .ThenBy(pack => pack.PackTypeId);
-        var summary = sorted.GroupBy(item => item.PackType)
+        var summary = sorted.GroupBy(item => item.PackTypes)
             .AsEnumerable()
-            .Select(item => new KeyValuePair<PackType, int>(item.Key, item.Count()));
+            .Select(item => new KeyValuePair<PackTypes, int>(item.Key, item.Count()));
         return summary;
     }
 }

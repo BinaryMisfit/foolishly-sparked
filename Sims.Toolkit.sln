@@ -42,7 +42,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Catalog", "Sims.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Package", "Sims.Api.Package\Sims.Api.Package.csproj", "{E17AF017-885C-49F5-874D-73D09DBCF5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Game", "Sims.Api.Game\Sims.Api.Game.csproj", "{072DA337-4B97-4645-809C-3EED3FD1C0B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Core", "Sims.Api.Core\Sims.Api.Core.csproj", "{072DA337-4B97-4645-809C-3EED3FD1C0B5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sims", "Sims", "{D5EEB5B2-B18A-49C4-AC10-778EA8D63300}"
 EndProject

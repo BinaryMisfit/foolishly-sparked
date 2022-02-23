@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sims.Api.Package;
 
-namespace Sims.Api.Game;
+namespace Sims.Api.Core;
 
 /// <summary>
 ///     Extends <see cref="IServiceCollection" /> to inject DI interfaces.
@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApiGame(this IServiceCollection services)
     {
         services.AddApiPackage();
+        services.AddSingleton<IGameInstance, GameInstance>();
         return services;
     }
 }

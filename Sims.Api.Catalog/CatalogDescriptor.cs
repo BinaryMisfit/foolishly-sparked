@@ -28,9 +28,9 @@ public class CatalogDescriptor
     public ulong Instance { get; private set; }
 
     /// <summary>
-    ///     The <see cref="ResourceType" />.
+    ///     The <see cref="CatalogItemType" />.
     /// </summary>
-    public ResourceType ResourceType { get; private set; }
+    public CatalogItemType CatalogItemType { get; private set; }
 
     /// <summary>
     ///     The resource group identifier.
@@ -59,10 +59,10 @@ public class CatalogDescriptor
             writer.Write(entry[entryCount]);
         }
 
-        Instance = ((ulong) BitConverter.ToUInt32(content, Constants.InstanceStart) << 32)
-                   | BitConverter.ToUInt32(content, Constants.InstanceStartAlternate);
-        ResourceType = (ResourceType) BitConverter.ToUInt32(content, Constants.ResourceTypeStart);
-        ResourceGroup = BitConverter.ToUInt32(content, Constants.ResourceGroupStart);
+        Instance = ((ulong) BitConverter.ToUInt32(content, ContentByteMap.InstanceStart) << 32)
+                   | BitConverter.ToUInt32(content, ContentByteMap.InstanceStartAlternate);
+        CatalogItemType = (CatalogItemType) BitConverter.ToUInt32(content, ContentByteMap.ResourceTypeStart);
+        ResourceGroup = BitConverter.ToUInt32(content, ContentByteMap.ResourceGroupStart);
         return content;
     }
 }

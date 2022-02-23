@@ -3,7 +3,7 @@ using Microsoft.Extensions.Options;
 using Sims.Core;
 using Sims.Core.Properties;
 
-namespace Sims.Api.Game;
+namespace Sims.Api.Core;
 
 /// <summary>
 ///     Instance of the installed Sims game.
@@ -11,12 +11,12 @@ namespace Sims.Api.Game;
 public class GameInstance : IGameLocator
 {
     private readonly IFileSystem _fileSystem;
-    private readonly GameInstanceOptions? _options;
+    private readonly GameOptions? _options;
 
     /// <summary>
     ///     Initializes an instance of <see cref="GameInstance" />.
     /// </summary>
-    public GameInstance(IFileSystem fileSystem, IOptions<GameInstanceOptions> options)
+    public GameInstance(IFileSystem fileSystem, IOptions<GameOptions> options)
     {
         _fileSystem = fileSystem;
         _options = options.Value;
@@ -67,11 +67,11 @@ public class GameInstance : IGameLocator
         InstalledPacks = new PackCollection();
         var directories = _fileSystem.DirectoryInfo.FromDirectoryName(GamePath)
             .GetDirectories("*", SearchOption.AllDirectories)
-            .Where(current => !Constants.IgnoreGameFolders.Contains(current.Parent.Name))
+            .Where(current => !GameFileMap.IgnoreGameFolders.Contains(current.Parent.Name))
             .OrderBy(current => current.Name);
         foreach (var directory in directories)
         {
-            var files = directory.GetFiles(Constants.FilesClientPackage, SearchOption.TopDirectoryOnly);
+            var files = directory.GetFiles(GameFileMap.FilesClientPackage, SearchOption.TopDirectoryOnly);
             if (!files.Any())
             {
                 continue;

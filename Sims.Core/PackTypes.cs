@@ -3,7 +3,7 @@
 /// <summary>
 ///     Identifies the different type of game packs.
 /// </summary>
-public enum PackType
+public enum PackTypes
 {
     /// <summary>
     ///     Base Game Indicator.

@@ -76,9 +76,9 @@ public class PackageDescriptor
     /// <summary>
     ///     Read package asynchronously.
     /// </summary>
-    /// <param name="progress">The <see cref="ProgressReport" /> used for progress reporting.</param>
+    /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync(IProgress<ProgressReport>? progress)
+    public Task<PackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress)
     {
         return ReadPackageAsync(progress, default);
     }
@@ -86,10 +86,10 @@ public class PackageDescriptor
     /// <summary>
     ///     Read package asynchronously.
     /// </summary>
-    /// <param name="progress">The <see cref="ProgressReport" /> used for progress reporting.</param>
+    /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <param name="token">The <see cref="CancellationToken" />.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync(IProgress<ProgressReport>? progress, CancellationToken token)
+    public Task<PackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress, CancellationToken token)
     {
         if (token.IsCancellationRequested)
         {
@@ -111,7 +111,7 @@ public class PackageDescriptor
             token.ThrowIfCancellationRequested();
         }
 
-        progress?.Report(new ProgressReport($"{SourceFile?.Name} is a valid custom content file."));
+        progress?.Report(new AsyncProgressReport($"{SourceFile?.Name} is a valid custom content file."));
         return Task.FromResult(this);
     }
 
@@ -137,9 +137,9 @@ public class PackageDescriptor
     /// <summary>
     ///     Reads the package contents.
     /// </summary>
-    /// <param name="progress">The <see cref="ProgressReport" /> used for progress reporting.</param>
+    /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<ProgressReport>? progress)
+    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<AsyncProgressReport>? progress)
     {
         return ReadPackageContentAsync(progress, default);
     }
@@ -147,10 +147,10 @@ public class PackageDescriptor
     /// <summary>
     ///     Reads the package contents.
     /// </summary>
-    /// <param name="progress">The <see cref="ProgressReport" /> used for progress reporting.</param>
+    /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <param name="token">The <see cref="CancellationToken" />.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<ProgressReport>? progress, CancellationToken token)
+    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<AsyncProgressReport>? progress, CancellationToken token)
     {
         if (token.IsCancellationRequested)
         {
@@ -165,7 +165,7 @@ public class PackageDescriptor
         var stream = new MemoryStream(_fileSystem.File.ReadAllBytes(SourceFile.FullName));
         try
         {
-            progress?.Report(new ProgressReport($"Loading content from {SourceFile?.Name}."));
+            progress?.Report(new AsyncProgressReport($"Loading content from {SourceFile?.Name}."));
             stream.Position = 0;
             var reader = new BinaryReader(stream);
             stream.Position = ContentPosition;
@@ -185,7 +185,7 @@ public class PackageDescriptor
 
             LoadEntries(reader, header, headerSize);
             stream.Close();
-            progress?.Report(new ProgressReport($"Loaded {this}"));
+            progress?.Report(new AsyncProgressReport($"Loaded {this}"));
             return Task.FromResult(this);
         }
         finally
@@ -203,14 +203,14 @@ public class PackageDescriptor
     private static byte[] ReadHeader(Stream stream)
     {
         stream.Position = 0;
-        var header = new BinaryReader(stream).ReadBytes(Constants.HeaderId.Length);
+        var header = new BinaryReader(stream).ReadBytes(HeaderByteMap.HeaderId.Length);
         stream.Close();
         return header;
     }
 
     private void VerifyHeader(byte[] header)
     {
-        if (header.Length != Constants.HeaderId.Length)
+        if (header.Length != HeaderByteMap.HeaderId.Length)
         {
             throw new EndOfStreamException($"{SourceFile?.Name} EOF reached prematurely.");
         }
@@ -223,7 +223,7 @@ public class PackageDescriptor
         var magicBit = new byte[4];
         Array.Copy(header, 0, magicBit, 0, magicBit.Length);
         var magicCheck = Encoding.Default.GetString(magicBit);
-        if (magicCheck != Constants.HeaderBit)
+        if (magicCheck != HeaderByteMap.HeaderBit)
         {
             throw new InvalidCastException($"{SourceFile?.Name} is NOT a valid custom content file.");
         }
@@ -231,9 +231,9 @@ public class PackageDescriptor
 
     private void PopulateVersionInfo(byte[] header)
     {
-        MajorVersion = BitConverter.ToInt32(header, Constants.MajorStart);
-        MinorVersion = BitConverter.ToInt32(header, Constants.MinorStart);
-        if (MajorVersion != Constants.PackageMajor && MinorVersion != Constants.PackageMinor)
+        MajorVersion = BitConverter.ToInt32(header, HeaderByteMap.MajorStart);
+        MinorVersion = BitConverter.ToInt32(header, HeaderByteMap.MinorStart);
+        if (MajorVersion != HeaderByteMap.PackageMajor && MinorVersion != HeaderByteMap.PackageMinor)
         {
             throw new VersionNotFoundException($"{MajorVersion} ({MinorVersion}) does not match expected 2 (1).");
         }
@@ -241,10 +241,10 @@ public class PackageDescriptor
 
     private void PopulateContentInfo(byte[] header)
     {
-        ContentPosition = BitConverter.ToInt32(header, Constants.ContentPosition);
+        ContentPosition = BitConverter.ToInt32(header, HeaderByteMap.ContentPosition);
         if (ContentPosition == 0)
         {
-            ContentPosition = BitConverter.ToInt32(header, Constants.ContentPositionAlternate);
+            ContentPosition = BitConverter.ToInt32(header, HeaderByteMap.ContentPositionAlternate);
         }
 
         if (ContentPosition == 0)
@@ -252,7 +252,7 @@ public class PackageDescriptor
             throw new KeyNotFoundException($"{SourceFile?.Name} does not contain any custom content.");
         }
 
-        ContentCount = BitConverter.ToInt32(header, Constants.ContentCount);
+        ContentCount = BitConverter.ToInt32(header, HeaderByteMap.ContentCount);
         if (ContentCount == 0)
         {
             throw new KeyNotFoundException($"{SourceFile?.Name} custom content cannot be read.");
@@ -273,7 +273,7 @@ public class PackageDescriptor
 
     private void LoadEntries(BinaryReader reader, IReadOnlyList<int> header, int headerSize)
     {
-        var entry = new int[Constants.Fields - headerSize];
+        var entry = new int[ContentByteMap.Fields - headerSize];
         for (var i = 0; i < ContentCount; i++)
         {
             for (var j = 0; j < entry.Length; j++)

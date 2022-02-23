@@ -1,4 +1,4 @@
-﻿namespace Sims.Api.Game;
+﻿namespace Sims.Api.Core;
 
 /// <summary>
 ///     The default IGameProvider.
@@ -9,13 +9,6 @@ public sealed class GameProvider : IGameProvider, IDisposable, IAsyncDisposable
     private bool _disposed;
     private string? _gameDirectory;
     private PlatformID _platformId;
-
-    internal GameProvider(IGameInstance gameInstance)
-    {
-        _gameDirectory = gameInstance.GamePath;
-        _packs = gameInstance.InstalledPacks;
-        _platformId = gameInstance.Platform;
-    }
 
     /// <inheritdoc />
     public ValueTask DisposeAsync()

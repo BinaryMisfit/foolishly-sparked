@@ -3,7 +3,7 @@
 /// <summary>
 ///     Represents a resource type inside a Sims package.
 /// </summary>
-public enum ResourceType : uint
+public enum CatalogItemType : uint
 {
     /// <summary>
     ///     Unknown.

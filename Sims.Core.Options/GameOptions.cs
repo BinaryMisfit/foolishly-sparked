@@ -5,12 +5,12 @@ namespace Sims.Core;
 /// <summary>
 ///     Defines options for the game instance.
 /// </summary>
-public class GameInstanceOptions
+public class GameOptions
 {
     /// <summary>
     ///     The section name in the config file.
     /// </summary>
-    public const string ConfigurationSectionName = "GameInstance";
+    public static string ConfigurationSectionName => "GameInstance";
 
     /// <summary>
     ///     The game installation path.

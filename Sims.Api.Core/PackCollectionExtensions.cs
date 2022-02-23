@@ -2,17 +2,17 @@
 using System.IO.Abstractions;
 using Sims.Core;
 
-namespace Sims.Api.Game;
+namespace Sims.Api.Core;
 
 internal static class PackCollectionExtensions
 {
     internal static IPackCollection LoadPacks(
         this IPackCollection pack,
-        PackType packType,
+        PackTypes packTypes,
         IEnumerable<IDirectoryInfo> directories,
-        IProgress<ProgressReport>? progress)
+        IProgress<AsyncProgressReport>? progress)
     {
-        if (!Dictionaries.PackTypeFolders.TryGetValue(packType, out var folderKey))
+        if (!PackTypesMappings.PackTypeFolders.TryGetValue(packTypes, out var folderKey))
         {
             return pack;
         }
@@ -22,7 +22,7 @@ internal static class PackCollectionExtensions
             return pack;
         }
 
-        var findPacks = directories.Where(directory => !Constants.IgnoreGameFolders.Contains(directory.Parent.Name))
+        var findPacks = directories.Where(directory => !GameFileMap.IgnoreGameFolders.Contains(directory.Parent.Name))
             .Where(directory => directory.Name.StartsWith(folderKey, StringComparison.InvariantCulture))
             .ToList();
         findPacks.OrderBy(directory => directory.Name)
@@ -30,7 +30,7 @@ internal static class PackCollectionExtensions
             .ForEach(
                 directory =>
                 {
-                    var packFiles = directory.GetFiles(Constants.FilesClientPackage, SearchOption.TopDirectoryOnly);
+                    var packFiles = directory.GetFiles(GameFileMap.FilesClientPackage, SearchOption.TopDirectoryOnly);
                     if (!packFiles.Any())
                     {
                         return;
@@ -38,11 +38,11 @@ internal static class PackCollectionExtensions
 
                     var gamePack = new PackDescriptor(directory.Name) {Path = directory};
                     progress?.Report(
-                        new ProgressReport(
+                        new AsyncProgressReport(
                             string.Format(
                                 CultureInfo.CurrentCulture,
                                 "Adding {0}: {1}",
-                                Dictionaries.PackTypeName[gamePack.PackType],
+                                PackTypesMappings.PackTypeName[gamePack.PackTypes],
                                 gamePack.PackName)));
                     pack.Add(gamePack);
                 });

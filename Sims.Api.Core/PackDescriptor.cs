@@ -3,7 +3,7 @@ using Sims.Api.Package;
 using Sims.Core;
 using Sims.Core.Properties;
 
-namespace Sims.Api.Game;
+namespace Sims.Api.Core;
 
 /// <summary>
 ///     Descriptor of a game pack for the Sims.
@@ -19,7 +19,7 @@ public class PackDescriptor
         PackId = packId;
         PackName = GamePacks.ResourceManager.GetString(packId) ?? GamePacks.EP00;
         PackTypeId = DetermineTypeId();
-        PackType = DetermineType();
+        PackTypes = DetermineType();
         Collections = new PackageCollection();
     }
 
@@ -34,9 +34,9 @@ public class PackDescriptor
     public string? PackName { get; }
 
     /// <summary>
-    ///     The <see cref="PackType" />.
+    ///     The <see cref="PackTypes" />.
     /// </summary>
-    public PackType PackType { get; }
+    public PackTypes PackTypes { get; }
 
     /// <summary>
     ///     The pack type identifier.
@@ -64,16 +64,16 @@ public class PackDescriptor
         return -1;
     }
 
-    private PackType DetermineType()
+    private PackTypes DetermineType()
     {
         var type = PackId[..2]
             .ToUpperInvariant();
         if (string.IsNullOrEmpty(type))
         {
-            return PackType.Error;
+            return PackTypes.Error;
         }
 
-        var key = Dictionaries.PackTypeFolders.FirstOrDefault(
+        var key = PackTypesMappings.PackTypeFolders.FirstOrDefault(
                 folder => folder.Value.ToUpperInvariant()
                     .StartsWith(type, StringComparison.CurrentCulture))
             .Key;

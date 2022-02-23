@@ -13,11 +13,11 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Instance of <see cref="IServiceCollection" />.</param>
     /// <returns>A populated instance of <see cref="IServiceCollection" />.</returns>
-    public static IServiceCollection Configure(this IServiceCollection services)
+    public static IServiceCollection ConfigureSims(this IServiceCollection services)
     {
         var configuration = GetApiConfiguration();
-        services.AddOptions<GameInstanceOptions>()
-            .Bind(configuration.GetSection(GameInstanceOptions.ConfigurationSectionName))
+        services.AddOptions<GameOptions>()
+            .Bind(configuration.GetSection(GameOptions.ConfigurationSectionName))
             .ValidateDataAnnotations();
         return services;
     }

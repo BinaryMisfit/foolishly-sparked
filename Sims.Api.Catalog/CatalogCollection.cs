@@ -91,12 +91,12 @@ public class CatalogCollection : ICatalogCollection
     }
 
     /// <inheritdoc />
-    public IEnumerable<KeyValuePair<ResourceType, int>> Summary()
+    public IEnumerable<KeyValuePair<CatalogItemType, int>> Summary()
     {
-        var sorted = Contents.OrderBy(item => item.ResourceType.ToString());
-        var summary = sorted.GroupBy(item => item.ResourceType)
+        var sorted = Contents.OrderBy(item => item.CatalogItemType.ToString());
+        var summary = sorted.GroupBy(item => item.CatalogItemType)
             .AsEnumerable()
-            .Select(item => new KeyValuePair<ResourceType, int>(item.Key, item.Count()));
+            .Select(item => new KeyValuePair<CatalogItemType, int>(item.Key, item.Count()));
         return summary;
     }
 }

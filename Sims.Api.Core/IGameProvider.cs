@@ -1,4 +1,4 @@
-﻿namespace Sims.Api.Game;
+﻿namespace Sims.Api.Core;
 
 /// <summary>
 ///     Specifies the contract for a game provider.

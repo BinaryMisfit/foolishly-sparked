@@ -1,4 +1,4 @@
-﻿namespace Sims.Api.Game;
+﻿namespace Sims.Api.Core;
 
 /// <summary>
 ///     Represents an installed game instance.
