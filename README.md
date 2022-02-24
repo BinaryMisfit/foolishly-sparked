@@ -80,7 +80,7 @@ dealing with the internals of Sims `.package` files was taken from these project
 #### Interesting Facts
 
 - <sub>The original name for this project was Sims Toolkit. However after learning about Sims 4 Toolkit predating this
-  project it was renamed to Foolishly Sparked. I felt it was only respectful to him as he started work on his toolset
-  long before this project started.</sub>
+  project it was renamed to Foolishly Sparked. I felt it was only respectful as the work on Sims 4 Toolkit started long
+  before this project.</sub>
 - <sub>Most of the referenced project's authors have been privately contacted regarding the use of their code where
   possible.</sub>
