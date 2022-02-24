@@ -60,7 +60,7 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin `
-            /k:"senselessly-foolish-sims-toolkit" `
+            /k:"senselessly-foolish-foolishly-sparked" `
             /o:"senselessly-foolish" `
             /d:sonar.login="${{ secrets.SONAR_TOKEN }}" `
             /d:sonar.host.url="https://sonarcloud.io" `

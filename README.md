@@ -1,6 +1,6 @@
 # Foolishly Sparked
 
-[![wakatime](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit.svg)](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit)
+[![wakatime](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked.svg)](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked)
 
 ## Overview
 
@@ -81,4 +81,5 @@ dealing with the internals of Sims `.package` files was taken from these project
 - <sub>The original name for this project was Sims Toolkit. However after learning about Sims 4 Toolkit predating this
   project it was renamed to Foolishly Sparked. I felt it was only respectful to him as he started work on his toolset
   long before this project started.</sub>
-- <sub>Most of the referenced project's authors have been privately contacted regarding the use of their code where possible.</sub>
+- <sub>Most of the referenced project's authors have been privately contacted regarding the use of their code where
+  possible.</sub>
