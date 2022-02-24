@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Foolishly.Sparked.Core.Catalog;
+namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Implementation of <see cref="ICatalogCollection" />.

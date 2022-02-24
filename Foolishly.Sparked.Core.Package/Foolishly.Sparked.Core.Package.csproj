@@ -12,7 +12,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Foolishly.Sparked.Core\Foolishly.Sparked.Core.csproj"/>
+        <ProjectReference Include="..\Foolishly.Sparked.Core.Catalog\Foolishly.Sparked.Core.Catalog.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.IO.Abstractions" Version="16.1.15"/>
     </ItemGroup>
 
 </Project>

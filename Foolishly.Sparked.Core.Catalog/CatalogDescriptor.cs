@@ -1,4 +1,4 @@
-﻿namespace Foolishly.Sparked.Core.Catalog;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Descriptor of the package content.

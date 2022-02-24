@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Sims.Core;
+namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Extends <see cref="IServiceCollection" /> to inject DI interfaces.

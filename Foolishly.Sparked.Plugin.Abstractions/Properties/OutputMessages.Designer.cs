@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Foolishly.Sparked.Core.Properties {
+namespace Foolishly.Sparked.Plugin.Properties {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,14 +19,14 @@ namespace Foolishly.Sparked.Core.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Exceptions {
+    public class OutputMessages {
 
         private static global::System.Resources.ResourceManager resourceMan;
 
         private static global::System.Globalization.CultureInfo resourceCulture;
 
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Exceptions() {
+        internal OutputMessages() {
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Foolishly.Sparked.Core.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Plugin.Abstractions.Properties.Exceptions", typeof(Exceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Plugin.Abstractions.Properties.OutputMessages", typeof(OutputMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -58,47 +58,20 @@ namespace Foolishly.Sparked.Core.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Base game not found..
+        ///   Looks up a localized string similar to Loaded plugin for platform: {0}.
         /// </summary>
-        public static string GameBaseNotFound {
+        public static string PluginLoadedPlatform {
             get {
-                return ResourceManager.GetString("GameBaseNotFound", resourceCulture);
+                return ResourceManager.GetString("PluginLoadedPlatform", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to No game found..
+        ///   Looks up a localized string similar to Loaded plugin: {0}.
         /// </summary>
-        public static string GameDirectoryNotFound {
+        public static string PluginLoadedSingle {
             get {
-                return ResourceManager.GetString("GameDirectoryNotFound", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to No game files found..
-        /// </summary>
-        public static string GameFilesNotFound {
-            get {
-                return ResourceManager.GetString("GameFilesNotFound", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Not a valid Sims Toolkit plugin..
-        /// </summary>
-        public static string PluginInvalid {
-            get {
-                return ResourceManager.GetString("PluginInvalid", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Valid platform plugin not found..
-        /// </summary>
-        public static string PluginMissingPlatform {
-            get {
-                return ResourceManager.GetString("PluginMissingPlatform", resourceCulture);
+                return ResourceManager.GetString("PluginLoadedSingle", resourceCulture);
             }
         }
     }

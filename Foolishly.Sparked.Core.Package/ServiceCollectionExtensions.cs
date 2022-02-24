@@ -12,9 +12,9 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Instance of <see cref="IServiceCollection" />.</param>
     /// <returns>A populated instance of <see cref="IServiceCollection" />.</returns>
-    public static IServiceCollection AddApiCatalog(this IServiceCollection services)
+    public static IServiceCollection AddApiPackage(this IServiceCollection services)
     {
-        services.AddCore();
+        services.AddApiCatalog();
         return services;
     }
 }

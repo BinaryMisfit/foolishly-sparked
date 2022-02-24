@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Foolishly.Sparked.Core;
+namespace Foolishly.Sparked.Plugin;
 
 /// <summary>
 ///     Extends <see cref="IServiceCollection" /> to inject DI interfaces.
@@ -12,9 +12,8 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Instance of <see cref="IServiceCollection" />.</param>
     /// <returns>A populated instance of <see cref="IServiceCollection" />.</returns>
-    public static IServiceCollection AddApiCatalog(this IServiceCollection services)
+    public static IServiceCollection AddPluginManager(this IServiceCollection services)
     {
-        services.AddCore();
         return services;
     }
 }

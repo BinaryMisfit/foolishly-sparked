@@ -12,9 +12,10 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Instance of <see cref="IServiceCollection" />.</param>
     /// <returns>A populated instance of <see cref="IServiceCollection" />.</returns>
-    public static IServiceCollection AddApiCatalog(this IServiceCollection services)
+    public static IServiceCollection AddApiGame(this IServiceCollection services)
     {
-        services.AddCore();
+        services.AddApiPackage();
+        services.AddSingleton<IGameInstance, GameInstance>();
         return services;
     }
 }

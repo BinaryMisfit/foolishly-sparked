@@ -18,12 +18,12 @@
       <EmbeddedResource Update="Properties\Exceptions.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
-        <CustomToolNamespace>Sims.Core</CustomToolNamespace>
+        <CustomToolNamespace>Foolishly.Sparked.Core.Properties</CustomToolNamespace>
       </EmbeddedResource>
       <EmbeddedResource Update="Properties\GamePacks.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
-        <CustomToolNamespace>Sims.Core</CustomToolNamespace>
+          <CustomToolNamespace>Foolishly.Sparked.Core.Properties</CustomToolNamespace>
       </EmbeddedResource>
     </ItemGroup>
 

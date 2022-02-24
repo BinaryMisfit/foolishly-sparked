@@ -1,4 +1,4 @@
-﻿namespace Foolishly.Sparked.Core.Catalog;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <inheritdoc />
 public interface ICatalogCollection : IList<CatalogDescriptor>

@@ -36,7 +36,7 @@ namespace Foolishly.Sparked.Core.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sims.Plugin.Abstractions.Properties.GamePacks", typeof(GamePacks).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Plugin.Abstractions.Properties.GamePacks", typeof(GamePacks).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

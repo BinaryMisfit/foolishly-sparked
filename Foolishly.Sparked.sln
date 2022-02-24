@@ -26,29 +26,27 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configurat
 		.wakatime-project = .wakatime-project
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Plugin.Abstractions", "Sims.Plugin.Abstractions\Sims.Plugin.Abstractions.csproj", "{B7092781-5D0B-4F13-9225-808D0FF0279A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Plugin.Abstractions", "Foolishly.Sparked.Plugin.Abstractions\Foolishly.Sparked.Plugin.Abstractions.csproj", "{B7092781-5D0B-4F13-9225-808D0FF0279A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sims.Terminal", "Sims.Terminal", "{3E656E6D-9CF9-4B6E-9A71-8CADFD684CB8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sparked.Terminal", "Sparked.Terminal", "{3E656E6D-9CF9-4B6E-9A71-8CADFD684CB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Plugin", "Sims.Plugin\Sims.Plugin.csproj", "{4D66B59C-9FB3-4762-A2CC-A0EB5A837FFB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Plugin", "Foolishly.Sparked.Plugin\Foolishly.Sparked.Plugin.csproj", "{4D66B59C-9FB3-4762-A2CC-A0EB5A837FFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Core.Options", "Foolishly.Sparked.Core.Options\Foolishly.Sparked.Core.Options.csproj", "{7D3947ED-D15C-4B5B-A35A-0D51EFCABBB5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Core", "Foolishly.Sparked.Core\Foolishly.Sparked.Core.csproj", "{32E4B128-8623-4A1A-867B-4A27BB642114}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sims.Api", "Sims.Api", "{08688E97-CD7F-48E2-9893-8765C3A68BED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Package", "Sims.Api.Package\Sims.Api.Package.csproj", "{E17AF017-885C-49F5-874D-73D09DBCF5A6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Api.Core", "Sims.Api.Core\Sims.Api.Core.csproj", "{072DA337-4B97-4645-809C-3EED3FD1C0B5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sparked.Core", "Sparked.Core", "{D5EEB5B2-B18A-49C4-AC10-778EA8D63300}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sims.Terminal.GameQuery", "Sims.Terminal.GameQuery\Sims.Terminal.GameQuery.csproj", "{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Terminal.GameQuery", "Foolishly.Sparked.Terminal.GameQuery\Foolishly.Sparked.Terminal.GameQuery.csproj", "{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sims.Plugins", "Sims.Plugins", "{86640B13-4E83-41FA-B446-B19B985049C7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sparked.Plugins", "Sparked.Plugins", "{86640B13-4E83-41FA-B446-B19B985049C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Core.Catalog", "Foolishly.Sparked.Core.Catalog\Foolishly.Sparked.Core.Catalog.csproj", "{F5B6A6F1-14D1-4815-BE82-0743F3BED906}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Core.Package", "Foolishly.Sparked.Core.Package\Foolishly.Sparked.Core.Package.csproj", "{39F6176D-4BDE-48CD-99EF-DEB53B5A7449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Foolishly.Sparked.Core.BaseGame", "Foolishly.Sparked.Core.BaseGame\Foolishly.Sparked.Core.BaseGame.csproj", "{3EA910FA-292E-4BC7-9717-D6035334F5E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,14 +70,6 @@ Global
 		{32E4B128-8623-4A1A-867B-4A27BB642114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32E4B128-8623-4A1A-867B-4A27BB642114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32E4B128-8623-4A1A-867B-4A27BB642114}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E17AF017-885C-49F5-874D-73D09DBCF5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E17AF017-885C-49F5-874D-73D09DBCF5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E17AF017-885C-49F5-874D-73D09DBCF5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E17AF017-885C-49F5-874D-73D09DBCF5A6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{072DA337-4B97-4645-809C-3EED3FD1C0B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{072DA337-4B97-4645-809C-3EED3FD1C0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{072DA337-4B97-4645-809C-3EED3FD1C0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{072DA337-4B97-4645-809C-3EED3FD1C0B5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -88,16 +78,24 @@ Global
 		{F5B6A6F1-14D1-4815-BE82-0743F3BED906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5B6A6F1-14D1-4815-BE82-0743F3BED906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5B6A6F1-14D1-4815-BE82-0743F3BED906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39F6176D-4BDE-48CD-99EF-DEB53B5A7449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39F6176D-4BDE-48CD-99EF-DEB53B5A7449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39F6176D-4BDE-48CD-99EF-DEB53B5A7449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39F6176D-4BDE-48CD-99EF-DEB53B5A7449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EA910FA-292E-4BC7-9717-D6035334F5E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EA910FA-292E-4BC7-9717-D6035334F5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EA910FA-292E-4BC7-9717-D6035334F5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EA910FA-292E-4BC7-9717-D6035334F5E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{41F49A01-2256-4B61-9458-F1F4FC3FCD7D} = {46167F95-CA9A-447D-98C6-301740931BB8}
-		{E17AF017-885C-49F5-874D-73D09DBCF5A6} = {08688E97-CD7F-48E2-9893-8765C3A68BED}
-		{072DA337-4B97-4645-809C-3EED3FD1C0B5} = {08688E97-CD7F-48E2-9893-8765C3A68BED}
 		{32E4B128-8623-4A1A-867B-4A27BB642114} = {D5EEB5B2-B18A-49C4-AC10-778EA8D63300}
 		{8CC32992-41FB-492E-8C3D-FC9B5C2DD41C} = {3E656E6D-9CF9-4B6E-9A71-8CADFD684CB8}
 		{7D3947ED-D15C-4B5B-A35A-0D51EFCABBB5} = {D5EEB5B2-B18A-49C4-AC10-778EA8D63300}
 		{B7092781-5D0B-4F13-9225-808D0FF0279A} = {86640B13-4E83-41FA-B446-B19B985049C7}
 		{4D66B59C-9FB3-4762-A2CC-A0EB5A837FFB} = {86640B13-4E83-41FA-B446-B19B985049C7}
 		{F5B6A6F1-14D1-4815-BE82-0743F3BED906} = {D5EEB5B2-B18A-49C4-AC10-778EA8D63300}
+		{39F6176D-4BDE-48CD-99EF-DEB53B5A7449} = {D5EEB5B2-B18A-49C4-AC10-778EA8D63300}
+		{3EA910FA-292E-4BC7-9717-D6035334F5E0} = {D5EEB5B2-B18A-49C4-AC10-778EA8D63300}
 	EndGlobalSection
 EndGlobal

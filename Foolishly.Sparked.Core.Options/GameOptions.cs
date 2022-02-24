@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Sims.Core;
+namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Defines options for the game instance.
