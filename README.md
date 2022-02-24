@@ -1,11 +1,11 @@
-# Sims Toolkit
+# Foolishly Sparked
 
 [![wakatime](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit.svg)](https://wakatime.com/badge/github/BinaryMisfit/sims-toolkit)
 
 ## Overview
 
-Sims Toolkit provides an updated set of tools to manage and maintain Sims custom content files. It's built on .Net Core
-6.0 and a refresh of the work done by various other [projects](#reference-projects).
+Foolishly Sparked provides an updated set of tools to manage and maintain Sims custom content files. It's built on .Net
+Core 6.0 and a refresh of the work done by various other [projects](#reference-projects).
 
 ## Goal
 
@@ -21,9 +21,9 @@ managing custom content include but not limited to:
 
 To address these issues numerous tools provide functionality often to complex or to simple for what needs to be
 achieved. After spending time trying to work through 5000+ custom content items the need for something to automate or
-batch some of these functions became a must and Sims Toolkit was born.
+batch some of these functions became a must and Foolishly Sparked was born.
 
-Sims Toolkit attempts to bring all the tools and functionality into one place across both Windows and Mac.
+Foolishly Sparked attempts to bring all the tools and functionality into one place across both Windows and Mac.
 
 ## Planned Functionality
 
@@ -33,7 +33,7 @@ Sims Toolkit attempts to bring all the tools and functionality into one place ac
 
 ## Golden Rules
 
-While developing Sims Toolkit there are a set of rules applied in deciding how something gets implemented and if it
+While developing Foolishly Sparked there are a set of rules applied in deciding how something gets implemented and if it
 meets the goal of the project.
 
 ### Keep it Simple
@@ -53,6 +53,7 @@ understanding of implementation.
 |:-----------:|:----------------------------------|
 | 2021-02-17  | Populating and updating README.md |
 |             | Initial attempt at a Roadmap      |
+| 2021-02-24  | Renamed to Foolishly Sparked      |
 
 ## Roadmap
 
@@ -68,8 +69,16 @@ This project wouldn't be possible without the work done in the following project
 dealing with the internals of Sims `.package` files was taken from these projects.
 
 - ### Sims4Tools
-  - [Kuree](https://github.com/Kuree/Sims4Tools) - the original Sims 4 Tools.
-  - [cmarNYC](https://github.com/cmarNYC/Sims4Tools) - the first maintained fork.
-  - [s4ptacle](https://github.com/s4ptacle/Sims4Tools) - the last maintained fork.
+    - [Kuree](https://github.com/Kuree/Sims4Tools) - the original Sims 4 Tools.
+    - [cmarNYC](https://github.com/cmarNYC/Sims4Tools) - the first maintained fork.
+    - [s4ptacle](https://github.com/s4ptacle/Sims4Tools) - the last maintained fork.
 - ### [S4 CAS Tools](https://modthesims.info/d/582348/s4-cas-tools-updated-to-v3-5-3-1-on-9-11-2021.html) by cmarNYC.
 - ### [s3pi](http://s3pi.sourceforge.net/) by Peter.
+- ### [Sims 4 Toolkit](https://sims4toolkit.com/) by frankkulamods.
+
+#### Interesting Facts
+
+- <sub>The original name for this project was Sims Toolkit. However after learning about Sims 4 Toolkit predating this
+  project it was renamed to Foolishly Sparked. I felt it was only respectful to him as he started work on his toolset
+  long before this project started.</sub>
+- <sub>Most of the referenced project's authors have been privately contacted regarding the use of their code where possible.</sub>
