@@ -11,7 +11,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Sims.Core\Sims.Core.csproj" />
+      <ProjectReference Include="..\Foolishly.Sparked.Core\Foolishly.Sparked.Core.csproj"/>
     </ItemGroup>
 
 </Project>

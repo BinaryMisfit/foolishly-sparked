@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using System.IO.Abstractions;
 using System.Text;
-using Sims.Api.Catalog;
-using Sims.Core;
+using Foolishly.Sparked.Core;
+using Foolishly.Sparked.Core.Catalog;
 
 namespace Sims.Api.Package;
 

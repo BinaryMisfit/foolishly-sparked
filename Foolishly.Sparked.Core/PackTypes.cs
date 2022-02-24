@@ -1,4 +1,4 @@
-﻿namespace Sims.Core;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Identifies the different type of game packs.

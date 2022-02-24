@@ -1,4 +1,4 @@
-﻿namespace Sims.Core;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Represents a resource type inside a Sims package.

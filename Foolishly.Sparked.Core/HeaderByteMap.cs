@@ -1,4 +1,4 @@
-﻿namespace Sims.Core;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Static values to read the .package header.

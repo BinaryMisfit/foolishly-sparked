@@ -1,4 +1,4 @@
-﻿namespace Sims.Core;
+﻿namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Contains static values for the game files.

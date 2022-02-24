@@ -1,7 +1,8 @@
 ﻿using System.IO.Abstractions;
+using Foolishly.Sparked.Core;
+using Foolishly.Sparked.Core.Properties;
 using Microsoft.Extensions.Options;
 using Sims.Core;
-using Sims.Core.Properties;
 
 namespace Sims.Api.Core;
 

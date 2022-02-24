@@ -1,5 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Sims.Api.Catalog;
+﻿using Foolishly.Sparked.Core.Catalog;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Sims.Api.Package;
 

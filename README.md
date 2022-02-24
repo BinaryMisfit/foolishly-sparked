@@ -1,6 +1,7 @@
 # Foolishly Sparked
 
 [![wakatime](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked.svg)](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=senselessly-foolish-foolishly-sparked&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=senselessly-foolish-foolishly-sparked)
 
 ## Overview
 

@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Sims.Api.Package\Sims.Api.Package.csproj" />
-      <ProjectReference Include="..\Sims.Core.Options\Sims.Core.Options.csproj" />
+      <ProjectReference Include="..\Foolishly.Sparked.Core.Options\Foolishly.Sparked.Core.Options.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

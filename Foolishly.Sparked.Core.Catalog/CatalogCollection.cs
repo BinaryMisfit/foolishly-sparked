@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using Sims.Core;
 
-namespace Sims.Api.Catalog;
+namespace Foolishly.Sparked.Core.Catalog;
 
 /// <summary>
 ///     Implementation of <see cref="ICatalogCollection" />.

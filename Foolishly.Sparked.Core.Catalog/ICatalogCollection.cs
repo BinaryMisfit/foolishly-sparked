@@ -1,6 +1,4 @@
-﻿using Sims.Core;
-
-namespace Sims.Api.Catalog;
+﻿namespace Foolishly.Sparked.Core.Catalog;
 
 /// <inheritdoc />
 public interface ICatalogCollection : IList<CatalogDescriptor>
