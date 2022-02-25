@@ -1,4 +1,6 @@
-﻿using System.IO.Abstractions;
+﻿using System;
+using System.IO.Abstractions;
+using System.Linq;
 using Foolishly.Sparked.Core.Properties;
 
 namespace Foolishly.Sparked.Core;
@@ -6,7 +8,7 @@ namespace Foolishly.Sparked.Core;
 /// <summary>
 ///     Descriptor of a game pack for the Sims.
 /// </summary>
-public class PackDescriptor
+public class PackDescriptor : IPackDescriptor
 {
     /// <summary>
     ///     Initializes an instance of a game pack.
@@ -22,24 +24,9 @@ public class PackDescriptor
     }
 
     /// <summary>
-    ///     The pack identifier.
-    /// </summary>
-    public string PackId { get; }
-
-    /// <summary>
-    ///     The name of the pack.
-    /// </summary>
-    public string? PackName { get; }
-
-    /// <summary>
     ///     The <see cref="PackTypes" />.
     /// </summary>
     public PackTypes PackTypes { get; }
-
-    /// <summary>
-    ///     The pack type identifier.
-    /// </summary>
-    public int PackTypeId { get; }
 
     /// <summary>
     ///     The <see cref="System.IO.Abstractions.IDirectoryInfo" /> where the pack is installed.
@@ -50,6 +37,21 @@ public class PackDescriptor
     ///     The <see cref="IPackageCollection" />.
     /// </summary>
     public IPackageCollection Collections { get; set; }
+
+    /// <summary>
+    ///     The pack identifier.
+    /// </summary>
+    public string PackId { get; }
+
+    /// <summary>
+    ///     The name of the pack.
+    /// </summary>
+    public string? PackName { get; }
+
+    /// <summary>
+    ///     The pack type identifier.
+    /// </summary>
+    public int PackTypeId { get; }
 
     private int DetermineTypeId()
     {
