@@ -3,41 +3,48 @@
     <PropertyGroup>
         <Company>Senselessly Foolish</Company>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <ImplicitUsings>enable</ImplicitUsings>
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
-        <TargetFramework>net6.0</TargetFramework>
         <OutputType>library</OutputType>
+        <RootNamespace>Foolishly.Sparked.Core</RootNamespace>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <EmbeddedResource Update="Properties\Exceptions.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
-        <CustomToolNamespace>Foolishly.Sparked.Core.Properties</CustomToolNamespace>
-      </EmbeddedResource>
-      <EmbeddedResource Update="Properties\GamePacks.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
-          <CustomToolNamespace>Foolishly.Sparked.Core.Properties</CustomToolNamespace>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Properties\Exceptions.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Exceptions.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\GamePacks.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>GamePacks.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Properties\OutputMessages.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>OutputMessages.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Properties\Exceptions.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Exceptions.resx</DependentUpon>
-      </Compile>
-      <Compile Update="Properties\GamePacks.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>GamePacks.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Properties\Exceptions.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Exceptions.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Properties\GamePacks.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>GamePacks.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Properties\OutputMessages.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>OutputMessages.resx</DependentUpon>
+        </Compile>
     </ItemGroup>
 
 </Project>

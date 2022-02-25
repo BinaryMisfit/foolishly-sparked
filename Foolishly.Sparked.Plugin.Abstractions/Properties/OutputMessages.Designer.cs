@@ -36,7 +36,7 @@ namespace Foolishly.Sparked.Plugin.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Plugin.Abstractions.Properties.OutputMessages", typeof(OutputMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Plugin.Properties.OutputMessages", typeof(OutputMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

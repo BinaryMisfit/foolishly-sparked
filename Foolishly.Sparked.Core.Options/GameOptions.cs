@@ -10,7 +10,7 @@ public class GameOptions
     /// <summary>
     ///     The section name in the config file.
     /// </summary>
-    public static string ConfigurationSectionName => "GameInstance";
+    public static string ConfigurationSectionName => "Game";
 
     /// <summary>
     ///     The game installation path.

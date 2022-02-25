@@ -1,4 +1,6 @@
-﻿namespace Foolishly.Sparked.Core;
+﻿using System;
+
+namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Represents an installed game instance.
@@ -9,11 +11,6 @@ public interface IGameInstance
     ///     The game installation path.
     /// </summary>
     string? GamePath { get; }
-
-    /// <summary>
-    ///     The <see cref="PackCollection" />.
-    /// </summary>
-    IPackCollection? InstalledPacks { get; }
 
     /// <summary>
     ///     The platform the game is installed on.

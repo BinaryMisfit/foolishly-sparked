@@ -1,4 +1,6 @@
-﻿namespace Foolishly.Sparked.Plugin;
+﻿using System;
+
+namespace Foolishly.Sparked.Plugin;
 
 /// <summary>
 ///     Provides meta data for a plugin.

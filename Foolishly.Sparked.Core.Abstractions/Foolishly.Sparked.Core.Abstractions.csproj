@@ -11,12 +11,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Foolishly.Sparked.Core.Catalog\Foolishly.Sparked.Core.Catalog.csproj"/>
-        <ProjectReference Include="..\Foolishly.Sparked.Core.Interfaces\Foolishly.Sparked.Core.Interfaces.csproj"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.IO.Abstractions" Version="16.1.15"/>
+        <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Foolishly.Sparked.Core.Interfaces\Foolishly.Sparked.Core.Interfaces.csproj"/>
     </ItemGroup>
 
 </Project>

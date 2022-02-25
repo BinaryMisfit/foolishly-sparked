@@ -3,8 +3,6 @@
     <PropertyGroup>
         <Company>Senselessly Foolish</Company>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <IsPackable>true</IsPackable>
         <LangVersion>10</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
         <Nullable>enable</Nullable>
@@ -14,15 +12,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="toolkit-settings.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="toolkit-settings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
@@ -37,6 +36,10 @@
         <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0"/>
         <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0"/>
         <PackageReference Include="System.Text.Json" Version="6.0.2"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Foolishly.Sparked.Core.Interfaces\Foolishly.Sparked.Core.Interfaces.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,9 @@
-﻿namespace Foolishly.Sparked.Core;
+﻿using System.Collections.Generic;
+
+namespace Foolishly.Sparked.Core;
 
 /// <inheritdoc />
-public interface ICatalogCollection : IList<CatalogDescriptor>
+public interface ICatalogCollection : IList<ICatalogDescriptor>
 {
     /// <summary>
     ///     Returns a summary of the resources contained in the collection.

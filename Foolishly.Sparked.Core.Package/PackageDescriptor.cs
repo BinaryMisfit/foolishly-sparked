@@ -1,13 +1,18 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.IO.Abstractions;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Descriptor of a Sims custom content package.
 /// </summary>
-public class PackageDescriptor
+public class PackageDescriptor : IPackageDescriptor
 {
     private readonly IFileSystem _fileSystem;
 
@@ -39,14 +44,14 @@ public class PackageDescriptor
     /// <summary>
     ///     The <see cref="CatalogCollection" />.
     /// </summary>
-    public CatalogCollection Catalog { get; }
+    public ICatalogCollection Catalog { get; }
 
     /// <summary>
     ///     Read package information from a .package file.
     /// </summary>
     /// <param name="filePathAndName">The file path.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public PackageDescriptor LoadFile(string filePathAndName)
+    public IPackageDescriptor LoadFile(string filePathAndName)
     {
         SourceFile = _fileSystem.FileInfo.FromFileName(filePathAndName);
         return this;
@@ -56,7 +61,7 @@ public class PackageDescriptor
     ///     Read package asynchronously.
     /// </summary>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync()
+    public Task<IPackageDescriptor> ReadPackageAsync()
     {
         return ReadPackageAsync(null, default);
     }
@@ -66,7 +71,7 @@ public class PackageDescriptor
     /// </summary>
     /// <param name="token">The <see cref="CancellationToken" />.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync(CancellationToken token)
+    public Task<IPackageDescriptor> ReadPackageAsync(CancellationToken token)
     {
         return ReadPackageAsync(null, token);
     }
@@ -76,7 +81,7 @@ public class PackageDescriptor
     /// </summary>
     /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress)
+    public Task<IPackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress)
     {
         return ReadPackageAsync(progress, default);
     }
@@ -87,7 +92,7 @@ public class PackageDescriptor
     /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <param name="token">The <see cref="CancellationToken" />.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress, CancellationToken token)
+    public Task<IPackageDescriptor> ReadPackageAsync(IProgress<AsyncProgressReport>? progress, CancellationToken token)
     {
         if (token.IsCancellationRequested)
         {
@@ -110,14 +115,14 @@ public class PackageDescriptor
         }
 
         progress?.Report(new AsyncProgressReport($"{SourceFile?.Name} is a valid custom content file."));
-        return Task.FromResult(this);
+        return Task.FromResult((IPackageDescriptor) this);
     }
 
     /// <summary>
     ///     Reads the package contents.
     /// </summary>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync()
+    public Task<IPackageDescriptor> ReadPackageContentAsync()
     {
         return ReadPackageContentAsync(null, default);
     }
@@ -127,7 +132,7 @@ public class PackageDescriptor
     /// </summary>
     /// <param name="token">The <see cref="CancellationToken" /></param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync(CancellationToken token)
+    public Task<IPackageDescriptor> ReadPackageContentAsync(CancellationToken token)
     {
         return ReadPackageContentAsync(null, token);
     }
@@ -137,7 +142,7 @@ public class PackageDescriptor
     /// </summary>
     /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<AsyncProgressReport>? progress)
+    public Task<IPackageDescriptor> ReadPackageContentAsync(IProgress<AsyncProgressReport>? progress)
     {
         return ReadPackageContentAsync(progress, default);
     }
@@ -148,7 +153,9 @@ public class PackageDescriptor
     /// <param name="progress">The <see cref="AsyncProgressReport" /> used for progress reporting.</param>
     /// <param name="token">The <see cref="CancellationToken" />.</param>
     /// <returns>The <see cref="PackageDescriptor" />.</returns>
-    public Task<PackageDescriptor> ReadPackageContentAsync(IProgress<AsyncProgressReport>? progress, CancellationToken token)
+    public Task<IPackageDescriptor> ReadPackageContentAsync(
+        IProgress<AsyncProgressReport>? progress,
+        CancellationToken token)
     {
         if (token.IsCancellationRequested)
         {
@@ -184,7 +191,7 @@ public class PackageDescriptor
             LoadEntries(reader, header, headerSize);
             stream.Close();
             progress?.Report(new AsyncProgressReport($"Loaded {this}"));
-            return Task.FromResult(this);
+            return Task.FromResult((IPackageDescriptor) this);
         }
         finally
         {

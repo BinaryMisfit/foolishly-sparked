@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.Composition.Hosting;
+﻿using System;
+using System.ComponentModel.Composition.Hosting;
 using System.IO.Abstractions;
+using System.Linq;
 
 namespace Foolishly.Sparked.Plugin;
 

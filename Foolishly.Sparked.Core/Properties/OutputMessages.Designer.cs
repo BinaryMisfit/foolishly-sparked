@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace Foolishly.Sparked.Core.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -19,16 +22,16 @@ namespace Foolishly.Sparked.Core.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Exceptions {
-
+    public class OutputMessages {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Exceptions() {
+        internal OutputMessages() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -36,13 +39,13 @@ namespace Foolishly.Sparked.Core.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Core.Properties.Exceptions", typeof(Exceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Foolishly.Sparked.Core.Properties.OutputMessages", typeof(OutputMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -56,49 +59,40 @@ namespace Foolishly.Sparked.Core.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Base game not found..
+        ///   Looks up a localized string similar to Utilities to manage Sims Custom Content..
         /// </summary>
-        public static string GameBaseNotFound {
+        public static string ApplicationDescription {
             get {
-                return ResourceManager.GetString("GameBaseNotFound", resourceCulture);
+                return ResourceManager.GetString("ApplicationDescription", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to No game found..
+        ///   Looks up a localized string similar to Foolishly Sparked.
         /// </summary>
-        public static string GameDirectoryNotFound {
+        public static string ApplicationTitle {
             get {
-                return ResourceManager.GetString("GameDirectoryNotFound", resourceCulture);
+                return ResourceManager.GetString("ApplicationTitle", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to No game files found..
+        ///   Looks up a localized string similar to Command Line Interface.
         /// </summary>
-        public static string GameFilesNotFound {
+        public static string TerminalTitle {
             get {
-                return ResourceManager.GetString("GameFilesNotFound", resourceCulture);
+                return ResourceManager.GetString("TerminalTitle", resourceCulture);
             }
         }
-
+        
         /// <summary>
-        ///   Looks up a localized string similar to Not a valid Sims Toolkit plugin..
+        ///   Looks up a localized string similar to {0} :: {1}.
         /// </summary>
-        public static string PluginInvalid {
+        public static string TitleDisplay {
             get {
-                return ResourceManager.GetString("PluginInvalid", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Valid platform plugin not found..
-        /// </summary>
-        public static string PluginMissingPlatform {
-            get {
-                return ResourceManager.GetString("PluginMissingPlatform", resourceCulture);
+                return ResourceManager.GetString("TitleDisplay", resourceCulture);
             }
         }
     }

@@ -1,14 +1,20 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace Foolishly.Sparked.Core;
 
 /// <inheritdoc />
 public class PackageCollection : IPackageCollection
 {
-    private readonly IList<PackageDescriptor> packages = new List<PackageDescriptor>();
+    private readonly IList<IPackageDescriptor> packages;
+
+    public PackageCollection()
+    {
+        packages = new List<IPackageDescriptor>();
+    }
 
     /// <inheritdoc />
-    public IEnumerator<PackageDescriptor> GetEnumerator()
+    public IEnumerator<IPackageDescriptor> GetEnumerator()
     {
         return packages.GetEnumerator();
     }
@@ -19,7 +25,7 @@ public class PackageCollection : IPackageCollection
     }
 
     /// <inheritdoc />
-    public void Add(PackageDescriptor item)
+    public void Add(IPackageDescriptor item)
     {
         packages.Add(item);
     }
@@ -31,19 +37,19 @@ public class PackageCollection : IPackageCollection
     }
 
     /// <inheritdoc />
-    public bool Contains(PackageDescriptor item)
+    public bool Contains(IPackageDescriptor item)
     {
         return packages.Contains(item);
     }
 
     /// <inheritdoc />
-    public void CopyTo(PackageDescriptor[] array, int arrayIndex)
+    public void CopyTo(IPackageDescriptor[] array, int arrayIndex)
     {
         packages.CopyTo(array, arrayIndex);
     }
 
     /// <inheritdoc />
-    public bool Remove(PackageDescriptor item)
+    public bool Remove(IPackageDescriptor item)
     {
         return packages.Remove(item);
     }
@@ -55,13 +61,13 @@ public class PackageCollection : IPackageCollection
     public bool IsReadOnly => packages.IsReadOnly;
 
     /// <inheritdoc />
-    public int IndexOf(PackageDescriptor item)
+    public int IndexOf(IPackageDescriptor item)
     {
         return packages.IndexOf(item);
     }
 
     /// <inheritdoc />
-    public void Insert(int index, PackageDescriptor item)
+    public void Insert(int index, IPackageDescriptor item)
     {
         packages.Insert(index, item);
     }
@@ -73,7 +79,7 @@ public class PackageCollection : IPackageCollection
     }
 
     /// <inheritdoc />
-    public PackageDescriptor this[int index]
+    public IPackageDescriptor this[int index]
     {
         get => packages[index];
         set => packages[index] = value;

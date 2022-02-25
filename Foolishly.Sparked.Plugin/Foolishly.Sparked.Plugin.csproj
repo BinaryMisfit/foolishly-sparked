@@ -3,7 +3,6 @@
     <PropertyGroup>
         <Company>Senselessly Foolish</Company>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <ImplicitUsings>enable</ImplicitUsings>
         <IsPackable>true</IsPackable>
         <LangVersion>10</LangVersion>
         <NeutralLanguage>en-US</NeutralLanguage>
@@ -17,15 +16,15 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-      <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
-      <PackageReference Include="System.IO.Abstractions" Version="16.1.15" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+        <PackageReference Include="System.ComponentModel.Composition" Version="6.0.0"/>
+        <PackageReference Include="System.IO.Abstractions" Version="16.1.15"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="System.ComponentModel.Composition, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <HintPath>C:\Users\diago\.nuget\packages\system.componentmodel.composition\6.0.0\lib\net6.0\System.ComponentModel.Composition.dll</HintPath>
-      </Reference>
+        <Reference Include="System.ComponentModel.Composition, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+            <HintPath>C:\Users\diago\.nuget\packages\system.componentmodel.composition\6.0.0\lib\net6.0\System.ComponentModel.Composition.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

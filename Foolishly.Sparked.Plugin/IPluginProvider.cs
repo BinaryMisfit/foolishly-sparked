@@ -1,4 +1,7 @@
-﻿namespace Foolishly.Sparked.Plugin;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Foolishly.Sparked.Plugin;
 
 /// <summary>
 ///     Specifies the contract for a plugin provider.

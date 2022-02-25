@@ -1,9 +1,13 @@
-﻿namespace Foolishly.Sparked.Core;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace Foolishly.Sparked.Core;
 
 /// <summary>
 ///     Descriptor of the package content.
 /// </summary>
-public class CatalogDescriptor
+public class CatalogDescriptor : ICatalogDescriptor
 {
     /// <summary>
     ///     Initializes an instance of the package content.

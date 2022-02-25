@@ -5,14 +5,13 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
-        <TargetFramework>net6.0</TargetFramework>
         <OutputType>library</OutputType>
         <RootNamespace>Foolishly.Sparked.Core</RootNamespace>
+        <TargetFramework>net6.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Foolishly.Sparked.Core.Catalog\Foolishly.Sparked.Core.Catalog.csproj"/>
-        <ProjectReference Include="..\Foolishly.Sparked.Core.Interfaces\Foolishly.Sparked.Core.Interfaces.csproj"/>
+        <ProjectReference Include="..\Foolishly.Sparked.Core\Foolishly.Sparked.Core.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

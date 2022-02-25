@@ -1,4 +1,6 @@
-﻿namespace Foolishly.Sparked.Core;
+﻿using System.Collections.Generic;
+
+namespace Foolishly.Sparked.Core;
 
 public static class PackTypesMappings
 {
