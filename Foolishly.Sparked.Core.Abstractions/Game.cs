@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Foolishly.Sparked.Core;
 
@@ -34,5 +35,10 @@ public class Game : IGame, IGameInternals
     void IGameInternals.AddGamePacks(IPackCollection packs)
     {
         Packs = packs;
+    }
+
+    public override string ToString()
+    {
+        return string.Format(CultureInfo.CurrentCulture, "Found {0} for {1} at {2}", Version, Platform, InstalledPath);
     }
 }

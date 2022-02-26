@@ -26,6 +26,7 @@ root.SetHandler(
                 })
             .Configure()
             .Build();
+        Console.WriteLine(game);
     },
     installPathOption,
     contentPathOption);
