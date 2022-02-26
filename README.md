@@ -2,8 +2,7 @@
 
 [![wakatime](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked.svg)](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked)
 
-*This project is in no way associated with Electronic Arts and the all trademarks for The Sims belong to Electronic
-Arts.*
+*This project is in no way associated with Electronic Arts and all trademarks for The Sims belong to Electronic Arts.*
 
 ## Important Notice
 
