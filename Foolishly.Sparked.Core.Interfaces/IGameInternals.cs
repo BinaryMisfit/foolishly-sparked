@@ -2,5 +2,7 @@
 
 public interface IGameInternals
 {
-    void AddGameBuilder(IGameBuilder builder);
+    void AddBaseGame(IPackageCollection package);
+
+    void AddGamePacks(IPackCollection pack);
 }

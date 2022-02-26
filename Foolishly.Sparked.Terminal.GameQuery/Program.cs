@@ -24,8 +24,8 @@ root.SetHandler(
                 {
                     {"Game:InstallPath", installPath.FullName}, {"Game:ContentPath", contentPath.FullName}
                 })
+            .Configure()
             .Build();
-        game = game.CreateFromLocalInstall();
     },
     installPathOption,
     contentPathOption);

@@ -10,10 +10,12 @@ public interface IGameInstance
     /// <summary>
     ///     The game installation path.
     /// </summary>
-    string? GamePath { get; }
+    string InstallPath { get; }
 
     /// <summary>
     ///     The platform the game is installed on.
     /// </summary>
     PlatformID Platform { get; }
+
+    string Version { get; }
 }

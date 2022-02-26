@@ -1,7 +1,13 @@
 # Foolishly Sparked
 
 [![wakatime](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked.svg)](https://wakatime.com/badge/github/BinaryMisfit/foolishly-sparked)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=senselessly-foolish-foolishly-sparked&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=senselessly-foolish-foolishly-sparked)
+
+*This project is in no way associated with Electronic Arts and the all trademarks for The Sims belong to Electronic
+Arts.*
+
+## Important Notice
+
+> Recently there was a strong discussion whether a project like this is needed with some of the more established mod authors in the Sims community. Quite a few points was made that led to the project being made private to consider the arguments. After some serious consideration this project is still open source and available here. No public or official release will be done nor will it be made available in compiled form.
 
 ## Overview
 

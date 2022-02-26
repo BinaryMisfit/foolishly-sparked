@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Abstractions;
+using System.Linq;
 using Foolishly.Sparked.Core.Properties;
 using Microsoft.Extensions.Options;
 
@@ -21,12 +23,17 @@ public class GameLocator : IGameLocator
     {
         _fileSystem = fileSystem;
         _options = options.Value.Game;
+        Platform = Environment.OSVersion.Platform;
+        InstallPath = string.Empty;
+        Version = "0.0.0.0";
     }
+
+    public string Version { get; private set; }
 
     /// <summary>
     ///     The game installation path.
     /// </summary>
-    public string? GamePath { get; private set; }
+    public string InstallPath { get; private set; }
 
     /// <summary>
     ///     The platform the game is installed on.
@@ -50,7 +57,16 @@ public class GameLocator : IGameLocator
             throw new DirectoryNotFoundException(Exceptions.GameDirectoryNotFound);
         }
 
-        GamePath = gamePath.FullName;
+        var gameFileInfo = gamePath.GetFiles(GameFileMap.FilesExecutable, SearchOption.AllDirectories)
+            .FirstOrDefault();
+        if (gameFileInfo is not {Exists: true})
+        {
+            throw new FileNotFoundException(Exceptions.GameFilesNotFound);
+        }
+
+        var version = FileVersionInfo.GetVersionInfo(gameFileInfo.FullName);
+        InstallPath = gamePath.FullName;
+        Version = version.FileVersion ?? throw new FileNotFoundException(Exceptions.GameFilesNotFound);
         return this;
     }
 }

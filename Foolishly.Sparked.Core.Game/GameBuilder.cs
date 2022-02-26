@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Foolishly.Sparked.Core;
@@ -7,11 +8,29 @@ namespace Foolishly.Sparked.Core;
 public class GameBuilder : IGameBuilder
 {
     private readonly IServiceCollection _services;
-    private Dictionary<string, string>? _options;
+    private IDictionary<string, string>? _options;
+    private IServiceProvider? _provider;
 
     public GameBuilder()
     {
         _services = new ServiceCollection();
+    }
+
+    public IGame Build()
+    {
+        if (_provider == null)
+        {
+            throw new ValidationException("Builder not configured.");
+        }
+
+        var instance = _provider?.GetService<IGameInstance>();
+        if (instance == null)
+        {
+            throw new NotImplementedException(nameof(IGameInstance));
+        }
+
+        (instance as IGameLocator)?.LocateGame();
+        return new Game(instance);
     }
 
     public IServiceProvider CreateProvider()
@@ -27,6 +46,7 @@ public class GameBuilder : IGameBuilder
         }
 
         _services.AddGame();
+        _provider = _services.BuildServiceProvider();
         return this;
     }
 

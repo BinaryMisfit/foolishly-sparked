@@ -5,6 +5,8 @@ namespace Foolishly.Sparked.Core;
 
 public interface IGameBuilder
 {
+    IGame Build();
+
     IGameBuilder Configure();
 
     IServiceProvider CreateProvider();
