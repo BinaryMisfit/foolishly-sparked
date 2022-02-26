@@ -8,9 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{41F49A01-2256-4B61-9458-F1F4FC3FCD7D}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\sims-toolkit-build-macos.yml = .github\workflows\sims-toolkit-build-macos.yml
-		.github\workflows\sims-toolkit-build-reports.yml = .github\workflows\sims-toolkit-build-reports.yml
 		.github\workflows\sims-toolkit-build-windows.yml = .github\workflows\sims-toolkit-build-windows.yml
-		.github\workflows\sims-toolkit-sonarcloud.yml = .github\workflows\sims-toolkit-sonarcloud.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{78DDA65B-DEB5-402B-9743-D866D7CFE746}"
