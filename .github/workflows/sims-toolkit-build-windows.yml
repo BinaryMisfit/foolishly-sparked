@@ -34,7 +34,7 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal --logger trx --results-directory "test-results"
       - name: Upload report
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
           name: sims-toolkit-windows-xunit-results
